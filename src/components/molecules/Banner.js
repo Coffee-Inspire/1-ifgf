@@ -1,20 +1,17 @@
-// import '../App.css';
-import test from '../assets/images/banner1.jpg';
-import {Container,Row,Col } from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 
-function Banner() {
+function Banner(props) {
     return (
         <Container fluid className="p-0">
             
-           <div className="p-0 m-0" id="imageBannerFrame">
-               
+           <div id="imageBannerFrame">
+
                     <img
                         alt=""
-                        src={test}
+                        src={props.bannerImage}
                         id="imageBanner"
                     />
                     
-               
            </div>
                   
             
