@@ -3,7 +3,7 @@ import './css/home.css';
 
 const HomePage = () => {
     return (
-        <div className="container-fluid">
+        <div id="homepage" className="container-fluid">
             <div className="row d-block">
                 <section className="content">
                     <div className="div-background" style={{ backgroundImage: `url("/home/bg-1.png")` }}>

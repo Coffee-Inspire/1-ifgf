@@ -1,8 +1,8 @@
-.content:not(:first-child){
+#homepage .content:not(:first-child){
     padding-top: 4rem;
 }
 
-.div-background{
+#homepage .div-background{
     background-position-y: center;
     background-size: 100% 100%;
     height: 30rem;
@@ -10,23 +10,23 @@
     color: white;
 }
 
-.div-background .shadow{
+#homepage .div-background .shadow{
     background: rgba(0, 0, 0, 0.5);
 }
 
 
-.div-background .white-shadow{
+#homepage .div-background .white-shadow{
     background: rgba(255, 255, 255, 0.1);
 }
 
-button{
+#homepage button{
     background: transparent;
     color: white;
     border: 1px solid white;
 }
 
 @media screen and (max-width : 767px) {
-    .div-background{
+    #homepage .div-background{
         height: 27.5rem;
     }
 }
