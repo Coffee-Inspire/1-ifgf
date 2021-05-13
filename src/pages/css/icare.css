@@ -23,6 +23,10 @@
     height: 17.5rem;
 }
 
+#icarepage button{
+    background: transparent;
+}
+
 @media screen and (max-width : 767px) {
     #icarepage .div-background{
         height: 27.5rem;

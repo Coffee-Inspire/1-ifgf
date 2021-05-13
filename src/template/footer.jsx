@@ -12,14 +12,14 @@ const FooterTemplate = () => {
                         <div>Pastor</div>
                     </div>
                     
-                    <div className="col-md-4 col-12">
+                    <div className="col-md-4 col-12 pt-md-0 pt-3">
                         <div className="title-footer">Connect</div>
                         <div>IFGF Youth</div>
                         <div>IFGF Kids</div>
                         <div>ICARE</div>
                     </div>
                     
-                    <div className="col-md-4 col-12">
+                    <div className="col-md-4 col-12 pt-md-0 pt-3">
                         <div className="title-footer">Contact Us</div>
                         <div><a href="tel:+6221-2321-2341">021-2321-2341</a></div>
                         <div><a href="mailto:test@gmail.com" target="_blank">test@gmail.com</a></div>

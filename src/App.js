@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/icare" component={IcarePage} />
           <Route exact path="/iyouth" component={IfgfYouthPage} />
-          <Route exact path="/ikid" component={IfgfKidsPage} />
+          <Route exact path="/ikids" component={IfgfKidsPage} />
           <Route exact path="/404" component= {NotFoundPage} />
           <Redirect to="/404" />
         </Switch>
