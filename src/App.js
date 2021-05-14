@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import './developer.css';
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 
 //Pages 
 import HomePage from './pages/home';
@@ -13,7 +13,20 @@ import IfgfKidsPage from './pages/ifgf-kids';
 //Template
 import FooterTemplate from './template/footer';
 
+function call(){
+  console.log("Halo");
+  let xml = new XMLHttpRequest();
+  let url = "/api/CheckConnection.php";
+  let method = "GET";
+  xml.open(method,url);
+  xml.send();
+  xml.onload = ()=>{
+    console.log(xml.responseText);
+  }
+}
+
 function App() {
+  call();
   return (
     <div className="App">
       <Router>
