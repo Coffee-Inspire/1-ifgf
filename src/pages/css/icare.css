@@ -1,0 +1,50 @@
+#icarepage .content:not(:first-child){
+    padding-top: 4rem;
+}
+
+#icarepage .div-background{
+    background-position-y: center;
+    background-size: 100% 100%;
+    height: 30rem;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+#icarepage .div-background .shadow{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+#icarepage .div-background .white-shadow{
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#icarepage .items .div-background{
+    height: 17.5rem;
+}
+
+#icarepage button{
+    background: transparent;
+}
+
+@media screen and (max-width : 767px) {
+    #icarepage .div-background{
+        height: 27.5rem;
+    }
+    
+    #icarepage .items .div-background{
+        height: 12.5rem!important;
+    }
+}
+
+#icarepage .items .div-background{
+    height: 17.5rem;
+}
+
+#icarepage .div-shadow{
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#icarepage .separator{
+    border: 1px solid black;
+}
