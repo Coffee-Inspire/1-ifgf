@@ -1,21 +1,20 @@
-import {Container} from 'react-bootstrap';
+import {Row,Image} from 'react-bootstrap';
 
 function Banner(props) {
     return (
-        <Container fluid className="p-0">
-            
-           <div id="imageBannerFrame">
-
-                    <img
+        <>
+            <Row> 
+                <div id="imageBannerFrame" className="position-relative d-flex justify-content-center align-items-center p-0">       
+                    <Image
                         alt=""
                         src={props.bannerImage}
                         id="imageBanner"
                     />
-                    
-           </div>
-                  
-            
-        </Container>
+                    <p id="aboutHeadCaption" className="position-absolute text-white display-2 fw-bold">{props.title}</p>
+                            
+                </div>
+            </Row>
+        </>
     )
 }
 

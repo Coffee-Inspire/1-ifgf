@@ -8,13 +8,17 @@ import AboutContent2 from '../components/templates/AboutContent2';
 
 function About() {
 
+    let word =  `God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
+                 to show love and Compassion because he is a GOD of Covenant,
+                 who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
+                 made into champions by the promises of His Word.
+                `
     return (
-        <Container fluid className="p-0 m-0">
+        <Container fluid>
                 
-            <Banner bannerImage={aboutImage} />
-            <h1 id="aboutHeadCaption">ABOUT US</h1>
-            <AboutContent1 image={aboutContentImage1}/>
-            <AboutContent2 image={aboutContentImage2}/>
+            <Banner bannerImage={aboutImage} title={"ABOUT US"} />
+            <AboutContent1 image={aboutContentImage1} word={word}/>
+            <AboutContent2 image={aboutContentImage2} word={word}/>
                 
         </Container>
     )

@@ -4,7 +4,7 @@ function Footer() {
     return (
         <Container fluid id="footerContainer">
 
-            <Row className="d-flex flex-row justify-content-evenly mt-5 py-5">
+            <Row className="d-flex flex-row justify-content-evenly mt-3 py-5">
                 <Col lg={2} >
                     <h6 className="mb-4">ABOUT</h6>
                     <div id="footerPoints">

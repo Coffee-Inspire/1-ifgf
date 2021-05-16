@@ -6,10 +6,10 @@ import Footer from './components/templates/Footer';
 
 function App() {
   return (
-    <div>
+    <>
       <About/>
       <Footer/>
-    </div>
+    </>
   );
 }
 
