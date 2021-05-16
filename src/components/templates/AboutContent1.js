@@ -1,3 +1,4 @@
+// importing react-bootstrap tag(s)
 import {Row,Col,Button} from 'react-bootstrap';
 
 function AboutContent1(props) {
