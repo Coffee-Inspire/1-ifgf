@@ -45,10 +45,7 @@ body {
 
 /* Manual CSS Configuration Begin */
 
-@media (max-width: 700px) {
-	#imageBannerFrame {
-		min-height: 400px;
-	}
+@media (max-width: 760px) {
 	#imageBanner {
 		width: 100%;
 		height: 100%;
@@ -56,10 +53,41 @@ body {
 		filter: brightness(85%);
 		object-position: 1% 0;
 	}
+	.eventContentImageFrame {
+		width: 100% !important;
+		overflow: hidden;
+	}
+}
+
+@media (max-width: 500px) {
+	#imageBannerFrame {
+		height: 475px !important;
+	}
+}
+
+@media (max-width: 1000px) {
+	.eventContentImageFrame {
+		width: 100% !important;
+		overflow: hidden;
+	}
+}
+
+.centerOverlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	/* height: 300px; */
+}
+
+.aboutHeadCaption2 {
+	color: #ffffff;
+}
+
+#imageBannerFrame {
+	height: 100vh;
 }
 
 #imageBanner {
 	width: 100%;
+	height: 100%;
 	object-fit: cover;
 	filter: brightness(85%);
 }
@@ -95,4 +123,19 @@ body {
 
 #footerPoints {
 	font-weight: lighter;
+}
+
+#eventBanner {
+	background-color: #e5e5e5;
+}
+
+.eventContentImageFrame {
+	width: 500px;
+	overflow: hidden;
+}
+
+.eventContentImage {
+	width: 100%;
+	object-fit: cover;
+	filter: brightness(85%);
 }
