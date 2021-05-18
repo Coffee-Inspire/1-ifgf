@@ -40,21 +40,21 @@ function IfgfKids() {
 
     // mock data for event
     let DUMMY = [
-        // {
-        //     eventName : "EVENT A",
-        //     eventImage : eventImage,
-        //     eventText : "You are hovering on Event A"
-        // },
-        // {
-        //     eventName : "EVENT B",
-        //     eventImage : eventImage,
-        //     eventText : "You are hovering on Event B"
-        // },
-        // {
-        //     eventName : "EVENT C",
-        //     eventImage : eventImage,
-        //     eventText : "You are hovering on Event C"
-        // }
+        {
+            eventName : "EVENT A",
+            eventImage : eventImage,
+            eventText : "You are hovering on Event A"
+        },
+        {
+            eventName : "EVENT B",
+            eventImage : eventImage,
+            eventText : "You are hovering on Event B"
+        },
+        {
+            eventName : "EVENT C",
+            eventImage : eventImage,
+            eventText : "You are hovering on Event C"
+        }
     ];
 
     // dummy function for selecting first event text
