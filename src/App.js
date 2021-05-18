@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 // import About from './pages/About'
-// import Footer from './components/templates/Footer';
+import Footer from './components/templates/Footer';
 import IfgfKids from './pages/IfgfKids';
 
 
@@ -10,7 +10,7 @@ function App() {
     <>
       {/* <About/> */}
       <IfgfKids/>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 }

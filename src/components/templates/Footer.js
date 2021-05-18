@@ -1,41 +1,44 @@
+// importing react-bootstrap tags
 import {Container,Row,Col} from 'react-bootstrap';
 
 function Footer() {
+    // inputing footer title
+    let footerTitle = `IFGF Mataram`;
+
+    // inputing footer caption
+    let footerCaption = 'GREATER DESTINY';
+
+    // inputing footer hotline
+    let footerHotline = 'Sekretariat IFGF Mataram :  +62 817 578 1441 (M)  | Email : ifgfgisi_mataram@yahoo.co.id';
+
+    // inputing footer text 
+    let footerText = 'IFGF MATARAM, Komp. Central Plaza, Jl. A. A Gede Ngurah, Abian Tubuh Baru, Kec. Cakranegara, Kota Mataram, Nusa Tenggara Barat. 83232, Indonesia';
+    
+    // inputing footer copyright
+    let footerCopyright = '@2021 by IFGF Mataram';
     return (
         <Container fluid id="footerContainer">
 
-            <Row className="d-flex flex-row justify-content-evenly mt-3 py-5">
-                <Col lg={2} >
-                    <h6 className="mb-4">ABOUT</h6>
-                    <div id="footerPoints">
-                        <p>Our Church</p>
-                        <p>Pastor</p>
-                    </div>
+            <Row className="d-flex justify-content-center text-center px-3">
+                <Col className=" border-top border-2 pt-4 pb-2" lg={11}>
+                    <h4>{footerTitle}</h4>
+                    <p>{footerCaption}</p>
                 </Col>
-                <Col lg={2}>
-                    <h6 className="mb-4">CONNECT</h6>
-                    <div id="footerPoints">
-                        <p>IFGF YOUTH</p>
-                        <p>IFGF KIDS</p>
-                    </div>
+                <Col lg={11}>
+                    <p>{footerHotline}</p>
                 </Col>
-                <Col lg={1}>
-                    <h6 className="mb-4">CONTACT US</h6>
-                    <div id="footerPoints">
-                        <p>021-2321-2341</p>
-                        <p>test@email.com</p>
-                        <p>Jalan Anggrek 3 E/482 BTN Sweta Mataram</p>
-                    </div>
+                <Col  lg={6}>
+                    <p>{footerText}</p>
                 </Col>
-            </Row> 
-            <Row className="fw-normal bg-light text-dark text-center py-2">
-                <Col>
-                    @2021 by IFGF Mataram
+                <Col className="mt-5 mb-3" lg={11}>
+                    <h5>{footerCopyright}</h5>
                 </Col>
             </Row>
-
+    
         </Container>
     )
 }
 
 export default Footer
+
+
