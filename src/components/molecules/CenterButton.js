@@ -6,7 +6,7 @@ import ButtonCustom from '../atoms/ButtonCustom';
 
 function CenterButton(props) {
     return (
-        <Row className="d-flex justify-content-center mb-4">
+        <Row className="d-flex justify-content-center mt-4">
             <Col xs={11} md={12} lg={2}>
                 <ButtonCustom word={props.word}/>
             </Col>

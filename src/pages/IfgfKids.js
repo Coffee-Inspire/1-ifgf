@@ -38,35 +38,50 @@ function IfgfKids() {
     // inputing title for event heading
     let eventHeadingTitle = `kids event's`;
 
-    // mock data
+    // mock data for event
     let DUMMY = [
-        {
-            eventName : "EVENT A",
-            eventImage : eventImage,
-            eventText : "You are hovering on Event A"
-        },
-        {
-            eventName : "EVENT B",
-            eventImage : eventImage,
-            eventText : "You are hovering on Event B"
-        },
-        {
-            eventName : "EVENT C",
-            eventImage : eventImage,
-            eventText : "You are hovering on Event C"
-        }
+        // {
+        //     eventName : "EVENT A",
+        //     eventImage : eventImage,
+        //     eventText : "You are hovering on Event A"
+        // },
+        // {
+        //     eventName : "EVENT B",
+        //     eventImage : eventImage,
+        //     eventText : "You are hovering on Event B"
+        // },
+        // {
+        //     eventName : "EVENT C",
+        //     eventImage : eventImage,
+        //     eventText : "You are hovering on Event C"
+        // }
     ];
 
+    // dummy function for selecting first event text
+    let DUMMY_FIRST_EVENT_TEXT = null;
+    function dummyAssign (){
+        if(DUMMY.length>0){
+            DUMMY_FIRST_EVENT_TEXT=DUMMY[0].eventText
+        }
+    };
+    dummyAssign();
+    
     // declaring state for hovering event
-    const [eventText, setEventText] = useState(null);
+    const [eventText, setEventText] = useState(DUMMY_FIRST_EVENT_TEXT);
     return (
         <Container fluid>
 
             <Banner bannerImage={ifgfKidsImage} title={bannerTitle} text={bannerText} style2={true}/>
             <CenterText word={wordCenter}/>
             <Event title={eventHeadingTitle} data={DUMMY} setEventText={setEventText}/>
-            <CenterText word={eventText} />
-            <CenterButton word={"join with us !"}/>
+            {DUMMY.length>0 ? 
+                <CenterText word={eventText} />
+                : null
+            }
+            {DUMMY.length>0 ?
+                <CenterButton word={"join with us !"}/>
+                : null
+            }
             <CenterButton word={"contact us"}/>
             
         </Container>
