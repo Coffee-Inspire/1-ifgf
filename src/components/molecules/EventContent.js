@@ -2,7 +2,10 @@
 import {Col,Image} from 'react-bootstrap';
 
 // importing slider tag
-import Slider from 'react-slick'
+import Slider from 'react-slick';
+
+// importing image for event content
+import eventImage from  '../../assets/images/event.jpg';
 
 function EventContent(props) {
     // slider display configuration
@@ -32,7 +35,11 @@ function EventContent(props) {
             initialSlide: 1,
             // creating responsive function for rendering event text based on current event focus
             afterChange: function(index) {
-              props.setEventText(props.data[index].eventText)
+              if(props.icare){
+                props.setLeader(props.data[index])
+              } else {
+                props.setEventText(props.data[index].eventText )
+              }
             },
           }
         },
@@ -43,7 +50,11 @@ function EventContent(props) {
             slidesToScroll: 1,
             // creating responsive function for rendering event text based on current event focus 
             afterChange: function(index) {
-              props.setEventText(props.data[index].eventText)
+              if(props.icare){
+                props.setLeader(props.data[index])
+              } else {
+                props.setEventText(props.data[index].eventText )
+              }
             },
           }
         }
@@ -55,14 +66,14 @@ function EventContent(props) {
             <Slider {...settings} >
                 {props.data.map((items,index)=>(
                     <div key={index} className="d-flex flex-column align-items-center">
-                        <div className="eventContentImageFrame" onMouseOver={()=>props.setEventText(items.eventText)} >
+                        <div className="eventContentImageFrame" onMouseOver={()=>props.icare ? props.setLeader(items) : props.setEventText(items.eventText)} >
                             <Image
                                 alt=""
-                                src={items.eventImage}
+                                src={eventImage}
                                 className="eventContentImage"
                             />
                         </div>
-                        <h4 className="text-white position-absolute bottom-50">{items.eventName}</h4>
+                        <h4 className="text-white position-absolute bottom-50">{items.eventName || items.leaderTitle}</h4>
                    </div>
                 ))}
             </Slider>
