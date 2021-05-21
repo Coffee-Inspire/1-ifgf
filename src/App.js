@@ -33,14 +33,14 @@ function App() {
             {!isLogin ? <Register /> : <Redirect to="/" />}
           </Route> */}
           <Route>
-            <PageNotFound />
+            {/* <PageNotFound /> */}
           </Route>
         </Switch>
         <Switch>
             <Route path="/admin">
             </Route>
             <Route path="/">
-              <Footer />
+              {/* <Footer /> */}
             </Route>
         </Switch>
       </Router>
