@@ -61,11 +61,14 @@ body {
 		width: 200px !important;
 		top: 80px;
 	}
+	.myBannerStyle4 {
+		padding: 10px 1px 10px 1px !important;
+	}
 }
 
 @media (max-width: 500px) {
 	#imageBannerFrame {
-		height: 475px !important;
+		height: 650px !important;
 	}
 	.myIcareLeaderImageFrame {
 		height: 450px !important;
@@ -105,8 +108,9 @@ body {
 }
 
 .myBannerStyle4 {
-	background-color: rgba(153, 185, 233, 0.1);
-	height: 450px;
+	background-color: rgba(45, 45, 45, 0.2);
+
+	padding: 20px 1px 80px 1px;
 }
 
 .aboutHeadCaption2 {

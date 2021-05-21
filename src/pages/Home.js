@@ -37,7 +37,7 @@ function Home() {
                 style4={true} 
                 button1={"get connected"} 
                 button2={"watch sermon"} 
-                emblem={emblem} 
+                headEmblem={emblem} 
             />
             <HomeText 
                 title={title} 
@@ -46,11 +46,13 @@ function Home() {
             <Banner 
                 bannerImage={locationBanner} 
                 style4={true} 
+                headTitle={"location"}
                 button1={"contact info"} 
                 button2={"get directions"}
                 text1={"IFGF MATARAM"}
                 text2={homeAddress}
                 text3={homeTime} 
+                tail={"a church for your family"}
             />
             
         </Container>
