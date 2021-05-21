@@ -53,16 +53,22 @@ function Banner(props) {
                                     </Row>
                                     </>
                                 :   <div className="myBannerStyle4 w-100 d-flex flex-column  justify-content-center align-items-center">
-                                        {/* <div className="w-100">
-                                            <CenterText word={props.text1} colorWhite={true}/>
-                                        </div>
-                                        <div className="w-100">
-                                            <CenterText word={props.text2} colorWhite={true}/>
-                                        </div>
-                                        <div className="w-100">
-                                            <CenterText word={props.text3} colorWhite={true}/>
-                                        </div> */}
-                                        <div className="d-flex flex-lg-row justify-content-center align-items-center">
+                                        {props.text1 &&  
+                                            <div className="w-100">
+                                                <CenterText word={props.text1} colorWhite={true} decreaseSpace={true}/>
+                                            </div>
+                                        }
+                                        {props.text2 && 
+                                            <div className="w-100">
+                                                <CenterText word={props.text2} colorWhite={true} decreaseSpace={true}/>
+                                            </div>
+                                        }
+                                        {props.text3 && 
+                                            <div className="w-100">
+                                                <CenterText word={props.text3} colorWhite={true} decreaseSpace={true}/>
+                                            </div>
+                                        }
+                                        <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
                                             <div className="m-3">
                                                 <ButtonCustom outlineWhite={true} word={props.button1}/>
                                             </div>
@@ -76,7 +82,12 @@ function Banner(props) {
                         </Col>
                         : null
                     }
-                    {props.style4 ? <EmblemCustom emblem={props.emblem}/> : null}
+                    {props.style4 && 
+                        <EmblemCustom 
+                            headEmblem={props.headEmblem && props.headEmblem} 
+                            headTitle={props.headTitle && props.headTitle}
+                        /> 
+                    }
                 </div>
             </Row>
         </>
