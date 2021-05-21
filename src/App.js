@@ -2,6 +2,8 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { useSelector } from 'react-redux';
+
 // import About from './pages/About'
 // import Footer from './components/templates/Footer';
 import Home from './pages/Home';
@@ -11,8 +13,11 @@ import Home from './pages/Home';
 
 //Admin
 import AdminPage from './pages/AdminPage';
+import DashboardPage from './pages/DashboardPage'
 
 function App() {
+  const isLogin = useSelector(state => state.auth.isLogged)
+
   return (
     <Router>
       <Switch>
@@ -29,9 +34,9 @@ function App() {
           <Route path="/admin">
             <AdminPage />
           </Route>
-          {/* <Route path="/register">
-            {!isLogin ? <Register /> : <Redirect to="/" />}
-          </Route> */}
+          <Route path="/dashboard">
+            {isLogin ? <DashboardPage /> : <Redirect to="/admin" />}
+          </Route>
           <Route>
             {/* <PageNotFound /> */}
           </Route>

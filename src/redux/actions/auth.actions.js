@@ -31,30 +31,25 @@ export const logoutAction = () => {
     };
 }
 
-export const loginAction = (data, event, history, setLogin, setFail) => (dispatch) => {
-    event.preventDefault();
+export const loginAction = (data, history, setStatus) => (dispatch) => {
     dispatch(authRequest());
-    
+    console.log(data);
     return axios
-        .post("https://bumbuku.herokuapp.com/auth/login", data)
+        .post("http://localhost:8000/admin/login", data)
         .then(result => {
             if(result.data.token !== undefined) {
                 localStorage.token = result.data.token
-                localStorage.payload = JSON.stringify(result.data.data);
+                localStorage.payload = JSON.stringify(result.data.user);
                 dispatch(loginSuccess(result.data.token))
                 
-                history.push('/');
+                history.push('/dashboard');
             } else{
-                setLogin({
-                    ...data,
-                    password: ""
-                })
-                setFail({
-                    result: false
+                setStatus({
+                    error : true,
+                    text : "Email dan atau password anda salah !",
                 })
                 dispatch(authFailed("invalid"));
             }
-            
         })
         .catch(err => dispatch(authFailed(err)))
 };

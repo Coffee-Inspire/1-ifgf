@@ -10,7 +10,16 @@ function FormGroup(props) {
               type={props.type} 
               placeholder={props.placeholder}
               name={props.name}
-              autoComplete={props.autocomplete && props.autocomplete}/>
+              autoComplete={props.autocomplete && props.autocomplete}
+            />
+            {props.validator && 
+                props.validator.error &&
+                    <Form.Text id="text-muted" muted>
+                        <span className="text-danger">
+                            {props.validator.text}
+                        </span>
+                    </Form.Text>
+            }
         </Form.Group>
     )
 }

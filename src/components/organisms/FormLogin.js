@@ -3,11 +3,10 @@ import { Button, Form } from 'react-bootstrap';
 
 //
 import FormGroup from '../molecules/FormGroup';
-import FormGroupPass from '../molecules/FormGroupPass';
 
 function FormLogin(props) {
     return (
-        <Form onSubmit={() => {}}>
+        <Form onSubmit={(e) => {props.handleLogin(e)}}>
             <FormGroup 
                 id={"formBasicUsername"}
                 label={"Email"}
@@ -22,9 +21,9 @@ function FormLogin(props) {
                 type={"password"}
                 placeholder={"Enter Password"}
                 name={"password"}
-                
+                validator={props.status}
             />
-            <Button type="submit" variant="primary">
+            <Button type="submit" variant="primary" disabled={props.isLoading}>
                 Login
             </Button>
         </Form>
