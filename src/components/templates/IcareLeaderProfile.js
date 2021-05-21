@@ -8,16 +8,18 @@ import ButtonCustom from '../atoms/ButtonCustom';
 import CenterText from '../molecules/CenterText';
 
 function IcareLeaderProfile(props) {
+   
     return (
         <>
             <CenterText word={props.data.leaderText}/>
-                <Row>
+                <Row >
                     <Col className="text-center text-lg-end px-lg-5" xs={12} lg={6}>
-                        <div className="myIcareLeaderImageFrame">
+                        <div className="myIcareLeaderImageFrame" >
                             <Image
                                 alt=""
                                 src={props.data.leaderImage}
                                 className="myIcareLeaderImage"
+                                
                             />
                         </div>
                     </Col>
