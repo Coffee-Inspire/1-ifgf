@@ -21,17 +21,23 @@ function Home() {
     
     let title = `this is our church`;
     let word = ` God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
-    to show love and Compassion because he is a GOD of Covenant,
-    who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
-    made into champions by the promises of His Word.`;
+                 to show love and Compassion because he is a GOD of Covenant,
+                 who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
+                 made into champions by the promises of His Word.
+                 `;
     let homeAddress = `Komp. Central Plaza, Jl. A. A Gede Ngurah, Abian Tubuh Baru, Kec. Cakranegara, Kota Mataram.`;
     let homeTime = 'SUNDAY 08.00 A.M';
-
-    // mock data
-    let DUMMY = null;
+    let icareBannerTitle = `connect to icare`;
+    let youthBannerTitle = `ifgf youth`;
+    let kidsBannerTitle = `ifgf kids`;
+    let icareText = '"ICare helps you to grow spiritually, and that requires more than meeting at Sunday services."';
+    let youthText = `"IFGF Youth helps you to grow spiritually, and that requires more than meeting at Sunday services."`;
+    let kidsText = `"IKids helps you to grow spiritually, and that requires more than meeting at Sunday services."`;
+    
 
     return (
         <Container fluid>
+            {/* Main Banner */}
             <Banner 
                 bannerImage={homeBanner} 
                 style4={true} 
@@ -43,6 +49,7 @@ function Home() {
                 title={title} 
                 word={word} 
             />
+            {/* Location Banner */}
             <Banner 
                 bannerImage={locationBanner} 
                 style4={true} 
@@ -53,6 +60,33 @@ function Home() {
                 text2={homeAddress}
                 text3={homeTime} 
                 tail={"a church for your family"}
+            />
+            {/* Icare Banner */}
+            <Banner
+                bannerImage={icareBanner}
+                style3={true}
+                title={icareBannerTitle}
+                text={icareText}
+                buttonPortal={"seach icare"}
+                
+            />
+            {/* IFGF Youth Banner */}
+             <Banner
+                bannerImage={youthBanner}
+                style2={true}
+                title={youthBannerTitle}
+                text={youthText}
+                buttonPortal={"get connected"}
+                
+            />
+             {/* IFGF Kids Banner */}
+             <Banner
+                bannerImage={kidsBanner}
+                style2={true}
+                title={kidsBannerTitle}
+                text={kidsText}
+                buttonPortal={"get connected"}
+                
             />
             
         </Container>

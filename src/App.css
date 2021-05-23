@@ -111,6 +111,10 @@ body {
 	}
 }
 
+.myBanner {
+	margin-bottom: 100px;
+}
+
 .myBannerEmblemFrame {
 	width: 300px;
 	top: 80px;
@@ -118,6 +122,10 @@ body {
 
 .myBannerEmblem {
 	width: 100%;
+}
+
+.myTailEmblemFrame {
+	bottom: 5px;
 }
 
 .myBannerCenterOverlay {

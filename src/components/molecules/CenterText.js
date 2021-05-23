@@ -1,5 +1,5 @@
-// importing react-bootstrap tag(s)
-import {Row,Col} from 'react-bootstrap';
+// importing react-bootstrap tagw
+import {Col} from 'react-bootstrap';
 
 function CenterText(props) {
     return (
@@ -9,7 +9,7 @@ function CenterText(props) {
                 } 
             >
                 <Col lg={8}>
-                    <h4 className={props.colorWhite ? "text-white" : ""}>
+                    <h4 className={props.colorWhite ? "text-white" : "" }>
                         {props.word}
                     </h4>
                 </Col>
