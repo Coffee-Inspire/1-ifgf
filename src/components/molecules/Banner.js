@@ -13,7 +13,7 @@ import CenterText from '../molecules/CenterText';
 function Banner(props) {
     return (
         <>
-            <Row className="position-relative"> 
+            <Row className="myBanner position-relative"> 
                 <div id="imageBannerFrame" className="position-relative d-flex justify-content-center align-items-center p-0">       
                     <Image
                         alt=""
@@ -27,7 +27,7 @@ function Banner(props) {
                     {props.style2 || props.style3 ?
                         <div 
                             className={props.style2 
-                                ? "myBannerCenterOverlay position-absolute top-75 w-100 text-center px-5" 
+                                ? "myBannerCenterOverlay position-absolute top-75 w-100 text-center px-5 pb-5" 
                                 : "myBannerStyle3 position-absolute top-75 w-100 text-center px-5 aa"
                             }
                         >
@@ -37,6 +37,11 @@ function Banner(props) {
                             <Row className="mb-5">
                                 <p className="text-white fs-4">"{props.text}"</p>
                             </Row>
+                            {props.buttonPortal && 
+                                <div>
+                                    <ButtonCustom word={props.buttonPortal} outlineWhite={true}/>
+                                </div>
+                            }
                         </div>
                         : null
                     }
@@ -86,6 +91,11 @@ function Banner(props) {
                         <EmblemCustom 
                             headEmblem={props.headEmblem && props.headEmblem} 
                             headTitle={props.headTitle && props.headTitle}
+                        /> 
+                    }
+                    {props.style4 && 
+                        <EmblemCustom 
+                            tail={props.tail && props.tail}
                         /> 
                     }
                 </div>
