@@ -32,7 +32,7 @@ function AdminPage() {
         <Container fluid>
             <CenterTitle word={"Login IFGF Mataram"} />
             <Row className="justify-content-center">
-                <Col xs={11} md={5}>
+                <Col xs={11} md={3}>
                     <FormLogin 
                         status={status} 
                         setStatus={setStatus}

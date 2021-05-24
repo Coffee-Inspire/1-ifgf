@@ -35,7 +35,8 @@ function App() {
             <AdminPage />
           </Route>
           <Route path="/dashboard">
-            {isLogin ? <DashboardPage /> : <Redirect to="/admin" />}
+            {/* {isLogin ? <DashboardPage /> : <Redirect to="/admin" />} */}
+            <DashboardPage />
           </Route>
           <Route path="/about">
             <About />
@@ -55,6 +56,8 @@ function App() {
         </Switch>
         <Switch>
             <Route path="/admin">
+            </Route>
+            <Route path="/dashboard">
             </Route>
             <Route path="/">
               <Footer />
