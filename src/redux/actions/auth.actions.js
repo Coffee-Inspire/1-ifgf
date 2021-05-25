@@ -33,7 +33,6 @@ export const logoutAction = () => {
 
 export const loginAction = (data, history, setStatus) => (dispatch) => {
     dispatch(authRequest());
-    console.log(data);
     return axios
         .post("http://localhost:8000/admin/login", data)
         .then(result => {
@@ -51,5 +50,11 @@ export const loginAction = (data, history, setStatus) => (dispatch) => {
                 dispatch(authFailed("invalid"));
             }
         })
-        .catch(err => dispatch(authFailed(err)))
+        .catch(err => {
+            setStatus({
+                error : true,
+                text : "Login failed, no connection or server error !",
+            })
+            dispatch(authFailed(err))
+        })
 };
