@@ -29,11 +29,10 @@ export const editAction = (e, image, setProgressBar) => (dispatch) => {
     e.preventDefault();
 
     let fd = new FormData();
-    fd.append('file', image.file);
-    fd.append('name', image.file.name);
+    fd.append('myFile', image.file, image.file.name);
 
     return axios
-        .post('../src/php/reactimageupload.php', fd, {
+        .post('http://localhost:3000/php/reactimageupload.php', fd, {
             onUploadProgress: ProgressEvent => {
                 // console.log('Upload progress: ' + Math.round(ProgressEvent.loaded / ProgressEvent.total * 100) + '%');
                 setProgressBar(Math.round(ProgressEvent.loaded / ProgressEvent.total * 100));
