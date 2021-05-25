@@ -2,17 +2,22 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-// import About from './pages/About'
-// import Footer from './components/templates/Footer';
+import { useSelector } from 'react-redux';
+
+import About from './pages/About'
+import Footer from './components/templates/Footer';
 import Home from './pages/Home';
-// import Icare from './pages/Icare';
-// import IfgfKids from './pages/IfgfKids';
-// import IfgfYouth from './pages/IfgfYouth';
+import Icare from './pages/Icare';
+import IfgfKids from './pages/IfgfKids';
+import IfgfYouth from './pages/IfgfYouth';
 
 //Admin
 import AdminPage from './pages/AdminPage';
+import DashboardPage from './pages/DashboardPage'
 
 function App() {
+  const isLogin = useSelector(state => state.auth.isLogged)
+
   return (
     <Router>
       <Switch>
@@ -29,9 +34,22 @@ function App() {
           <Route path="/admin">
             <AdminPage />
           </Route>
-          {/* <Route path="/register">
-            {!isLogin ? <Register /> : <Redirect to="/" />}
-          </Route> */}
+          <Route path="/dashboard">
+            {/* {isLogin ? <DashboardPage /> : <Redirect to="/admin" />} */}
+            <DashboardPage />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/icare">
+            <Icare />
+          </Route>
+          <Route path="/ifgfkids">
+            <IfgfKids />
+          </Route>
+          <Route path="/ifgfyouth">
+            <IfgfYouth />
+          </Route>
           <Route>
             {/* <PageNotFound /> */}
           </Route>
@@ -39,8 +57,10 @@ function App() {
         <Switch>
             <Route path="/admin">
             </Route>
+            <Route path="/dashboard">
+            </Route>
             <Route path="/">
-              {/* <Footer /> */}
+              <Footer />
             </Route>
         </Switch>
       </Router>

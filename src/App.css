@@ -4,6 +4,34 @@ body {
 	font-family: "Roboto Condensed", sans-serif !important;
 }
 
+.cursorDefault {
+	cursor: default;
+}
+
+@keyframes example {
+	0%   {width: 0px;}
+	100% {width: 140px;}
+  }
+
+/* .navbar-animation{
+	width: 0%;
+	transition: width 2s;
+} */
+
+.navbar-animation.show{
+	animation-name: example;
+  	animation-duration: 0.5s;
+	animation-timing-function: ease;
+}
+
+.navbar-collapse.show * {
+	display: none;
+}
+
+.test {
+	height: 3000px;
+}
+
 .App {
 	text-align: center;
 }
