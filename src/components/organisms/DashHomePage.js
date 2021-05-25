@@ -1,12 +1,18 @@
 import React, {useState} from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form, Button, ProgressBar } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
 
 import DashTitle from '../molecules/DashTitle';
 import DashText from '../molecules/DashText';
 import FormGroup from '../molecules/FormGroup';
 import FormGroupImage from '../molecules/FormGroupImage';
 
+import { editAction } from '../../redux/actions/category.actions';
+
 function DashHomePage() {
+    const dispatch = useDispatch();
+    const categoryStatus = useSelector(state => state.category);
+
     const [formEdit, setFormEdit] = useState({
         textHome : "value text Home",
         descHome : "value desc Home",
@@ -21,6 +27,8 @@ function DashHomePage() {
         })
     }
 
+    const [progressBar, setProgressBar] = useState(0);
+
     const [imageHome, setImageHome] = useState({
         file: null,
         status: "",
@@ -33,6 +41,9 @@ function DashHomePage() {
         disable: "",
     })
 
+    console.log(categoryStatus);
+    console.log(imageHome);
+
     return (
         <Row className="w-100">
             <Col className="">
@@ -41,7 +52,7 @@ function DashHomePage() {
                     <hr></hr>
                     <Col xs={12} md={8} lg={7} className="mb-3">
                     <DashText word={"Home Details"} />
-                    <Form onSubmit={(e) => {}}>
+                    <Form onSubmit={(e) => {dispatch(editAction(e, imageHome, setProgressBar))}}>
                         <FormGroupImage 
                             label={"Home Image"}
                             image={imageHome}
@@ -69,6 +80,11 @@ function DashHomePage() {
                         <Button type="submit" variant="primary" disabled={()=>{}}>
                             Edit
                         </Button>
+                        {!categoryStatus.isLoading && 
+                            <div className="mt-3">
+                                <ProgressBar animated striped variant="primary" className="" now={progressBar} />
+                            </div>
+                        }
                     </Form>
                     </Col>
                     {/*  */}
@@ -99,6 +115,7 @@ function DashHomePage() {
                             value={formEdit.descLocation}
                             onChange={(e) => valueChange(e)}
                         />
+                        
                         <Button type="submit" variant="primary" disabled={()=>{}}>
                             Edit
                         </Button>
