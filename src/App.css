@@ -51,7 +51,7 @@ body {
 		height: 100%;
 		object-fit: cover;
 		filter: brightness(85%);
-		object-position: 1% 0;
+		/* object-position: 1% 0; */
 	}
 	.eventContentImageFrame {
 		width: 100% !important;
@@ -112,13 +112,9 @@ body {
 	color: #dfd6d6 !important;
 }
 
-.myBannerStyle4ImageFrame {
-}
-
 .myBannerStyle4 {
 	background-color: rgba(45, 45, 45, 0.2);
-
-	padding: 20px 1px 80px 1px;
+	padding: 60px 1px 80px 1px;
 }
 
 .aboutHeadCaption2 {
