@@ -41,7 +41,7 @@ export const editAction = (e, image, setProgressBar) => (dispatch) => {
             }
         })
         .then(result => {
-            console.log(result);
+            console.log(result.data);
             dispatch(success());
         })
         .catch(err => dispatch(failed(err)))

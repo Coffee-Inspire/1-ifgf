@@ -41,8 +41,8 @@ function DashHomePage() {
         disable: "",
     })
 
-    console.log(categoryStatus);
-    console.log(imageHome);
+    // console.log(categoryStatus);
+    // console.log(imageHome);
 
     return (
         <Row className="w-100">
@@ -80,7 +80,7 @@ function DashHomePage() {
                         <Button type="submit" variant="primary" disabled={()=>{}}>
                             Edit
                         </Button>
-                        {!categoryStatus.isLoading && 
+                        {categoryStatus.isLoading && 
                             <div className="mt-3">
                                 <ProgressBar animated striped variant="primary" className="" now={progressBar} />
                             </div>
