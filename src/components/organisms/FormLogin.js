@@ -6,7 +6,7 @@ import FormGroup from '../molecules/FormGroup';
 
 function FormLogin(props) {
     return (
-        <Form onSubmit={(e) => {props.handleLogin(e)}}>
+        <Form onSubmit={(e) => {props.setStatus({...props.status, error : false}); props.handleLogin(e)}}>
             <FormGroup 
                 id={"formBasicUsername"}
                 label={"Email"}
@@ -24,7 +24,7 @@ function FormLogin(props) {
                 validator={props.status}
             />
             <Button type="submit" variant="primary" disabled={props.isLoading}>
-                Login
+                {props.isLoading ? "Login in..." : "Login in"}
             </Button>
         </Form>
     )
