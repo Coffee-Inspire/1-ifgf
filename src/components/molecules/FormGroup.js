@@ -11,6 +11,8 @@ function FormGroup(props) {
               placeholder={props.placeholder}
               name={props.name}
               autoComplete={props.autocomplete && props.autocomplete}
+              value={props.value && props.value}
+              onChange={props.onChange && props.onChange}
             />
             {props.validator && 
                 props.validator.error &&
