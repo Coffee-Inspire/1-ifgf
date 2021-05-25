@@ -5,6 +5,7 @@ import './App.css';
 import './css/my.css'
 import { useSelector } from 'react-redux';
 
+import Navigation from './components/templates/Navigation'
 import About from './pages/About'
 import Footer from './components/templates/Footer';
 import Home from './pages/Home';
@@ -25,7 +26,7 @@ function App() {
           <Route path="/admin">
           </Route>
           <Route path="/">
-            {/* <Navbar/> */}
+            {/* <Navigation/> */}
           </Route>
       </Switch>
         <Switch>
