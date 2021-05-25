@@ -10,6 +10,8 @@ function DashHomePage() {
     const [formEdit, setFormEdit] = useState({
         textHome : "value text Home",
         descHome : "value desc Home",
+        textLocation : "value text Location",
+        descLocation : "value desc Location",
     })
 
     const valueChange = (e) => {
@@ -19,7 +21,13 @@ function DashHomePage() {
         })
     }
 
-    const [image, setImage] = useState({
+    const [imageHome, setImageHome] = useState({
+        file: null,
+        status: "",
+        disable: "",
+    })
+
+    const [imageLocation, setImageLocation] = useState({
         file: null,
         status: "",
         disable: "",
@@ -28,14 +36,17 @@ function DashHomePage() {
     return (
         <Row className="w-100">
             <Col className="">
-                <div className="m-3">
+                <Row className="m-3">
                     <DashTitle word={"Home Page Details"} />
                     <hr></hr>
-                    <DashText word={"Home Page Details"} />
+                    <Col xs={12} md={8} lg={7} className="mb-3">
+                    <DashText word={"Home Details"} />
                     <Form onSubmit={(e) => {}}>
                         <FormGroupImage 
-                            image={image}
-                            setImage={setImage}
+                            label={"Home Image"}
+                            image={imageHome}
+                            setImage={setImageHome}
+                            
                         />
                         <FormGroup 
                             id={"formBasicHome"}
@@ -47,7 +58,7 @@ function DashHomePage() {
                             onChange={(e) => valueChange(e)}
                         />
                         <FormGroup 
-                            id={"formBasicHome"}
+                            id={"formBasicHome2"}
                             label={"Home Description"}
                             type={"text"}
                             placeholder={"Enter Description"}
@@ -59,7 +70,41 @@ function DashHomePage() {
                             Edit
                         </Button>
                     </Form>
-                </div>
+                    </Col>
+                    {/*  */}
+                    <hr></hr>
+                    <Col xs={12} md={8} lg={7} className="mb-3">
+                    <DashText word={"Location Details"} />
+                    <Form onSubmit={(e) => {}}>
+                        <FormGroupImage 
+                            label={"Location Image"}
+                            image={imageLocation}
+                            setImage={setImageLocation}
+                        />
+                        <FormGroup 
+                            id={"formBasicLocation"}
+                            label={"Location Text"}
+                            type={"text"}
+                            placeholder={"Enter Text"}
+                            name={"textLocation"}
+                            value={formEdit.textLocation}
+                            onChange={(e) => valueChange(e)}
+                        />
+                        <FormGroup 
+                            id={"formBasicLocation2"}
+                            label={"Location Description"}
+                            type={"text"}
+                            placeholder={"Enter Description"}
+                            name={"descLocation"}
+                            value={formEdit.descLocation}
+                            onChange={(e) => valueChange(e)}
+                        />
+                        <Button type="submit" variant="primary" disabled={()=>{}}>
+                            Edit
+                        </Button>
+                    </Form>
+                    </Col>
+                </Row>
             </Col>
         </Row>
     )

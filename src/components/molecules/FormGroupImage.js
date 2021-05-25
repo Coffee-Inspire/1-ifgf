@@ -1,6 +1,5 @@
 import React from 'react'
 import { Form } from 'react-bootstrap';
-import bsCustomFileInput from "bs-custom-file-input";
 
 function FormGroupImage(props) {
 
@@ -21,17 +20,16 @@ function FormGroupImage(props) {
         }
     }
 
-    // bsCustomFileInput.init();
 
     return (
         <>
-        <Form.Group controlId="formBasicUpload">
-            <Form.Label>Upload File</Form.Label>
+        <Form.Group controlId="formBasicUpload" className="mb-3">
+            <Form.Label>{props.label}</Form.Label>
             <Form.File id="formcheck-api-custom" custom>
-            <Form.File.Input required className={props.image.status} accept="image/png,image/jpeg" onChange={checkFile}/>
-            <Form.File.Label data-browse="Browse">
+            <Form.File.Input required className={props.image.status + " form-control"} accept="image/png,image/jpeg" onChange={checkFile}/>
+            {/* <Form.File.Label data-browse="Browse">
                 Choose File
-            </Form.File.Label>
+            </Form.File.Label> */}
             <Form.Control.Feedback type="valid">Ready for upload!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">Must be image .jpg or .png!</Form.Control.Feedback>
             </Form.File>
