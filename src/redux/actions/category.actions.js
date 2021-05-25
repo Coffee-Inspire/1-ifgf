@@ -34,7 +34,7 @@ export const editAction = (e, image, setProgressBar) => (dispatch) => {
     console.log("this is FD ", fd);
 
     return axios
-        .get('php/ImageUpload.php', fd, {
+        .post('php/ImageUpload.php', fd, {
             onUploadProgress: ProgressEvent => {
                 // console.log('Upload progress: ' + Math.round(ProgressEvent.loaded / ProgressEvent.total * 100) + '%');
                 setProgressBar(Math.round(ProgressEvent.loaded / ProgressEvent.total * 100));
