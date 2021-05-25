@@ -108,6 +108,13 @@ body {
 	}
 }
 
+@media (max-width: 991px) {
+	.myNavbarItems {
+		margin-top: 20px;
+		margin-left: 30px;
+	}
+}
+
 @media (max-width: 1000px) {
 	.eventContentImageFrame {
 		width: 100% !important;
@@ -117,15 +124,25 @@ body {
 
 .myNavbarEmblemFrame {
 	margin-left: 30px;
-	width: 280px;
-	height: 50px;
+	width: 230px;
+	height: 45px;
 	overflow: hidden;
+	padding: 0;
 }
 
 .myNavbarEmblem {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
+}
+
+.myNavbarItems {
+	margin-right: 50px;
+}
+
+.myNavbarItems a {
+	color: #ffffff !important;
+	margin-right: 50px;
 }
 
 .myBanner {

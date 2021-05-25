@@ -7,17 +7,18 @@ import emblem from '../../assets/images/ifgfLogoPlain.png'
 function Navigation() {
     return (
 
-    <Navbar variant="dark" bg="dark" expand="lg">
-        <Navbar.Brand href="#home">
-            <div className="myNavbarEmblemFrame">
-                <img alt="" src={emblem} className="myNavbarEmblem" />
-            </div>
+    <Navbar variant="dark" bg="dark" expand="lg" className="pt-4 pb-3">
+        <Navbar.Brand href="#home" className="myNavbarEmblemFrame">
+            <img alt="" src={emblem} className="myNavbarEmblem" />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="me-3" />
         <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+        <Nav className="w-100 justify-content-end">
+            <Nav className="myNavbarItems">
+                <Nav.Link href="#home">ABOUT</Nav.Link>
+                <Nav.Link href="#link">PRAYER REQUEST</Nav.Link>
+                <Nav.Link href="#link">CONTACT US</Nav.Link>
+            </Nav>
         </Nav>
         </Navbar.Collapse>
     </Navbar>

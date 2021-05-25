@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form } from 'react-bootstrap';
-import bsCustomFileInput from "bs-custom-file-input";
+// import bsCustomFileInput from "bs-custom-file-input";
 
 function FormGroupImage(props) {
 
