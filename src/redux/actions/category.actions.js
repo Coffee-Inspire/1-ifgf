@@ -29,20 +29,21 @@ export const editAction = (e, image, setProgressBar) => (dispatch) => {
     e.preventDefault();
 
     let fd = new FormData();
-    fd.append('myFile', image.file);
-
-    console.log("this is FD ", fd);
+    fd.append('image', image.file, image.file.name);
 
     return axios
-        .post('php/ImageUpload.php', fd, {
+        .post('/php/ImageUpload.php', fd, {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*"
+          }, {
             onUploadProgress: ProgressEvent => {
-                // console.log('Upload progress: ' + Math.round(ProgressEvent.loaded / ProgressEvent.total * 100) + '%');
                 setProgressBar(Math.round(ProgressEvent.loaded / ProgressEvent.total * 100));
             }
         })
         .then(result => {
-            console.log(result.data);
+            console.log(result.data.url);
             dispatch(success());
         })
         .catch(err => dispatch(failed(err)))
 };
+
