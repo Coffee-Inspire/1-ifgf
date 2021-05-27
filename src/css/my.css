@@ -1,7 +1,7 @@
 @media (min-width: 992px) {
   .navbar-animation {
     margin-left: 0px !important;
-    opacity: 100% !important;
+    opacity: 1 !important;
   }
 }
 
@@ -11,14 +11,14 @@
 
 .navbar-animation {
   margin-left: -140px;
-  opacity: 0%;
+  opacity: 0;
   overflow: visible;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 
 .navbar-collapse.show {
-  opacity: 100%;
+  opacity: 1;
   margin-left: 0px;
 }
 /*# sourceMappingURL=my.css.map */
