@@ -68,6 +68,7 @@ function Home() {
                 title={icareBannerTitle}
                 text={icareText}
                 buttonPortal={"seach icare"}
+                buttonLink={"/icare"}
                 
             />
             {/* IFGF Youth Banner */}
@@ -77,6 +78,7 @@ function Home() {
                 title={youthBannerTitle}
                 text={youthText}
                 buttonPortal={"get connected"}
+                buttonLink={"/ifgfyouth"}
                 
             />
              {/* IFGF Kids Banner */}
@@ -86,6 +88,7 @@ function Home() {
                 title={kidsBannerTitle}
                 text={kidsText}
                 buttonPortal={"get connected"}
+                buttonLink={"/ifgfkids"}
                 
             />
             

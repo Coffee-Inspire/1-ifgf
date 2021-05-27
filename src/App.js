@@ -25,8 +25,10 @@ function App() {
       <Switch>
           <Route path="/admin">
           </Route>
+          <Route exact path="/">
+          </Route>
           <Route path="/">
-            {/* <Navigation/> */}
+            <Navigation/>
           </Route>
       </Switch>
         <Switch>

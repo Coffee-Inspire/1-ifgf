@@ -4,6 +4,9 @@ import {Row,Col,Image} from 'react-bootstrap';
 // importing customized button component
 import ButtonCustom from '../atoms/ButtonCustom'
 
+// importing customized button component
+import ButtonNav from '../atoms/ButtonNav'
+
 // importing customized emblem component
 import EmblemCustom from '../atoms/EmblemCustom';
 
@@ -14,15 +17,27 @@ function Banner(props) {
     return (
         <>
             <Row className="myBanner position-relative"> 
-                <div id="imageBannerFrame" className="position-relative d-flex justify-content-center align-items-center p-0">       
+                <div id="imageBannerFrame" 
+                    className={props.style1 
+                        ? "myBannerStyle1 position-relative d-flex justify-content-center align-items-center p-0" 
+                        : "imageBannerFrame position-relative d-flex justify-content-center align-items-center p-0"
+                    }
+                >       
                     <Image
                         alt=""
                         src={props.bannerImage}
-                        className={props.style3 ? "myBannerStyle3 myImageBanner" : "myImageBanner" }
+                        className={props.style3 ? "myBannerStyle3 myImageBanner" : props.style1 ? "myBannerStyle1Image" : "myImageBanner" }
                     />
                     {props.style2 || props.style3 || props.style4 || props.style5 ? 
                         null
-                        : <p className="position-absolute text-white display-2 fw-bold">{props.title}</p>       
+                        : <p className="position-absolute text-white text-uppercase display-2 fw-bold">{props.title}</p>     
+                    }
+                    {props.style1 && 
+                        <div className="position-absolute bottom-0 w-100 d-flex flex-row justify-content-center">
+                            <ButtonNav word={"our church"}/>
+                            <ButtonNav word={"vision & mission"}/>
+                            <ButtonNav word={"our pastor"}/>
+                        </div>
                     }
                     {props.style2 || props.style3 ?
                         <div 
@@ -39,7 +54,7 @@ function Banner(props) {
                             </Row>
                             {props.buttonPortal && 
                                 <div>
-                                    <ButtonCustom word={props.buttonPortal} outlineWhite={true}/>
+                                    <ButtonCustom word={props.buttonPortal} outlineWhite={true} buttonLink={props.buttonLink && props.buttonLink} />
                                 </div>
                             }
                         </div>

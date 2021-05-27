@@ -22,14 +22,42 @@ function About() {
                  to show love and Compassion because he is a GOD of Covenant,
                  who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
                  made into champions by the promises of His Word.
-                `
+                `;
+    // mock data
+    let DUMMY = [
+        {
+            contentImage : aboutContentImage2,
+            contentTitle : "our passion",
+            contentText: word,
+            contentYearStart :"2000" ,
+            contentYearEnd:"2002" ,
+        },
+        {
+            contentImage : aboutContentImage2,
+            contentTitle : "our church",
+            contentText: word,
+            contentYearStart :"2002" ,
+            contentYearEnd:"Present" ,
+        }
+    ];
+
     return (
         <Container fluid>
                 
-            <Banner bannerImage={aboutImage} title={"ABOUT US"} />
-            <AboutContent1 image={aboutContentImage1} word={word}/>
-            <AboutContent2 image={aboutContentImage2} word={word}/>
-                
+            <Banner bannerImage={aboutImage} style1={true} title={"about us"} />
+            {DUMMY && 
+                DUMMY.map((items,index)=>(
+                 <AboutContent2
+                    key={index}
+                    image={items.contentImage} 
+                    title={items.contentTitle} 
+                    word={items.contentText}
+                    yearStart={items.contentYearStart} 
+                    yearEnd={items.contentYearEnd}
+                />
+                ))
+            }
+
         </Container>
     )
 }

@@ -1,24 +1,24 @@
 @media (min-width: 992px) {
-  .navbar-animation {
-    margin-left: 0px !important;
-    opacity: 100% !important;
-  }
+	.navbar-animation {
+		margin-left: 0px !important;
+		opacity: 100% !important;
+	}
 }
 
 .cursorDefault {
-  cursor: default;
+	cursor: default;
 }
 
 .navbar-animation {
-  margin-left: -140px;
-  opacity: 0%;
-  overflow: visible;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+	margin-left: -140px;
+	opacity: 0%;
+	overflow: visible;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
 }
 
 .navbar-collapse.show {
-  opacity: 100%;
-  margin-left: 0px;
+	opacity: 100%;
+	margin-left: 0px;
 }
 /*# sourceMappingURL=my.css.map */
