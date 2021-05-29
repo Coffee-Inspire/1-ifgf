@@ -1,7 +1,7 @@
 <?php
-// header("Access-Control-Allow-Origin: *");
-// header('Access-Control-Allow-Headers: Origin, Content-Type, Authorization, X-Auth-Token');
-// header("Access-Control-Allow-Methods: GET, POST");
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Headers: *');
+header("Access-Control-Allow-Methods: GET, POST");
 
 //Upload folder
 $target_dir = "../uploads/";
@@ -15,7 +15,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
     $message = "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
     $url = $target_file;
-    $response = array('message' => $message, 'url' => $url);
+    $response = array('message' => $message, 'url' => "/uploads/" . basename($_FILES["image"]["name"]));
     echo json_encode($response);
     } else {
     echo "Sorry, there was an error uploading your file.";

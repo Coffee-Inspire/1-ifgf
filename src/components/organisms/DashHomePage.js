@@ -41,11 +41,6 @@ function DashHomePage() {
         disable: "",
     })
 
-    const filterBySize = (file) => {
-        //filter out images larger than 5MB
-        return file.size <= 5242880;
-      };
-
     // console.log(categoryStatus);
     // console.log(imageHome);
 
@@ -57,11 +52,7 @@ function DashHomePage() {
                     <hr></hr>
                     <Col xs={12} md={8} lg={7} className="mb-5">
                     <DashText word={"Home Details"} />
-                    <div className="w-75">
-                        <Image src={require('../../assets/images/banner1.jpg').default} fluid alt="preview" className="mb-3" />
-                        <div className="text-center">Preview Image</div>
-                    </div>
-                    <Card className="w-100">
+                    <Card className="w-100 mb-3">
                     <Card.Img variant="top" src={require('../../assets/images/banner1.jpg').default} />
                     <Card.Header className="text-center">
                         <Card.Title>Preview Image</Card.Title>
@@ -69,7 +60,7 @@ function DashHomePage() {
                     </Card>
                     <Form onSubmit={(e) => {dispatch(editAction(e, imageHome, setProgressBar))}}>
                         <FormGroupImage 
-                            label={"Home Image"}
+                            label={"Home Image (Upload a image from your device, jpg or png at least 1000px x 500px for better result)"}
                             image={imageHome}
                             setImage={setImageHome}
                             

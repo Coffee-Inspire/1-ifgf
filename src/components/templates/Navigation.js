@@ -15,8 +15,8 @@ function Navigation() {
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="w-100 justify-content-end">
             <Nav className="myNavbarItems">
-                <Nav.Link href="#home">ABOUT</Nav.Link>
-                <Nav.Link href="#link">PRAYER REQUEST</Nav.Link>
+                <Nav.Link href="/dashboard">ABOUT</Nav.Link>
+                <Nav.Link href="/admin">PRAYER REQUEST</Nav.Link>
                 <Nav.Link href="#link">CONTACT US</Nav.Link>
             </Nav>
         </Nav>

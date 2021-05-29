@@ -32,18 +32,24 @@ export const editAction = (e, image, setProgressBar) => (dispatch) => {
     fd.append('image', image.file, image.file.name);
 
     return axios
-        .post('/php/ImageUpload.php', fd, {
+        // .post('/php/ImageUpload.php', fd, {
+        .post('http://localhost:3333', fd, {
+            headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*"
-          }, {
+          }, 
             onUploadProgress: ProgressEvent => {
                 setProgressBar(Math.round(ProgressEvent.loaded / ProgressEvent.total * 100));
             }
         })
         .then(result => {
-            console.log(result.data.url);
+            console.log(result.data);
             dispatch(success());
         })
         .catch(err => dispatch(failed(err)))
 };
 
+// , {
+//     headers: {
+//         Authorization: 'Bearer ' + token
+//     }}
