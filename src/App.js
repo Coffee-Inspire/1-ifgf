@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 
 import Navigation from './components/templates/Navigation'
 import About from './pages/About'
+import VisionMission from './pages/VisionMission';
+import Pastor from './pages/Pastor';
 import Footer from './components/templates/Footer';
 import Home from './pages/Home';
 import Icare from './pages/Icare';
@@ -44,6 +46,12 @@ function App() {
           </Route>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/visionmission">
+            <VisionMission/>
+          </Route>
+          <Route path="/pastor">
+            <Pastor/>
           </Route>
           <Route path="/icare">
             <Icare />

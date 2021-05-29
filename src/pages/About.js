@@ -8,11 +8,9 @@ import aboutImage from '../assets/images/about.jpg';
 import Banner from '../components/molecules/Banner';
 
 // importing images for about us content(s)
-import aboutContentImage1 from '../assets/images/about-content-1.jpg'
 import aboutContentImage2 from '../assets/images/about-content-2.jpg'
 
 // importing about us content(s)
-import AboutContent1 from '../components/templates/AboutContent1';
 import AboutContent2 from '../components/templates/AboutContent2';
 
 function About() {
@@ -44,7 +42,7 @@ function About() {
     return (
         <Container fluid>
                 
-            <Banner bannerImage={aboutImage} style1={true} title={"about us"} />
+            <Banner bannerImage={aboutImage} style1={true} title={"about us"} active={"about"}  />
             {DUMMY && 
                 DUMMY.map((items,index)=>(
                  <AboutContent2

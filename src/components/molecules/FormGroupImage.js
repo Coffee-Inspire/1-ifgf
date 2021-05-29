@@ -4,19 +4,21 @@ import { Form } from 'react-bootstrap';
 function FormGroupImage(props) {
 
     const checkFile = (e) =>{
-        if(e.target.files[0].type === "image/jpeg" || e.target.files[0].type === "image/png"){
-            props.setImage({
-                ...props.image,
-                status: "is-valid",
-                disable: "",
-                file: e.target.files[0]
-            })
-        }else {
-            props.setImage({
-                ...props.image,
-                status: "is-invalid",
-                disable: "disabled",
-            })
+        if(e.target.files && e.target.files[0]){
+            if(e.target.files[0].type === "image/jpeg" || e.target.files[0].type === "image/png"){
+                props.setImage({
+                    ...props.image,
+                    status: "is-valid",
+                    disable: "",
+                    file: e.target.files[0]
+                })
+            }else {
+                props.setImage({
+                    ...props.image,
+                    status: "is-invalid",
+                    disable: "disabled",
+                })
+            }
         }
     }
 

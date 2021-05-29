@@ -1,5 +1,5 @@
 // importing react-bootstrap tags
-import {Row,Col,Image} from 'react-bootstrap';
+import {Container,Row,Col,Image} from 'react-bootstrap';
 
 // importing customized button component
 import ButtonCustom from '../atoms/ButtonCustom'
@@ -32,12 +32,20 @@ function Banner(props) {
                         null
                         : <p className="position-absolute text-white text-uppercase display-2 fw-bold">{props.title}</p>     
                     }
-                    {props.style1 && 
-                        <div className="position-absolute bottom-0 w-100 d-flex flex-row justify-content-center">
-                            <ButtonNav word={"our church"}/>
-                            <ButtonNav word={"vision & mission"}/>
-                            <ButtonNav word={"our pastor"}/>
-                        </div>
+                    {props.style1 &&
+                    <Container className="position-absolute bottom-0 text-center ">
+                        <Row className="d-flex flex-row justify-content-center align-items-center">
+                            <Col className="text-center" xs={4}>
+                            <ButtonNav word={"our church"} active={props.active==="about" && props.active } buttonLink={"/about"}/>
+                            </Col>
+                            <Col xs={4}>
+                            <ButtonNav word={"vision & mission"} active={props.active==="visionMission" && props.active } buttonLink={"/visionmission"}/>
+                            </Col>
+                            <Col xs={4}>
+                            <ButtonNav word={"our pastor"} active={props.active==="pastor" && props.active } buttonLink={"/pastor"}/>
+                            </Col>
+                        </Row>
+                    </Container>
                     }
                     {props.style2 || props.style3 ?
                         <div 
