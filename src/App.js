@@ -18,6 +18,7 @@ import IfgfYouth from './pages/IfgfYouth';
 //Admin
 import AdminPage from './pages/AdminPage';
 import DashboardPage from './pages/DashboardPage'
+import PrayerMeetings from './pages/PrayerMeetings';
 
 function App() {
   const isLogin = useSelector(state => state.auth.isLogged)
@@ -61,6 +62,9 @@ function App() {
           </Route>
           <Route path="/ifgfyouth">
             <IfgfYouth />
+          </Route>
+          <Route path="/prayermeetings">
+            <PrayerMeetings/>
           </Route>
           <Route>
             {/* <PageNotFound /> */}
