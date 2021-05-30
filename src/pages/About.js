@@ -8,11 +8,9 @@ import aboutImage from '../assets/images/about.jpg';
 import Banner from '../components/molecules/Banner';
 
 // importing images for about us content(s)
-import aboutContentImage1 from '../assets/images/about-content-1.jpg'
 import aboutContentImage2 from '../assets/images/about-content-2.jpg'
 
 // importing about us content(s)
-import AboutContent1 from '../components/templates/AboutContent1';
 import AboutContent2 from '../components/templates/AboutContent2';
 
 function About() {
@@ -22,14 +20,42 @@ function About() {
                  to show love and Compassion because he is a GOD of Covenant,
                  who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
                  made into champions by the promises of His Word.
-                `
+                `;
+    // mock data
+    let DUMMY = [
+        {
+            contentImage : aboutContentImage2,
+            contentTitle : "our passion",
+            contentText: word,
+            contentYearStart :"2000" ,
+            contentYearEnd:"2002" ,
+        },
+        {
+            contentImage : aboutContentImage2,
+            contentTitle : "our church",
+            contentText: word,
+            contentYearStart :"2002" ,
+            contentYearEnd:"Present" ,
+        }
+    ];
+
     return (
         <Container fluid>
                 
-            <Banner bannerImage={aboutImage} title={"ABOUT US"} />
-            <AboutContent1 image={aboutContentImage1} word={word}/>
-            <AboutContent2 image={aboutContentImage2} word={word}/>
-                
+            <Banner bannerImage={aboutImage} style1={true} title={"about us"} active={"about"}  />
+            {DUMMY && 
+                DUMMY.map((items,index)=>(
+                 <AboutContent2
+                    key={index}
+                    image={items.contentImage} 
+                    title={items.contentTitle} 
+                    word={items.contentText}
+                    yearStart={items.contentYearStart} 
+                    yearEnd={items.contentYearEnd}
+                />
+                ))
+            }
+
         </Container>
     )
 }

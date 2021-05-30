@@ -18,8 +18,7 @@ function IcareLeaderProfile(props) {
                             <Image
                                 alt=""
                                 src={props.data.leaderImage}
-                                className="myIcareLeaderImage"
-                                
+                                className="myIcareLeaderImage" 
                             />
                         </div>
                     </Col>

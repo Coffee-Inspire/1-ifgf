@@ -53,6 +53,9 @@ body {
 		filter: brightness(85%);
 		/* object-position: 1% 0; */
 	}
+	.myBannerStyle1Image {
+		object-position: 0 50% !important;
+	}
 	.eventContentImageFrame {
 		width: 100% !important;
 		overflow: hidden;
@@ -73,6 +76,9 @@ body {
 	.myIcareLeaderImageFrame {
 		height: 450px !important;
 		overflow: hidden;
+	}
+	.myButtonNavWord {
+		font-size: 20px !important;
 	}
 }
 
@@ -105,12 +111,21 @@ body {
 }
 
 .myNavbarItems {
-	margin-right: 50px;
+	margin-right: 55px;
 }
 
 .myNavbarItems a {
 	color: #ffffff !important;
 	margin-right: 50px;
+}
+
+.myButtonNav:hover {
+	background-color: rgb(90, 90, 90);
+	color: #e0e0e0;
+}
+
+.myButtonNavActive {
+	background-color: rgba(196, 196, 196, 0.2);
 }
 
 .myBanner {
@@ -134,6 +149,17 @@ body {
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
+.myBannerStyle1 {
+	height: 92vh;
+}
+
+.myBannerStyle1Image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 100% 50%;
+}
+
 .myBannerStyle3 {
 	filter: contrast(90%);
 }
@@ -151,7 +177,7 @@ body {
 	color: #ffffff;
 }
 
-#imageBannerFrame {
+.imageBannerFrame {
 	height: 100vh;
 }
 
@@ -167,7 +193,7 @@ body {
 	object-fit: cover;
 }
 
-#aboutContentRow {
+.aboutContentRow {
 	background-color: #e5e5e5;
 }
 
@@ -179,6 +205,31 @@ body {
 	border: 2px solid #2e96e1;
 	color: #2e96e1;
 	box-sizing: border-box;
+}
+
+.myPastorImage {
+	width: 100%;
+	object-fit: cover;
+}
+
+.separator {
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+.separator::before,
+.separator::after {
+	content: "";
+	flex: 1;
+	border-bottom: 1px groove rgb(2, 2, 2);
+}
+
+.separator:not(:empty)::before {
+	margin-right: 20px;
+}
+
+.separator:not(:empty)::after {
+	margin-left: 20px;
 }
 
 #footerContainer {

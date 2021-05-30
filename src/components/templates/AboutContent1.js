@@ -3,7 +3,7 @@ import {Row,Col,Button} from 'react-bootstrap';
 
 function AboutContent1(props) {
     return (
-                <Row id="aboutContentRow" className="mb-3 m-lg-5">
+                <Row className="aboutContentRow mb-3 m-lg-5">
                     <Col className="d-flex flex-column justify-content-start" xs={12} lg={5}>
                         <div className="px-3 px-lg-5 text-center text-lg-start">
                             <h4 className="fw-bold my-5 text-center text-lg-start">PRAYER MEETINGS</h4>

@@ -4,7 +4,8 @@ import { Nav, Navbar } from 'react-bootstrap';
 
 function NavAdminSide() {
     return (
-        <Navbar sticky="top" bg="dark" variant="dark" expand="lg" className="px-4 vh-100 align-items-end flex-column flex-nowrap">
+
+        <Navbar  bg="dark" variant="dark" expand="lg" className="px-4 vh-100 align-items-end flex-column flex-nowrap">
         {/* <Navbar.Brand href="#home" disabled>IFGF</Navbar.Brand> */}
         <Navbar.Toggle aria-controls="any" className="mt-3"/>
         <Navbar.Collapse id="" className="flex-column mt-3 navbar-animation">
