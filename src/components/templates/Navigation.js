@@ -20,7 +20,7 @@ function Navigation() {
             <Nav className="myNavbarItems">
                 <Link to = "/about" className="nav-link">ABOUT</Link>
                 <Link to = "/prayermeetings" className="nav-link">PRAYER REQUEST</Link>
-                <Link to = "/" className="nav-link">CONTACT US</Link>
+                <Link to = "/contactus" className="nav-link">CONTACT US</Link>
             </Nav>
         </Nav>
         </Navbar.Collapse>

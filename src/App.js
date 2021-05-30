@@ -14,11 +14,12 @@ import Home from './pages/Home';
 import Icare from './pages/Icare';
 import IfgfKids from './pages/IfgfKids';
 import IfgfYouth from './pages/IfgfYouth';
+import PrayerMeetings from './pages/PrayerMeetings';
+import ContactUs from './pages/ContactUs';
 
 //Admin
 import AdminPage from './pages/AdminPage';
 import DashboardPage from './pages/DashboardPage'
-import PrayerMeetings from './pages/PrayerMeetings';
 
 function App() {
   const isLogin = useSelector(state => state.auth.isLogged)
@@ -65,6 +66,9 @@ function App() {
           </Route>
           <Route path="/prayermeetings">
             <PrayerMeetings/>
+          </Route>
+          <Route path="/contactus">
+            <ContactUs/>
           </Route>
           <Route>
             {/* <PageNotFound /> */}

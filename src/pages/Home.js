@@ -54,7 +54,8 @@ function Home() {
                 bannerImage={locationBanner} 
                 style4={true} 
                 headTitle={"location"}
-                button1={"contact info"} 
+                button1={"contact info"}
+                buttonLink1={"/contactus"} 
                 button2={"get directions"}
                 text1={"IFGF MATARAM"}
                 text2={homeAddress}
