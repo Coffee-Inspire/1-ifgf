@@ -34,11 +34,11 @@ export const logoutAction = () => {
 export const loginAction = (data, history, setStatus) => (dispatch) => {
     dispatch(authRequest());
     return axios
-        .post("http://localhost:8000/admin/login", data)
+        .post("http://api.yoshi.erwinata.com/admin/login", data)
         .then(result => {
             if(result.data.token !== undefined) {
-                localStorage.token = result.data.token
-                localStorage.payload = JSON.stringify(result.data.user);
+                localStorage.ifgfToken = result.data.token
+                localStorage.ifgfPayload = JSON.stringify(result.data.user);
                 dispatch(loginSuccess(result.data.token))
                 
                 history.push('/dashboard');
