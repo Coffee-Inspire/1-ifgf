@@ -6,6 +6,8 @@ function FormGroup(props) {
         <Form.Group controlId={props.id} className="mb-3">
             <Form.Label className="fw-bold">{props.label}</Form.Label>
             <Form.Control 
+              as="textarea"
+              style={{ height: '110px' }}
               required
               type={props.type} 
               placeholder={props.placeholder}

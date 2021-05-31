@@ -23,13 +23,13 @@ function DashboardPage() {
                     <DashIcare />
                 </Route>
                 <Route path="/dashboard/DashEvent/">
-                    <DashHomePage />
+                    {/* <DashHomePage /> */}
                 </Route>
                 <Route path="/dashboard/DashAbout/">
-                    <DashHomePage />
+                    {/* <DashHomePage /> */}
                 </Route>
                 <Route path="/dashboard/DashProfile/">
-                    <DashHomePage />
+                    {/* <DashHomePage /> */}
                 </Route>
             </Switch>
                 {/* <Col xs={12} className="w-100 ">

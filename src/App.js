@@ -29,6 +29,8 @@ function App() {
       <Switch>
           <Route path="/admin">
           </Route>
+          <Route path="/dashboard">
+          </Route>
           <Route exact path="/">
           </Route>
           <Route path="/">
@@ -43,7 +45,7 @@ function App() {
             <AdminPage />
           </Route>
           <Route path="/dashboard">
-            {/* {isLogin ? <DashboardPage /> : <Redirect to="/admin" />} */}
+            {!isLogin && <Redirect to="/admin" />}
             <DashboardPage />
           </Route>
           <Route path="/about">

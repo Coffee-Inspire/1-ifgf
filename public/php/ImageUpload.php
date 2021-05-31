@@ -11,6 +11,10 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
   $check = getimagesize($_FILES["image"]["tmp_name"]);
   if($check !== false) {
+    if(file_exists($target_file)) {
+      chmod($target_file,0755); //Change the file permissions if allowed
+      unlink($target_file); //remove the file
+    }
   //Move File To Uploads Folder
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
     $message = "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";

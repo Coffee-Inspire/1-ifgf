@@ -21,4 +21,10 @@
   opacity: 1;
   margin-left: 0px;
 }
+
+.dashImage {
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 /*# sourceMappingURL=my.css.map */
