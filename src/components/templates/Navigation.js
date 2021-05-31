@@ -19,8 +19,8 @@ function Navigation() {
         <Nav className="w-100 justify-content-end">
             <Nav className="myNavbarItems">
                 <Link to = "/about" className="nav-link">ABOUT</Link>
-                <Link to = "/" className="nav-link">PRAYER REQUEST</Link>
-                <Link to = "/" className="nav-link">CONTACT US</Link>
+                <Link to = "/prayermeetings" className="nav-link">PRAYER REQUEST</Link>
+                <Link to = "/contactus" className="nav-link">CONTACT US</Link>
             </Nav>
         </Nav>
         </Navbar.Collapse>

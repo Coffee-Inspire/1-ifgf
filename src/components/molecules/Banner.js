@@ -98,10 +98,10 @@ function Banner(props) {
                                         }
                                         <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
                                             <div className="m-3">
-                                                <ButtonCustom outlineWhite={true} word={props.button1}/>
+                                                <ButtonCustom outlineWhite={true} word={props.button1} buttonLink={props.buttonLink1}/>
                                             </div>
                                             <div className="m-3">
-                                                <ButtonCustom outlineWhite={true} word={props.button2}/>
+                                                <ButtonCustom outlineWhite={true} word={props.button2} buttonLink={props.buttonLink2}/>
                                             </div>
                                         </div>
                                        

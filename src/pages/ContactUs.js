@@ -5,22 +5,22 @@ import {Container} from 'react-bootstrap';
 import Banner from '../components/molecules/Banner';
 
 // importing images for banner
-import imageBanner from '../assets/images/about-content-1.jpg';
+import imageBanner from '../assets/images/about-content-2.jpg';
 
 // importing form from component
-import FormPrayer from '../components/organisms/FormPrayer';
+import FormContact from '../components/organisms/FormContact';
 
-function PrayerMeetings() {
-    let bannerTitle = `prayer meetings`;
-    let bannerText = `Prayer Meeting helps you to grow spiritually, and that requires more than meeting at Sunday services.`;
+function ContactUs() {
+    let bannerTitle = `contact us`;
+    let bannerText = `Contact us to help you to grow spiritually, and that requires more than meeting at Sunday services.`;
     return (
         <Container fluid>
 
             <Banner bannerImage={imageBanner} title={bannerTitle} text={bannerText} style3={true}/>
-            <FormPrayer/>
+            <FormContact/>
         
         </Container>
     )
 }
 
-export default PrayerMeetings
+export default ContactUs

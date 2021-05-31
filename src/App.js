@@ -14,6 +14,8 @@ import Home from './pages/Home';
 import Icare from './pages/Icare';
 import IfgfKids from './pages/IfgfKids';
 import IfgfYouth from './pages/IfgfYouth';
+import PrayerMeetings from './pages/PrayerMeetings';
+import ContactUs from './pages/ContactUs';
 
 //Admin
 import AdminPage from './pages/AdminPage';
@@ -61,6 +63,12 @@ function App() {
           </Route>
           <Route path="/ifgfyouth">
             <IfgfYouth />
+          </Route>
+          <Route path="/prayermeetings">
+            <PrayerMeetings/>
+          </Route>
+          <Route path="/contactus">
+            <ContactUs/>
           </Route>
           <Route>
             {/* <PageNotFound /> */}
