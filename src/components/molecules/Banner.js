@@ -101,7 +101,7 @@ function Banner(props) {
                                                 <ButtonCustom outlineWhite={true} word={props.button1} buttonLink={props.buttonLink1}/>
                                             </div>
                                             <div className="m-3">
-                                                <ButtonCustom outlineWhite={true} word={props.button2} buttonLink={props.buttonLink2}/>
+                                                <ButtonCustom outlineWhite={true} word={props.button2} buttonLink={props.buttonLink2} newPage={true}/>
                                             </div>
                                         </div>
                                        
