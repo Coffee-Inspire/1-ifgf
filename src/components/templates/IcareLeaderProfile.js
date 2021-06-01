@@ -8,7 +8,8 @@ import ButtonCustom from '../atoms/ButtonCustom';
 import CenterText from '../molecules/CenterText';
 
 function IcareLeaderProfile(props) {
-   
+    // API link for whatsapp site
+   let whatsappAPI = `https://api.whatsapp.com/send?phone=${props.data.leaderContact}`;
     return (
         <>
             <CenterText word={props.data.leaderText}/>
@@ -32,7 +33,7 @@ function IcareLeaderProfile(props) {
                             <h2 className="fw-light">{props.data.leaderContact}</h2>
                         </Col>
                         <Col className="align-self-center align-self-lg-start" xs={11} lg={6}>
-                            <ButtonCustom word={"join with us !"} />
+                            <ButtonCustom word={"join with us !"} buttonLink={whatsappAPI} newPage={true}/>
                         </Col>
                     </Col>
                 </Row>

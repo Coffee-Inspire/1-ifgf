@@ -82,7 +82,7 @@ function IfgfKids() {
                 <CenterButton word={"join with us !"}/>
                 : null
             }
-            <CenterButton word={"contact us"}/>
+            <CenterButton word={"contact us"} buttonLink={"/contactus"}/>
             
         </Container>
     )
