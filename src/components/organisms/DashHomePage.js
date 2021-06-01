@@ -19,7 +19,7 @@ function DashHomePage() {
     const valueChange = (e) => {
         setFormEdit({
             ...formEdit,
-            [e.target.name] : [e.target.value]
+            [e.target.name] : e.target.value
         })
     }
 
@@ -43,15 +43,17 @@ function DashHomePage() {
         dispatch(getCategoryAction(setFormEdit));
     }, [dispatch])
 
-    console.log(categoryData);
-    console.log(formEdit);
+    // console.log(categoryData);
+    // console.log(formEdit);
     // console.log(imageHome);
 
     return (
         <>
         {
-        categoryData.isLoading ? 
-        <Row>Loading</Row>
+        categoryData.isInit ? 
+        <Row className="w-100 m-3">
+            Loading
+        </Row>
         :
         <Row className="w-100">
             <Col className="">
@@ -61,12 +63,13 @@ function DashHomePage() {
                     <Col xs={12} md={8} lg={5} className="mb-5">
                     <DashText word={"Home Details"} />
                     <Card className="w-100 mb-3">
-                    <Card.Img variant="top" className="dashImage" src={formEdit.imgHome} onError={(e)=>{e.target.onerror = null; e.target.src="uploads/imgNotFound.jpg"}} />
+                    <Card.Img variant="top" className="dashImage" src={`${formEdit.imgHome}?${formEdit.hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="uploads/imgNotFound.jpg"}} />
                     <Card.Header className="text-center">
                         <Card.Title>Preview Image Home</Card.Title>
                     </Card.Header>
                     </Card>
-                    <Form onSubmit={(e) => {dispatch(editAction(e, imageHome, setProgressBar))}}>
+                    <Form onSubmit={(e) => {dispatch(editAction(e, imageHome, setProgressBar, formEdit.idHome, 
+                        formEdit.textHome, formEdit.descHome, formEdit ,setFormEdit))}}>
                         <FormGroupImage 
                             label={"Home Image (Upload a image from your device, jpg or png at least 1000px x 500px for better result)"}
                             image={imageHome}
@@ -92,11 +95,16 @@ function DashHomePage() {
                             onChange={(e) => valueChange(e)}
                         />
                         <Button type="submit" variant="primary" disabled={(categoryData.isLoading || imageHome.disable)}>
-                            Save
+                            {(categoryData.isLoading || imageHome.disable) ? "Saving..." : "Save"}
                         </Button>
                         {categoryData.isLoading && 
                             <div className="mt-3">
                                 <ProgressBar animated striped variant="primary" className="" now={progressBar} />
+                            </div>
+                        }
+                        {categoryData.error && 
+                            <div className="mt-3 text-danger">
+                                Error Edit Failed !
                             </div>
                         }
                     </Form>
@@ -112,7 +120,8 @@ function DashHomePage() {
                         <Card.Title>Preview Image Location</Card.Title>
                     </Card.Header>
                     </Card>
-                    <Form onSubmit={(e) => {dispatch(editAction(e, imageLocation, setProgressBar))}}>
+                    <Form onSubmit={(e) => {dispatch(editAction(e, imageLocation, setProgressBar, formEdit.idLocation, 
+                        formEdit.textLocation, formEdit.descLocation, formEdit ,setFormEdit))}}>
                         <FormGroupImage 
                             label={"Location Image"}
                             image={imageLocation}
@@ -137,8 +146,8 @@ function DashHomePage() {
                             onChange={(e) => valueChange(e)}
                         />
                         
-                        <Button type="submit" variant="primary" disabled={categoryData.isLoading}>
-                            Edit Location
+                        <Button type="submit" variant="primary" disabled={(categoryData.isLoading || imageLocation.disable)}>
+                        {(categoryData.isLoading || imageHome.disable) ? "Saving..." : "Save"}
                         </Button>
                     </Form>
                     </Col>
