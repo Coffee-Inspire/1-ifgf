@@ -8,7 +8,7 @@ import FormGroup from '../molecules/FormGroup';
 import FormGroupArea from '../molecules/FormGroupArea';
 import FormGroupImage from '../molecules/FormGroupImage';
 
-import { getCategoryAction, uploadImageAction, editAction } from '../../redux/actions/category.actions';
+import { getCategoryAction, editAction } from '../../redux/actions/category.actions';
 
 function DashHomePage() {
     const dispatch = useDispatch();
@@ -43,8 +43,8 @@ function DashHomePage() {
         dispatch(getCategoryAction(setFormEdit));
     }, [dispatch])
 
-    // console.log(categoryData);
-    // console.log(formEdit);
+    console.log(categoryData);
+    console.log(formEdit);
     // console.log(imageHome);
 
     return (
