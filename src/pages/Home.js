@@ -33,6 +33,7 @@ function Home() {
     let icareText = '"ICare helps you to grow spiritually, and that requires more than meeting at Sunday services."';
     let youthText = `"IFGF Youth helps you to grow spiritually, and that requires more than meeting at Sunday services."`;
     let kidsText = `"IKids helps you to grow spiritually, and that requires more than meeting at Sunday services."`;
+    let googleMap = `https://www.google.com/maps/place/IFGF+MATARAM/@-8.6013855,116.1439476,17z/data=!3m1!4b1!4m5!3m4!1s0x2dcdb8b7a3d866d7:0xa6585d8d50d86791!8m2!3d-8.6013908!4d116.1461363`;
     
 
     return (
@@ -57,6 +58,7 @@ function Home() {
                 button1={"contact info"}
                 buttonLink1={"/contactus"} 
                 button2={"get directions"}
+                buttonLink2={googleMap}
                 text1={"IFGF MATARAM"}
                 text2={homeAddress}
                 text3={homeTime} 
@@ -68,7 +70,7 @@ function Home() {
                 style3={true}
                 title={icareBannerTitle}
                 text={icareText}
-                buttonPortal={"seach icare"}
+                buttonPortal={"search icare"}
                 buttonLink={"/icare"}
                 
             />
