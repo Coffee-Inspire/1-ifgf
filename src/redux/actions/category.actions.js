@@ -85,7 +85,7 @@ export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
         })
 };
 
-export const editDataAction = (id, text, desc, img, formEdit, setFormEdit) => (dispatch) => {
+export const editDataAction = (setShowProgressBar, id, text, desc, img, formEdit, setFormEdit) => (dispatch) => {
 
     let data = {
         text : text,
@@ -108,6 +108,13 @@ export const editDataAction = (id, text, desc, img, formEdit, setFormEdit) => (d
                     ["id" + result.data.name.charAt(0).toUpperCase() + result.data.name.slice(1)] : result.data.id,
                     hash : Date.now()
                 });
+                setShowProgressBar({
+                    showHome : false,
+                    showLocation : false,
+                    showIcare : false,
+                    showIfgfyouth: false,
+                    showIfgfkids: false,
+                });
                 // console.log("result ", result.data);
                 dispatch(success());
             })
@@ -118,19 +125,19 @@ export const editDataAction = (id, text, desc, img, formEdit, setFormEdit) => (d
             
 }
 
-export const editAction = (e, image, setProgressBar, id, text, desc, formEdit, setFormEdit) => (dispatch) => {
+export const editAction = (e, image, setProgressBar, setShowProgressBar, id, text, desc, formEdit, setFormEdit) => (dispatch) => {
     e.preventDefault();
     dispatch(request());
 
     if(image.file !== null){
         let uploadImg = dispatch(uploadImageAction(image, setProgressBar));
         uploadImg.then(result => {
-            dispatch(editDataAction(id, text, desc, result, formEdit, setFormEdit));
+            dispatch(editDataAction(setShowProgressBar, id, text, desc, result, formEdit, setFormEdit));
         })
         .catch(err => dispatch(failed()));
     }
     else {
-        dispatch(editDataAction(id, text, desc, "", formEdit, setFormEdit));
+        dispatch(editDataAction(setShowProgressBar, id, text, desc, "", formEdit, setFormEdit));
     }
 };
 
