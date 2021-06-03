@@ -2,7 +2,7 @@ import React from 'react'
 import { Form } from 'react-bootstrap';
 
 function FormGroupImage(props) {
-
+    console.log(props)
     const checkFile = (e) =>{
         if(e.target.files && e.target.files[0]){
             if(e.target.files[0].type === "image/jpeg" || e.target.files[0].type === "image/png"){
@@ -34,7 +34,7 @@ function FormGroupImage(props) {
     return (
         <>
         <Form.Group controlId="formBasicUpload" className="mb-3">
-            <Form.Label className="fw-bold">{props.label}</Form.Label>
+            <Form.Label className="fw-bold capitalize">{props.label}</Form.Label>
             <Form.File id="formcheck-api-custom" custom>
             <Form.File.Input className={props.image.status + " form-control"} accept="image/png,image/jpeg" onChange={checkFile}/>
             {/* <Form.File.Label data-browse="Browse">

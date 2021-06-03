@@ -1,13 +1,20 @@
-import { REQUEST, FAILED, SUCCESS } from '../actions/category.actions'
+import { INIT, REQUEST, FAILED, SUCCESS } from '../actions/category.actions'
 
 const initialState = {
     data : [],
+    isInit : false,
     isLoading : false,
     error: false,
 };
 
 const category = (state = initialState, action) => {
     switch (action.type){
+        case INIT: 
+            return {
+                ...state,
+                isInit: true,
+            };
+
         case REQUEST: 
             return {
                 ...state,
@@ -19,6 +26,7 @@ const category = (state = initialState, action) => {
                 ...state,
                 error: true,
                 isLoading: false,
+                isInit: false,
             };
 
         case SUCCESS:
@@ -26,6 +34,7 @@ const category = (state = initialState, action) => {
                 ...state,
                 data: action.data,
                 isLoading: false,
+                isInit: false,
                 error: false,
             }
 

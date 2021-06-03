@@ -1,8 +1,15 @@
 import axios from 'axios';
 
+export const INIT = "INIT";
 export const REQUEST = "REQUEST";
 export const FAILED = "FAILED";
 export const SUCCESS = "SUCCESS";
+
+export const init = () => {
+    return {
+        type: INIT,
+    };
+};
 
 export const request = () => {
     return {
@@ -25,7 +32,7 @@ export const failed = (err) => {
 };
 
 export const getCategoryAction = (setFormEdit) => (dispatch) => {
-    dispatch(request());
+    dispatch(init());
 
     return axios
             .get('http://api.yoshi.erwinata.com/category')
@@ -36,7 +43,9 @@ export const getCategoryAction = (setFormEdit) => (dispatch) => {
                         ...newData,
                         ["text" + item.name.charAt(0).toUpperCase() + item.name.slice(1)] : item.text,
                         ["desc" + item.name.charAt(0).toUpperCase() + item.name.slice(1)] : item.description,
-                        ["img" + item.name.charAt(0).toUpperCase() + item.name.slice(1)] : item.image
+                        ["img" + item.name.charAt(0).toUpperCase() + item.name.slice(1)] : item.image,
+                        ["id" + item.name.charAt(0).toUpperCase() + item.name.slice(1)] : item.id,
+                        hash : Date.now()
                     }
                 })
                 setFormEdit({
@@ -47,15 +56,16 @@ export const getCategoryAction = (setFormEdit) => (dispatch) => {
             .catch(err => dispatch(failed(err)))
 };
 
-export const uploadImageAction = (e, image, setProgressBar) => (dispatch) => {
-    dispatch(request());
-    e.preventDefault();
+export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
+    // e.preventDefault();
+    // dispatch(request());
 
     let fd = new FormData();
     fd.append('image', image.file, image.name + "." + image.file.name.split('.').pop());
 
     return axios
         // .post('http://yoshi.erwinata.com/php/ImageUpload.php', fd, {
+        // .post('php/ImageUpload.php', fd, {
         .post('http://localhost:3333', fd, {
             headers: {
             'Content-Type': 'application/json',
@@ -66,21 +76,68 @@ export const uploadImageAction = (e, image, setProgressBar) => (dispatch) => {
             }
         })
         .then(result => {
-            console.log(result.data);
-            dispatch(success());
+            // dispatch(success());
+            return result.data.url;
         })
-        .catch(err => dispatch(failed(err)))
+        .catch(err => {
+            dispatch(failed());
+            return err;
+        })
 };
 
-export const editAction = (e, image, setProgressBar) => (dispatch) => {
-    dispatch(request());
-    e.preventDefault();
+export const editDataAction = (setShowProgressBar, id, text, desc, img, formEdit, setFormEdit) => (dispatch) => {
 
-    if(image.file == null){
-        console.log("empty");
+    let data = {
+        text : text,
+        description : desc,
+        [img !== "" && "image"] : img,
+    }
+
+    return axios
+            .put('http://api.yoshi.erwinata.com/category/'+id, data ,{
+                headers: {
+                    Authorization: localStorage.ifgfToken
+                }
+            })
+            .then(result => {
+                setFormEdit({
+                    ...formEdit,
+                    ["text" + result.data.name.charAt(0).toUpperCase() + result.data.name.slice(1)] : result.data.text,
+                    ["desc" + result.data.name.charAt(0).toUpperCase() + result.data.name.slice(1)] : result.data.description,
+                    ["img" + result.data.name.charAt(0).toUpperCase() + result.data.name.slice(1)] : result.data.image,
+                    ["id" + result.data.name.charAt(0).toUpperCase() + result.data.name.slice(1)] : result.data.id,
+                    hash : Date.now()
+                });
+                setShowProgressBar({
+                    showHome : false,
+                    showLocation : false,
+                    showIcare : false,
+                    showIfgfyouth: false,
+                    showIfgfkids: false,
+                });
+                // console.log("result ", result.data);
+                dispatch(success());
+            })
+            .catch(err => 
+                // console.log(err)
+                dispatch(failed())
+            );
+            
+}
+
+export const editAction = (e, image, setProgressBar, setShowProgressBar, id, text, desc, formEdit, setFormEdit) => (dispatch) => {
+    e.preventDefault();
+    dispatch(request());
+
+    if(image.file !== null){
+        let uploadImg = dispatch(uploadImageAction(image, setProgressBar));
+        uploadImg.then(result => {
+            dispatch(editDataAction(setShowProgressBar, id, text, desc, result, formEdit, setFormEdit));
+        })
+        .catch(err => dispatch(failed()));
     }
     else {
-        dispatch(uploadImageAction(e, image, setProgressBar));
+        dispatch(editDataAction(setShowProgressBar, id, text, desc, "", formEdit, setFormEdit));
     }
 };
 
