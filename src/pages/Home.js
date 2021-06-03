@@ -3,17 +3,10 @@ import {useState,useEffect} from 'react';
 
 // importing library from react redux
 import {useDispatch} from 'react-redux';
-import {getEventAction} from '../redux/actions/event.actions';
+import {getCategoryAction} from '../redux/actions/category.actions';
 
 // importing react-bootstrap tags
 import {Container} from 'react-bootstrap';
-
-// importing image for main banner
-import homeBanner from '../assets/images/banner1.jpg';
-import locationBanner from '../assets/images/banner2.jpg';
-import icareBanner from '../assets/images/icare.jpg';
-import youthBanner from '../assets/images/youth.jpg';
-import kidsBanner from '../assets/images/ifgf-kids.jpg';
 
 // importing banner component
 import Banner from '../components/molecules/Banner';
@@ -25,41 +18,38 @@ import emblem from '../assets/images/ifgfLogoPlain.png'
 import HomeText from '../components/organisms/HomeText';
 
 function Home() {
-    
-    let title = `this is our church`;
-    let word = ` God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
-                 to show love and Compassion because he is a GOD of Covenant,
-                 who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
-                 made into champions by the promises of His Word.
-                 `;
-    let homeAddress = `Komp. Central Plaza, Jl. A. A Gede Ngurah, Abian Tubuh Baru, Kec. Cakranegara, Kota Mataram.`;
-    let homeTime = 'SUNDAY 08.00 A.M';
-    let icareBannerTitle = `connect to icare`;
-    let youthBannerTitle = `ifgf youth`;
-    let kidsBannerTitle = `ifgf kids`;
-    let icareText = '"ICare helps you to grow spiritually, and that requires more than meeting at Sunday services."';
-    let youthText = `"IFGF Youth helps you to grow spiritually, and that requires more than meeting at Sunday services."`;
-    let kidsText = `"IKids helps you to grow spiritually, and that requires more than meeting at Sunday services."`;
+
+    const dispatch = useDispatch();
+    // Storing category data from dispatch into state
+    const [FormEdit, setFormEdit] = useState([]);
+
+    // IFGF Mataram Google Map URL
     let googleMap = `https://www.google.com/maps/place/IFGF+MATARAM/@-8.6013855,116.1439476,17z/data=!3m1!4b1!4m5!3m4!1s0x2dcdb8b7a3d866d7:0xa6585d8d50d86791!8m2!3d-8.6013908!4d116.1461363`;
     
+    // Dispatch to redux for data request
+    useEffect(() => {
+        dispatch(getCategoryAction(setFormEdit))
+    }, [dispatch])
 
     return (
         <Container fluid>
             {/* Main Banner */}
             <Banner 
-                bannerImage={homeBanner} 
+                bannerImage={FormEdit.imgHome} 
                 style4={true} 
-                button1={"get connected"} 
+                button1={"about us"} 
+                buttonLink1={"/about"}
+                button1WidthExtend={true}
                 button2={"watch sermon"} 
                 headEmblem={emblem} 
             />
             <HomeText 
-                title={title} 
-                word={word} 
+                title={FormEdit.textHome} 
+                word={FormEdit.descHome} 
             />
             {/* Location Banner */}
             <Banner 
-                bannerImage={locationBanner} 
+                bannerImage={FormEdit.imgLocation} 
                 style4={true} 
                 headTitle={"location"}
                 button1={"contact info"}
@@ -67,36 +57,35 @@ function Home() {
                 button2={"get directions"}
                 buttonLink2={googleMap}
                 text1={"IFGF MATARAM"}
-                text2={homeAddress}
-                text3={homeTime} 
+                text2={FormEdit.textLocation}
+                text3={FormEdit.descLocation} 
                 tail={"a church for your family"}
             />
             {/* Icare Banner */}
             <Banner
-                bannerImage={icareBanner}
+                bannerImage={FormEdit.imgIcare}
                 style3={true}
-                title={icareBannerTitle}
-                text={icareText}
+                title={"connect to icare"}
+                text={FormEdit.textIcare}
                 buttonPortal={"search icare"}
-                buttonLink={"/icare"}
-                
+                buttonLink={"/icare"}                
             />
             {/* IFGF Youth Banner */}
              <Banner
-                bannerImage={youthBanner}
+                bannerImage={FormEdit.imgIfgfyouth}
                 style2={true}
-                title={youthBannerTitle}
-                text={youthText}
+                title={"ifgf youth"}
+                text={FormEdit.textIfgfyouth}
                 buttonPortal={"get connected"}
                 buttonLink={"/ifgfyouth"}
                 
             />
              {/* IFGF Kids Banner */}
              <Banner
-                bannerImage={kidsBanner}
+                bannerImage={FormEdit.imgIfgfkids}
                 style2={true}
-                title={kidsBannerTitle}
-                text={kidsText}
+                title={"ifgf kids"}
+                text={FormEdit.textIfgfkids}
                 buttonPortal={"get connected"}
                 buttonLink={"/ifgfkids"}
                 
