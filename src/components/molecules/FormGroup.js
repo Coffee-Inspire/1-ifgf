@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 function FormGroup(props) {
     return (
         <Form.Group controlId={props.id} className="mb-3">
-            <Form.Label className="fw-bold">{props.label}</Form.Label>
+            <Form.Label className="fw-bold capitalize">{props.label}</Form.Label>
             <Form.Control 
               required
               type={props.type} 

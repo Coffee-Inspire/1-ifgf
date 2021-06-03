@@ -1,8 +1,15 @@
 import axios from 'axios';
 
+export const INIT = "INIT";
 export const REQUEST = "REQUEST";
 export const FAILED = "FAILED";
 export const SUCCESS = "SUCCESS";
+
+export const init = () => {
+    return {
+        type: INIT,
+    };
+};
 
 export const request = () => {
     return {
@@ -25,13 +32,14 @@ export const failed = (err) => {
 };
 
 export const getIcareAction = (setFormEdit) => (dispatch) => {
-    dispatch(request());
+    dispatch(init());
 
     return axios
             .get('http://api.yoshi.erwinata.com/icare')
             .then(result => {
-                setFormEdit(...result.data);
+                setFormEdit(result.data);
                 dispatch(success(result.data));
             })
             .catch(err => dispatch(failed(err)))
 };
+

@@ -73,7 +73,7 @@ function DashHomePage() {
     }, [dispatch])
 
     // console.log(categoryData);
-    console.log(formEdit);
+    // console.log(formEdit);
     // console.log(imageHome);
 
     return (
@@ -81,7 +81,7 @@ function DashHomePage() {
         {
         categoryData.isInit ? 
         <Row className="w-100 m-3">
-            Loading
+            Loading...
         </Row>
         :
         <Row className="w-100">
