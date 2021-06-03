@@ -1,5 +1,8 @@
 // importing use state
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
+
+// importing react redux library
+import {useDispatch} from 'react-redux';
 
 // importing react-bootstrap tags
 import {Container} from 'react-bootstrap';
@@ -24,8 +27,15 @@ import youthLeader from '../assets/images/youthLeader.jpg';
 import manLeader from '../assets/images/manLeader.jpg';
 import womanLeader from '../assets/images/womanLeader.jpg';
 
+import {getIcareAction} from "../redux/actions/icare.actions";
+
 
 function Icare() {
+
+    const dispatch = useDispatch();
+    // Store data from dispatch into state
+    const [FormEdit, setFormEdit] = useState([]);
+
     // inputing text
     let wordCenter = ` God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
     to show love and Compassion because he is a GOD of Covenant,
@@ -38,43 +48,26 @@ function Icare() {
     // inputing text for banner caption
     let bannerText = 'ICare helps you to grow spiritually, and that requires more than meeting at Sunday services.';
 
-    let DUMMY_LEADER = [
-        {
-            leaderImage : youthLeader,
-            leaderTitle : "ICARE FOR YOUTH",
-            leaderName : "Peter Jimie",
-            leaderContact : "092739161823",
-            leaderText : "Hello, i'm a leader of Icare For Youth", 
-        },
-        {
-            leaderImage : manLeader,
-            leaderTitle : "ICARE FOR MEN",
-            leaderName : "Ethan White",
-            leaderContact : "061255678590",
-            leaderText : "Hello, i'm a leader of Icare For Men", 
-        },
-        {
-            leaderImage : womanLeader,
-            leaderTitle : "ICARE FOR WOMAN",
-            leaderName : "Jessica Waber",
-            leaderContact : "031756481875",
-            leaderText : "Hello, i'm a leader of Icare For Woman", 
-        },
-    ];
-    
     // declaring state for hovering event
-    const [leader, setLeader] = useState(DUMMY_LEADER[0]);
+    const [leader, setLeader] = useState(null);
+
+    // Function for selecting first leader
+    if(FormEdit.length>0 && leader == null){
+        setLeader(FormEdit[0])
+    }
+
+    // Dispatch to redux for data request
+    useEffect(() => {
+        dispatch(getIcareAction(setFormEdit))
+    }, [dispatch])
+
     return (
         <Container fluid>
 
             <Banner bannerImage={icareImage} title={bannerTitle} text={bannerText} style3={true}/>
             <CenterText word={wordCenter}/>
-            <Event data={DUMMY_LEADER} icare={true} setLeader={setLeader}/>
-            {leader ?
-                <IcareLeaderProfile data={leader}/>
-                : null
-            }
-            
+            <Event data={FormEdit} icare={true} setLeader={setLeader}/>
+            {leader && <IcareLeaderProfile data={leader}/>}
             
         </Container>
     )

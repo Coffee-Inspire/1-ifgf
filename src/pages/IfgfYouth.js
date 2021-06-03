@@ -1,5 +1,9 @@
 // importing use state
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
+
+// importing react redux library
+import {useDispatch} from 'react-redux';
+import {getEventAction} from '../redux/actions/event.actions';
 
 // importing react-bootstrap tags
 import {Container} from 'react-bootstrap';
@@ -23,6 +27,14 @@ import eventImage from  '../assets/images/event.jpg';
 import CenterButton from '../components/molecules/CenterButton';
 
 function IfgfYouth() {
+
+    const dispatch = useDispatch();
+    // Store data from dispatch into state
+    const [FormEdit, setFormEdit] = useState([]);
+
+    // Function for filtering IFGF Youth Events
+    let FormEditIFGFYouth = FormEdit.filter(function(i){return i.category==="ifgfyouth"});
+
     // inputing text
     let wordCenter = ` God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
     to show love and Compassion because he is a GOD of Covenant,
@@ -57,31 +69,28 @@ function IfgfYouth() {
         }
     ];
 
-    // dummy function for selecting first event text
-    let DUMMY_FIRST_EVENT_TEXT = null;
-    function dummyAssign (){
-        if(DUMMY.length>0){
-            DUMMY_FIRST_EVENT_TEXT=DUMMY[0].eventText
-        }
-    };
-    dummyAssign();
     
     // declaring state for hovering event
-    const [eventText, setEventText] = useState(DUMMY_FIRST_EVENT_TEXT);
+    const [eventText, setEventText] = useState(null);
+
+    //  Function for selecting first event text
+    if(FormEditIFGFYouth.length>0 && eventText == null){
+        setEventText(FormEditIFGFYouth[0].text)
+    };
+    
+    // Dispatch to redux for data request
+    useEffect(() => {
+        dispatch(getEventAction(setFormEdit))
+    }, [dispatch])
+
     return (
         <Container fluid>
 
             <Banner bannerImage={ifgfKidsImage} title={bannerTitle} text={bannerText} style2={true}/>
             <CenterText word={wordCenter}/>
-            <Event title={eventHeadingTitle} data={DUMMY} setEventText={setEventText}/>
-            {DUMMY.length>0 ? 
-                <CenterText word={eventText} />
-                : null
-            }
-            {DUMMY.length>0 ?
-                <CenterButton word={"join with us !"}/>
-                : null
-            }
+            <Event title={eventHeadingTitle} data={FormEditIFGFYouth} setEventText={setEventText}/>
+            {FormEditIFGFYouth.length>0 && <CenterText word={eventText} />}
+            {FormEditIFGFYouth.length>0 && <CenterButton word={"join with us !"}/>}
             <CenterButton word={"contact us"}  buttonLink={"/contactus"}/>
             
         </Container>
