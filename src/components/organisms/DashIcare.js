@@ -68,7 +68,7 @@ function DashIcare() {
         dispatch(getIcareAction(setFormEdit));
     }, [dispatch])
 
-    console.log(formEdit);
+    // console.log(formEdit);
 
     return (
         <>
@@ -101,7 +101,7 @@ function DashIcare() {
                             }
 
                         return (
-                            <Col key={index} xs={12} md={8} lg={5} className="mb-5">
+                            <Col key={index} xs={12} md={8} lg={7} xl={5} className="mb-5">
                                 {/* {item.category == "icareyouth" ?
                                     <DashText word={"Icare For Youth Details"} />
                                 :
@@ -112,12 +112,14 @@ function DashIcare() {
                                 } */}
 
                                 <DashText word={ title + " Details"} />
-                                <Card className="w-100 mb-3">
-                                <Card.Img variant="top" className="dashImage" src={`/${formEdit.image}?${hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="/uploads/imgNotFound.jpg"}} />
+                                <div className="">
+                                <Card className="mb-3 dashImagePotraitFrame">
+                                <Card.Img variant="top" className="dashImagePotrait" src={`/${formEdit.image}?${hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="/uploads/imgNotFoundPotrait.jpg"}} />
                                 <Card.Header className="text-center">
                                     <Card.Title>Preview Image Leader</Card.Title>
                                 </Card.Header>
                                 </Card>
+                                </div>
                                 <Form onSubmit={(e) => {}}>
                                     <FormGroupImage 
                                         label={ title + " Image (Upload a image from your device, jpg or png at least 1000px x 500px for better result)"}

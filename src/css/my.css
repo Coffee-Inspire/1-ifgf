@@ -1,7 +1,28 @@
+@media (min-width: 1280px) {
+  .dashImage {
+    zoom: 57% !important;
+  }
+}
+
 @media (min-width: 992px) {
   .navbar-animation {
     margin-left: 0px !important;
     opacity: 1 !important;
+  }
+  .dashImage {
+    zoom: 40% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .dashImage {
+    zoom: 40% !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .dashImage {
+    zoom: 20% !important;
   }
 }
 
@@ -27,7 +48,22 @@
 }
 
 .dashImage {
-  height: 300px;
+  zoom: 30%;
+  height: 100vh;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.dashImagePotraitFrame {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.dashImagePotrait {
+  height: 350px;
+  width: auto;
   -o-object-fit: cover;
      object-fit: cover;
 }
