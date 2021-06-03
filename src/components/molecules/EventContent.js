@@ -38,7 +38,7 @@ function EventContent(props) {
               if(props.icare){
                 props.setLeader(props.data[index])
               } else {
-                props.setEventText(props.data[index].eventText )
+                props.setEventText(props.data[index].text )
               }
             },
           }
@@ -53,7 +53,7 @@ function EventContent(props) {
               if(props.icare){
                 props.setLeader(props.data[index])
               } else {
-                props.setEventText(props.data[index].eventText )
+                props.setEventText(props.data[index].text )
               }
             },
           }
@@ -66,14 +66,19 @@ function EventContent(props) {
             <Slider {...settings} >
                 {props.data.map((items,index)=>(
                     <div key={index} className="d-flex flex-column align-items-center">
-                        <div className="eventContentImageFrame" onMouseOver={()=>props.icare ? props.setLeader(items) : props.setEventText(items.eventText)} >
+                        <div className="eventContentImageFrame" onMouseOver={()=>props.icare ? props.setLeader(items) : props.setEventText(items.text)} >
                             <Image
                                 alt=""
                                 src={eventImage}
                                 className="eventContentImage"
                             />
                         </div>
-                        <h4 className="text-white position-absolute bottom-50">{items.eventName || items.leaderTitle}</h4>
+                        <h4 className="text-white position-absolute bottom-50 text-uppercase">
+                          {props.icare && items.category==="icareyouth" && "icare for youth"}
+                          {props.icare && items.category==="icaremen" && "icare for men" }
+                          {props.icare && items.category==="icarewoman" && "icare for woman"}
+                          {!props.icare && items.title}
+                        </h4>
                    </div>
                 ))}
             </Slider>

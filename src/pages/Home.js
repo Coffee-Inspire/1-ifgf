@@ -1,3 +1,10 @@
+// importing library from react
+import {useState,useEffect} from 'react';
+
+// importing library from react redux
+import {useDispatch} from 'react-redux';
+import {getEventAction} from '../redux/actions/event.actions';
+
 // importing react-bootstrap tags
 import {Container} from 'react-bootstrap';
 
