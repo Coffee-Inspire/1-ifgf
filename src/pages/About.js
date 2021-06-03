@@ -1,5 +1,12 @@
-// importing react-bootstrap tag(s)
+// importing use state
+import {useState,useEffect} from 'react';
+
+// importing react-bootstrap tag
 import {Container} from 'react-bootstrap';
+
+// importing react redux library
+import {useDispatch} from 'react-redux';
+import {getAboutAction} from "../redux/actions/about.actions";
 
 // importing images for banner
 import aboutImage from '../assets/images/about.jpg';
@@ -7,51 +14,33 @@ import aboutImage from '../assets/images/about.jpg';
 // importing banner component
 import Banner from '../components/molecules/Banner';
 
-// importing images for about us content(s)
-import aboutContentImage2 from '../assets/images/about-content-2.jpg'
-
 // importing about us content(s)
 import AboutContent2 from '../components/templates/AboutContent2';
 
 function About() {
 
-    // inputing text for about us content(s)
-    let word =  `God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
-                 to show love and Compassion because he is a GOD of Covenant,
-                 who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
-                 made into champions by the promises of His Word.
-                `;
-    // mock data
-    let DUMMY = [
-        {
-            contentImage : aboutContentImage2,
-            contentTitle : "our passion",
-            contentText: word,
-            contentYearStart :"2000" ,
-            contentYearEnd:"2002" ,
-        },
-        {
-            contentImage : aboutContentImage2,
-            contentTitle : "our church",
-            contentText: word,
-            contentYearStart :"2002" ,
-            contentYearEnd:"Present" ,
-        }
-    ];
+    const dispatch = useDispatch();
+    // Storing content data from dispatch into state
+    const [FormEdit, setFormEdit] = useState([]);
+
+    // Dispatch to redux for data request
+    useEffect(() => {
+        dispatch(getAboutAction(setFormEdit))
+    }, [dispatch])
 
     return (
         <Container fluid>
                 
             <Banner bannerImage={aboutImage} style1={true} title={"about us"} active={"about"}  />
-            {DUMMY && 
-                DUMMY.map((items,index)=>(
+            {FormEdit && 
+                FormEdit.map((items,index)=>(
                  <AboutContent2
                     key={index}
-                    image={items.contentImage} 
-                    title={items.contentTitle} 
-                    word={items.contentText}
-                    yearStart={items.contentYearStart} 
-                    yearEnd={items.contentYearEnd}
+                    image={items.image} 
+                    title={items.title} 
+                    word={items.text}
+                    yearStart={items.yearStart} 
+                    yearEnd={items.yearEnd}
                 />
                 ))
             }

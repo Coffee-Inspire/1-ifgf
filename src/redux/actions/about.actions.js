@@ -30,7 +30,7 @@ export const getAboutAction = (setFormEdit) => (dispatch) => {
     return axios
             .get('http://api.yoshi.erwinata.com/about')
             .then(result => {
-                setFormEdit(...result.data);
+                setFormEdit(result.data);
                 dispatch(success(result.data));
             })
             .catch(err => dispatch(failed(err)))

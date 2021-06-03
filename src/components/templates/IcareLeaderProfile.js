@@ -30,7 +30,7 @@ function IcareLeaderProfile(props) {
                         </Col>
                         <Col className="border-bottom border-dark mb-5 align-self-center" xs={11} lg={12}>
                             <h2 className="">Mobile Phone</h2>
-                            <h2 className="fw-light">{props.data.number}</h2>
+                            <h2 className="fw-light">+{props.data.number}</h2>
                         </Col>
                         <Col className="align-self-center align-self-lg-start" xs={11} lg={6}>
                             <ButtonCustom word={"join with us !"} buttonLink={whatsappAPI} newPage={true}/>

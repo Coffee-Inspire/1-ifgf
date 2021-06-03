@@ -24,7 +24,7 @@ import CenterButton from '../components/molecules/CenterButton';
 function IfgfYouth() {
 
     const dispatch = useDispatch();
-    // Storing leader data from dispatch into state
+    // Storing event data from dispatch into state
     const [FormEdit, setFormEdit] = useState([]);
     // Storing category data from dispatch into state
     const [FormEdit2, setFormEdit2] = useState({});
