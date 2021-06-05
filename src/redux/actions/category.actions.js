@@ -4,6 +4,7 @@ export const INIT = "INIT";
 export const REQUEST = "REQUEST";
 export const FAILED = "FAILED";
 export const SUCCESS = "SUCCESS";
+export const EDIT_SUCCESS = "EDIT_SUCCESS";
 
 export const init = () => {
     return {
@@ -21,6 +22,13 @@ export const success = (data) => {
     return {
         type: SUCCESS,
         data: data
+    };
+};
+
+export const editSuccess = (data) => {
+    return {
+        type: EDIT_SUCCESS,
+        payload: data
     };
 };
 
@@ -100,6 +108,10 @@ export const editDataAction = (setShowProgressBar, id, text, desc, img, formEdit
                 }
             })
             .then(result => {
+                if(result.data.status === "Token is Invalid"){
+                    window.location = "/admin";
+                }
+                
                 setFormEdit({
                     ...formEdit,
                     ["text" + result.data.name.charAt(0).toUpperCase() + result.data.name.slice(1)] : result.data.text,
@@ -116,7 +128,7 @@ export const editDataAction = (setShowProgressBar, id, text, desc, img, formEdit
                     showIfgfkids: false,
                 });
                 // console.log("result ", result.data);
-                dispatch(success());
+                dispatch(editSuccess());
             })
             .catch(err => 
                 // console.log(err)

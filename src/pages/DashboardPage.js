@@ -5,6 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 import NavAdminSide from '../components/organisms/NavAdminSide';
 import DashHomePage from '../components/organisms/DashHomePage';
 import DashIcare from '../components/organisms/DashIcare';
+import DashProfile from '../components/organisms/DashProfile';
+import DashAdmin from '../components/organisms/DashAdmin';
 
 function DashboardPage() {
     return (
@@ -29,7 +31,10 @@ function DashboardPage() {
                     {/* <DashHomePage /> */}
                 </Route>
                 <Route path="/dashboard/DashProfile/">
-                    {/* <DashHomePage /> */}
+                    <DashProfile />
+                </Route>
+                <Route path="/dashboard/DashAdmin/">
+                    <DashAdmin />
                 </Route>
             </Switch>
                 {/* <Col xs={12} className="w-100 ">

@@ -126,11 +126,16 @@ function DashHomePage() {
                                 onChange={(e) => valueChange(e)}
                             />
                             <Button onClick={() => setShowProgressBar({...showProgressBar, showHome : true})} type="submit" variant="primary" disabled={(categoryData.isLoading || imageHome.disable)}>
-                                {(categoryData.isLoading || imageHome.disable) ? "Saving..." : "Save"}
+                                {(categoryData.isLoading) ? "Saving..." : "Save"}
                             </Button>
                             {categoryData.isLoading && showProgressBar.showHome &&
                                 <div className="mt-3">
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
+                                </div>
+                            }
+                            {categoryData.editSuccess &&
+                                <div className="mt-3 text-success">
+                                    Edit Success !
                                 </div>
                             }
                             {categoryData.error && 
@@ -178,11 +183,16 @@ function DashHomePage() {
                             />
                             
                             <Button onClick={() => setShowProgressBar({...showProgressBar, showLocation : true})} type="submit" variant="primary" disabled={(categoryData.isLoading || imageLocation.disable)}>
-                            {(categoryData.isLoading || imageHome.disable) ? "Saving..." : "Save"}
+                            {(categoryData.isLoading) ? "Saving..." : "Save"}
                             </Button>
                             {categoryData.isLoading && showProgressBar.showLocation &&
                                 <div className="mt-3">
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
+                                </div>
+                            }
+                            {categoryData.editSuccess &&
+                                <div className="mt-3 text-success">
+                                    Edit Success !
                                 </div>
                             }
                             {categoryData.error && 
@@ -230,11 +240,16 @@ function DashHomePage() {
                                 onChange={(e) => valueChange(e)}
                             />
                             <Button onClick={() => setShowProgressBar({...showProgressBar, showIcare : true})} type="submit" variant="primary" disabled={(categoryData.isLoading || imageIcare.disable)}>
-                                {(categoryData.isLoading || imageIcare.disable) ? "Saving..." : "Save"}
+                                {(categoryData.isLoading) ? "Saving..." : "Save"}
                             </Button>
                             {categoryData.isLoading && showProgressBar.showIcare &&
                                 <div className="mt-3">
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
+                                </div>
+                            }
+                            {categoryData.editSuccess &&
+                                <div className="mt-3 text-success">
+                                    Edit Success !
                                 </div>
                             }
                             {categoryData.error && 
@@ -289,6 +304,11 @@ function DashHomePage() {
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
                                 </div>
                             }
+                            {categoryData.editSuccess &&
+                                <div className="mt-3 text-success">
+                                    Edit Success !
+                                </div>
+                            }
                             {categoryData.error && 
                                 <div className="mt-3 text-danger">
                                     Error Edit Failed !
@@ -339,6 +359,11 @@ function DashHomePage() {
                             {categoryData.isLoading && showProgressBar.showIfgfkids &&
                                 <div className="mt-3">
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
+                                </div>
+                            }
+                            {categoryData.editSuccess &&
+                                <div className="mt-3 text-success">
+                                    Edit Success !
                                 </div>
                             }
                             {categoryData.error && 

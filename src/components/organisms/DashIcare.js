@@ -8,7 +8,7 @@ import FormGroup from '../molecules/FormGroup';
 import FormGroupArea from '../molecules/FormGroupArea';
 import FormGroupImage from '../molecules/FormGroupImage';
 
-import { getIcareAction } from '../../redux/actions/icare.actions';
+import { editIcareAction, getIcareAction } from '../../redux/actions/icare.actions';
 
 function DashIcare() {
     const dispatch = useDispatch();
@@ -17,6 +17,7 @@ function DashIcare() {
     const [formEdit, setFormEdit] = useState([]);
 
     const valueChange = (e, index) => {
+        
         let newArray = formEdit.map((item, num) => {
             if(index === num){
                 item[e.target.name] = e.target.value;
@@ -89,42 +90,39 @@ function DashIcare() {
                         {
                             let title = "";
                             let image = "";
-                            if(item.category == "icareyouth"){
+                            let setImage = "";
+                            if(item.category === "icareyouth"){
                                 title = "Icare For Youth";
                                 image = imageIcareyouth;
-                            }else if(item.category == "icaremen"){
+                                setImage = setImageicareyouth;
+
+                            }else if(item.category === "icaremen"){
                                 title = "Icare For Men";
-                                image = imageIcaremen
+                                image = imageIcaremen;
+                                setImage = setImageicaremen;
+
                             }else {
                                 title = "Icare For Woman";
-                                image = imageIcarewoman
+                                image = imageIcarewoman;
+                                setImage = setImageicarewoman;
                             }
 
                         return (
                             <Col key={index} xs={12} md={8} lg={7} xl={5} className="mb-5">
-                                {/* {item.category == "icareyouth" ?
-                                    <DashText word={"Icare For Youth Details"} />
-                                :
-                                item.category == "icaremen" ?
-                                    <DashText word={"Icare For Men Details"} />
-                                :
-                                    <DashText word={"Icare For Woman Details"} />
-                                } */}
-
                                 <DashText word={ title + " Details"} />
                                 <div className="">
                                 <Card className="mb-3 dashImagePotraitFrame">
-                                <Card.Img variant="top" className="dashImagePotrait" src={`/${formEdit.image}?${hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="/uploads/imgNotFoundPotrait.jpg"}} />
+                                <Card.Img variant="top" className="dashImagePotrait" src={`${item.image}?${hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="/uploads/imgNotFoundPotrait.jpg"}} />
                                 <Card.Header className="text-center">
                                     <Card.Title>Preview Image Leader</Card.Title>
                                 </Card.Header>
                                 </Card>
                                 </div>
-                                <Form onSubmit={(e) => {}}>
+                                <Form onSubmit={(e) => dispatch(editIcareAction(e, image, setProgressBar, setShowProgressBar, formEdit[index], formEdit, setFormEdit, setHash))}>
                                     <FormGroupImage 
-                                        label={ title + " Image (Upload a image from your device, jpg or png at least 1000px x 500px for better result)"}
+                                        label={ title + " Image (Upload a image from your device)"}
                                         image={image}
-                                        setImage={"setImage"+item.category}
+                                        setImage={setImage}
                                         
                                     />
                                     <FormGroup 
@@ -145,12 +143,17 @@ function DashIcare() {
                                         value={item.text}
                                         onChange={(e) => valueChange(e, index)}
                                     />
-                                    <Button onClick={() => setShowProgressBar({...showProgressBar, [item.category] : true})} type="submit" variant="primary" disabled={(icareData.isLoading || ["image" + item.category].disable)}>
-                                        {(icareData.isLoading || ["image" + item.category].disable) ? "Saving..." : "Save"}
+                                    <Button onClick={() => setShowProgressBar({...showProgressBar, [item.category] : true})} type="submit" variant="primary" disabled={(icareData.isLoading || image.disable)}>
+                                        {(icareData.isLoading) ? "Saving..." : "Save"}
                                     </Button>
                                     {icareData.isLoading && showProgressBar[item.category] &&
                                         <div className="mt-3">
                                             <ProgressBar animated striped variant="primary" className="" now={progressBar} />
+                                        </div>
+                                    }
+                                    {icareData.editSuccess &&
+                                        <div className="mt-3 text-success">
+                                            Edit Success !
                                         </div>
                                     }
                                     {icareData.error && 

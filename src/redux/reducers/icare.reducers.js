@@ -1,4 +1,4 @@
-import { INIT, REQUEST, FAILED, SUCCESS } from '../actions/icare.actions'
+import { INIT, REQUEST, FAILED, SUCCESS, EDIT_SUCCESS } from '../actions/icare.actions'
 
 const initialState = {
     data : [],
@@ -19,6 +19,7 @@ const icare = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
+                editSuccess : false,
             };
 
         case FAILED:
@@ -26,6 +27,7 @@ const icare = (state = initialState, action) => {
                 ...state,
                 error: true,
                 isLoading: false,
+                editSuccess : false,
                 isInit: false,
             };
 
@@ -35,6 +37,14 @@ const icare = (state = initialState, action) => {
                 data: action.data,
                 isLoading: false,
                 isInit: false,
+                error: false,
+            }
+
+        case EDIT_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                editSuccess : true,
                 error: false,
             }
 
