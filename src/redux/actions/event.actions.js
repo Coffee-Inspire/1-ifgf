@@ -1,8 +1,16 @@
 import axios from 'axios';
 
+export const INIT = "INIT";
 export const REQUEST = "REQUEST";
 export const FAILED = "FAILED";
 export const SUCCESS = "SUCCESS";
+export const EDIT_SUCCESS = "EDIT_SUCCESS";
+
+export const init = () => {
+    return {
+        type: INIT,
+    };
+};
 
 export const request = () => {
     return {
@@ -17,6 +25,13 @@ export const success = (data) => {
     };
 };
 
+export const editSuccess = (data) => {
+    return {
+        type: EDIT_SUCCESS,
+        payload: data
+    };
+};
+
 export const failed = (err) => {
     return {
         type: FAILED,
@@ -25,7 +40,7 @@ export const failed = (err) => {
 };
 
 export const getEventAction = (setFormEdit) => (dispatch) => {
-    dispatch(request());
+    dispatch(init());
 
     return axios
             .get('http://api.yoshi.erwinata.com/event')
@@ -35,3 +50,28 @@ export const getEventAction = (setFormEdit) => (dispatch) => {
             })
             .catch(err => dispatch(failed(err)))
 };
+
+export const editEventAction = (e, id, data) => (dispatch) => {
+    e.preventDefault();
+    dispatch(request());
+
+    console.log(data);
+
+    return axios
+            .put('http://api.yoshi.erwinata.com/event/'+id, data ,{
+                headers: {
+                    Authorization: localStorage.ifgfToken
+                }
+            })
+            .then(result => {
+                if(result.data.status === "Token is Invalid"){
+                    window.location = "/admin";
+                }
+
+                dispatch(editSuccess());
+            })
+            .catch(err => 
+                // console.log(err)
+                dispatch(failed())
+            );
+}

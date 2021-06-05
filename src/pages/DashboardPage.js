@@ -7,6 +7,7 @@ import DashHomePage from '../components/organisms/DashHomePage';
 import DashIcare from '../components/organisms/DashIcare';
 import DashProfile from '../components/organisms/DashProfile';
 import DashAdmin from '../components/organisms/DashAdmin';
+import DashEvent from '../components/organisms/DashEvent';
 
 function DashboardPage() {
     return (
@@ -25,7 +26,7 @@ function DashboardPage() {
                     <DashIcare />
                 </Route>
                 <Route path="/dashboard/DashEvent/">
-                    {/* <DashHomePage /> */}
+                    <DashEvent />
                 </Route>
                 <Route path="/dashboard/DashAbout/">
                     {/* <DashHomePage /> */}

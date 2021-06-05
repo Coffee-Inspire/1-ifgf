@@ -4,6 +4,7 @@ const initialState = {
     data : [],
     isInit : false,
     isLoading : false,
+    editSuccess : false,
     error: false,
 };
 
