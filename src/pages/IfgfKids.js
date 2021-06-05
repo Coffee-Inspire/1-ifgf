@@ -56,9 +56,8 @@ function IfgfKids() {
             <CenterText word={FormEdit2.descIfgfkids}/>
             <Event title={eventHeadingTitle} data={FormEditIFGFKids} setEventText={setEventText}/>
             {FormEditIFGFKids.length>0 && <CenterText word={eventText} />}
-            {FormEditIFGFKids.length>0 && <CenterButton word={"join with us !"}/>}
-            <CenterButton word={"contact us"} buttonLink={"/contactus"}/>
-
+            {FormEditIFGFKids.length>0 ? <CenterButton word={"join with us !"}/> :  <CenterButton word={"contact us"} buttonLink={"/contactus"}/> }
+           
         </Container>
     )
 }

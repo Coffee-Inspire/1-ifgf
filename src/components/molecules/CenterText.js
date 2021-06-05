@@ -1,6 +1,8 @@
 // importing react-bootstrap tagw
 import {Col} from 'react-bootstrap';
 
+import Skeleton from 'react-loading-skeleton';
+
 function CenterText(props) {
     return (
             <div className={props.decreaseSpace 
@@ -10,7 +12,7 @@ function CenterText(props) {
             >
                 <Col lg={8}>
                     <h4 className={props.colorWhite ? "text-white" : "" }>
-                        {props.word}
+                        {props.word || <Skeleton count={3} />}
                     </h4>
                 </Col>
             </div>
