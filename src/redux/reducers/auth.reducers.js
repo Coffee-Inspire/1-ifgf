@@ -1,14 +1,16 @@
-import { AUTH_REQUEST, AUTH_FAILED, LOGIN_SUCCESS, LOGOUT } from '../actions/auth.actions'
+import { AUTH_REQUEST, AUTH_FAILED, LOGIN_SUCCESS, EDIT_SUCCESS, LOGOUT } from '../actions/auth.actions'
 
 const token = localStorage.ifgfToken;
 
 const initialState = (token !== undefined && token !== null) ? {
     isLogged: true,
     isLoading : false,
+    editSuccess : false,
     error: false,
 } : {
     isLogged: false,
     isLoading : false,
+    editSucess : false,
     error: false,
 }
 
@@ -18,6 +20,7 @@ const auth = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
+                editSuccess : false,
             };
 
         case AUTH_FAILED:
@@ -25,6 +28,7 @@ const auth = (state = initialState, action) => {
                 ...state,
                 error: true,
                 isLoading: false,
+                editSuccess : false,
             };
 
         case LOGIN_SUCCESS:
@@ -35,11 +39,20 @@ const auth = (state = initialState, action) => {
                 error: false,
             }
 
+        case EDIT_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                editSuccess : true,
+                error: false,
+            }
+
         case LOGOUT:
             return {
                 ...state,
                 isLogged: false,
                 isLoading: false,
+                editSuccess : false,
                 error: false,
             }
 

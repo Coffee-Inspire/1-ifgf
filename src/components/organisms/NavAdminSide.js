@@ -1,8 +1,17 @@
 import React from 'react'
 
 import { Nav, Navbar } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+
+import { logoutAction } from '../../redux/actions/auth.actions';
 
 function NavAdminSide() {
+    const dispatch = useDispatch();
+
+    const logoutHandle = () => {
+        dispatch(logoutAction());
+    }
+
     return (
 
         <Navbar sticky="top" bg="dark" variant="dark" expand="lg" className="px-3 px-lg-4 vh-100 align-items-end flex-column flex-nowrap">
@@ -17,6 +26,8 @@ function NavAdminSide() {
             <Nav.Link href="/dashboard/DashEvent">Event</Nav.Link>
             <Nav.Link href="/dashboard/DashAbout">About Us Post</Nav.Link>
             <Nav.Link href="/dashboard/DashProfile">Profile Web</Nav.Link>
+            <Nav.Link href="/dashboard/DashAdmin">Change Password Admin</Nav.Link>
+            <Nav.Link onClick={() => logoutHandle()}>Logout</Nav.Link>
             </Nav>
         </Navbar.Collapse>
         </Navbar>
