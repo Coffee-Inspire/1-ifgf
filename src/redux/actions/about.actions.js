@@ -1,8 +1,16 @@
 import axios from 'axios';
 
+export const INIT = "INIT";
 export const REQUEST = "REQUEST";
 export const FAILED = "FAILED";
 export const SUCCESS = "SUCCESS";
+export const EDIT_SUCCESS = "EDIT_SUCCESS";
+
+export const init = () => {
+    return {
+        type: INIT,
+    };
+};
 
 export const request = () => {
     return {
@@ -17,6 +25,13 @@ export const success = (data) => {
     };
 };
 
+export const editSuccess = (data) => {
+    return {
+        type: EDIT_SUCCESS,
+        payload: data
+    };
+};
+
 export const failed = (err) => {
     return {
         type: FAILED,
@@ -25,7 +40,7 @@ export const failed = (err) => {
 };
 
 export const getAboutAction = (setFormEdit) => (dispatch) => {
-    dispatch(request());
+    dispatch(init());
 
     return axios
             .get('http://api.yoshi.erwinata.com/about')

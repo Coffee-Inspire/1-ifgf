@@ -116,7 +116,7 @@ export const editAdminAction = (e, currentEmail, formEdit, setFormEdit) => (disp
                 }
             })
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 if(result.data.error){
                     dispatch(authFailed());
                 } else{
