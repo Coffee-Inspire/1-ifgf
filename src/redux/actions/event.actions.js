@@ -51,6 +51,27 @@ export const getEventAction = (setFormEdit) => (dispatch) => {
             .catch(err => dispatch(failed(err)))
 };
 
-export const editEventAction = () => (dispatch) => {
+export const editEventAction = (e, id, data) => (dispatch) => {
+    e.preventDefault();
+    dispatch(request());
 
+    console.log(data);
+
+    return axios
+            .put('http://api.yoshi.erwinata.com/event/'+id, data ,{
+                headers: {
+                    Authorization: localStorage.ifgfToken
+                }
+            })
+            .then(result => {
+                if(result.data.status === "Token is Invalid"){
+                    window.location = "/admin";
+                }
+
+                dispatch(editSuccess());
+            })
+            .catch(err => 
+                // console.log(err)
+                dispatch(failed())
+            );
 }

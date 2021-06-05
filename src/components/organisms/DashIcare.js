@@ -16,6 +16,8 @@ function DashIcare() {
 
     const [formEdit, setFormEdit] = useState([]);
 
+    const [editStatus, setEditStatus] = useState({})
+
     const valueChange = (e, index) => {
         
         let newArray = formEdit.map((item, num) => {
@@ -70,6 +72,7 @@ function DashIcare() {
     }, [dispatch])
 
     // console.log(formEdit);
+    // console.log(editStatus);
 
     return (
         <>
@@ -143,7 +146,10 @@ function DashIcare() {
                                         value={item.text}
                                         onChange={(e) => valueChange(e, index)}
                                     />
-                                    <Button onClick={() => setShowProgressBar({...showProgressBar, [item.category] : true})} type="submit" variant="primary" disabled={(icareData.isLoading || image.disable)}>
+                                    <Button onClick={() => {
+                                        setShowProgressBar({...showProgressBar, [item.category] : true});
+                                        setEditStatus({...editStatus, [index] : true});
+                                        }} type="submit" variant="primary" disabled={(icareData.isLoading || image.disable)}>
                                         {(icareData.isLoading) ? "Saving..." : "Save"}
                                     </Button>
                                     {icareData.isLoading && showProgressBar[item.category] &&
@@ -151,12 +157,12 @@ function DashIcare() {
                                             <ProgressBar animated striped variant="primary" className="" now={progressBar} />
                                         </div>
                                     }
-                                    {icareData.editSuccess &&
+                                    {icareData.editSuccess && editStatus[index] &&
                                         <div className="mt-3 text-success">
                                             Edit Success !
                                         </div>
                                     }
-                                    {icareData.error && 
+                                    {icareData.error &&
                                         <div className="mt-3 text-danger">
                                             Error Edit Failed !
                                         </div>

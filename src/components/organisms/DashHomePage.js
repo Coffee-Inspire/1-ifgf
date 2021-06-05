@@ -14,7 +14,9 @@ function DashHomePage() {
     const dispatch = useDispatch();
     const categoryData = useSelector(state => state.category);
 
-    const [formEdit, setFormEdit] = useState({})
+    const [formEdit, setFormEdit] = useState({});
+
+    const [editStatus, setEditStatus] = useState({});
 
     const valueChange = (e) => {
         setFormEdit({
@@ -125,7 +127,10 @@ function DashHomePage() {
                                 value={formEdit.descHome}
                                 onChange={(e) => valueChange(e)}
                             />
-                            <Button onClick={() => setShowProgressBar({...showProgressBar, showHome : true})} type="submit" variant="primary" disabled={(categoryData.isLoading || imageHome.disable)}>
+                            <Button onClick={() => {
+                                setShowProgressBar({...showProgressBar, showHome : true});
+                                setEditStatus({...editStatus, [formEdit.idHome] : true});
+                                }} type="submit" variant="primary" disabled={(categoryData.isLoading || imageHome.disable)}>
                                 {(categoryData.isLoading) ? "Saving..." : "Save"}
                             </Button>
                             {categoryData.isLoading && showProgressBar.showHome &&
@@ -133,7 +138,7 @@ function DashHomePage() {
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
                                 </div>
                             }
-                            {categoryData.editSuccess &&
+                            {categoryData.editSuccess && editStatus[formEdit.idHome] &&
                                 <div className="mt-3 text-success">
                                     Edit Success !
                                 </div>
@@ -182,7 +187,10 @@ function DashHomePage() {
                                 onChange={(e) => valueChange(e)}
                             />
                             
-                            <Button onClick={() => setShowProgressBar({...showProgressBar, showLocation : true})} type="submit" variant="primary" disabled={(categoryData.isLoading || imageLocation.disable)}>
+                            <Button onClick={() => {
+                                setShowProgressBar({...showProgressBar, showLocation : true});
+                                setEditStatus({...editStatus, [formEdit.idLocation] : true});
+                                }} type="submit" variant="primary" disabled={(categoryData.isLoading || imageLocation.disable)}>
                             {(categoryData.isLoading) ? "Saving..." : "Save"}
                             </Button>
                             {categoryData.isLoading && showProgressBar.showLocation &&
@@ -190,7 +198,7 @@ function DashHomePage() {
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
                                 </div>
                             }
-                            {categoryData.editSuccess &&
+                            {categoryData.editSuccess && editStatus[formEdit.idLocation] &&
                                 <div className="mt-3 text-success">
                                     Edit Success !
                                 </div>
@@ -239,7 +247,10 @@ function DashHomePage() {
                                 value={formEdit.descIcare}
                                 onChange={(e) => valueChange(e)}
                             />
-                            <Button onClick={() => setShowProgressBar({...showProgressBar, showIcare : true})} type="submit" variant="primary" disabled={(categoryData.isLoading || imageIcare.disable)}>
+                            <Button onClick={() => {
+                                setShowProgressBar({...showProgressBar, showIcare : true});
+                                setEditStatus({...editStatus, [formEdit.idIcare] : true});
+                                }} type="submit" variant="primary" disabled={(categoryData.isLoading || imageIcare.disable)}>
                                 {(categoryData.isLoading) ? "Saving..." : "Save"}
                             </Button>
                             {categoryData.isLoading && showProgressBar.showIcare &&
@@ -247,7 +258,7 @@ function DashHomePage() {
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
                                 </div>
                             }
-                            {categoryData.editSuccess &&
+                            {categoryData.editSuccess && editStatus[formEdit.idIcare] &&
                                 <div className="mt-3 text-success">
                                     Edit Success !
                                 </div>
@@ -296,7 +307,10 @@ function DashHomePage() {
                                 value={formEdit.descIfgfyouth}
                                 onChange={(e) => valueChange(e)}
                             />
-                            <Button onClick={() => setShowProgressBar({...showProgressBar, showIfgfyouth : true})} type="submit" variant="primary" disabled={(categoryData.isLoading || imageIcare.disable)}>
+                            <Button onClick={() => {
+                                setShowProgressBar({...showProgressBar, showIfgfyouth : true});
+                                setEditStatus({...editStatus, [formEdit.idIfgfyouth] : true});
+                                }} type="submit" variant="primary" disabled={(categoryData.isLoading || imageIcare.disable)}>
                                 {(categoryData.isLoading || imageIfgfyouth.disable) ? "Saving..." : "Save"}
                             </Button>
                             {categoryData.isLoading && showProgressBar.showIfgfyouth &&
@@ -304,7 +318,7 @@ function DashHomePage() {
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
                                 </div>
                             }
-                            {categoryData.editSuccess &&
+                            {categoryData.editSuccess && editStatus[formEdit.idIfgfyouth] &&
                                 <div className="mt-3 text-success">
                                     Edit Success !
                                 </div>
@@ -353,7 +367,10 @@ function DashHomePage() {
                                 value={formEdit.descIfgfkids}
                                 onChange={(e) => valueChange(e)}
                             />
-                            <Button onClick={() => setShowProgressBar({...showProgressBar, showIfgfkids : true})} type="submit" variant="primary" disabled={(categoryData.isLoading || imageIcare.disable)}>
+                            <Button onClick={() => {
+                                setShowProgressBar({...showProgressBar, showIfgfkids : true});
+                                setEditStatus({...editStatus, [formEdit.idIfgfkids] : true});
+                                }} type="submit" variant="primary" disabled={(categoryData.isLoading || imageIcare.disable)}>
                                 {(categoryData.isLoading || imageIfgfkids.disable) ? "Saving..." : "Save"}
                             </Button>
                             {categoryData.isLoading && showProgressBar.showIfgfkids &&
@@ -361,7 +378,7 @@ function DashHomePage() {
                                     <ProgressBar animated striped variant="primary" className="" now={progressBar} />
                                 </div>
                             }
-                            {categoryData.editSuccess &&
+                            {categoryData.editSuccess && editStatus[formEdit.idIfgfkids] &&
                                 <div className="mt-3 text-success">
                                     Edit Success !
                                 </div>
