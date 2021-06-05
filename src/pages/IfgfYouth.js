@@ -56,8 +56,8 @@ function IfgfYouth() {
             <CenterText word={FormEdit2.descIfgfyouth}/>
             <Event title={eventHeadingTitle} data={FormEditIFGFYouth} setEventText={setEventText}/>
             {FormEditIFGFYouth.length>0 && <CenterText word={eventText} />}
-            {FormEditIFGFYouth.length>0 && <CenterButton word={"join with us !"}/>}
-            <CenterButton word={"contact us"}  buttonLink={"/contactus"}/>
+            {FormEditIFGFYouth.length>0 ? <CenterButton word={"join with us !"}/> : <CenterButton word={"contact us"}  buttonLink={"/contactus"}/> }
+            
             
         </Container>
     )

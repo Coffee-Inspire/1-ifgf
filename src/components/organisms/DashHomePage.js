@@ -91,7 +91,7 @@ function DashHomePage() {
                     {/* Home Page */}
                     <DashTitle word={"Home Page Details"} />
                     <hr></hr>
-                    <Col xs={12} md={8} lg={5} className="mb-5">
+                    <Col xs={12} md={8} lg={7} xl={5} className="mb-5">
                         <DashText word={"Home Details"} />
                         <Card className="w-100 mb-3">
                         <Card.Img variant="top" className="dashImage" src={`${formEdit.imgHome}?${formEdit.hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="uploads/imgNotFound.jpg"}} />
@@ -143,7 +143,7 @@ function DashHomePage() {
 
                     {/* Location Page */}
                     <hr></hr>
-                    <Col xs={12} md={8} lg={5} className="mb-5">
+                    <Col xs={12} md={8} lg={7} xl={5} className="mb-5">
                         <DashText word={"Location Details"} />
                         <Card className="w-100 mb-3">
                         <Card.Img variant="top" className="dashImage" src={`${formEdit.imgLocation}?${formEdit.hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="uploads/imgNotFound.jpg"}} />
@@ -195,7 +195,7 @@ function DashHomePage() {
 
                     {/* Icare Page */}
                     <hr></hr>
-                    <Col xs={12} md={8} lg={5} className="mb-5">
+                    <Col xs={12} md={8} lg={7} xl={5} className="mb-5">
                         <DashText word={"Icare Details"} />
                         <Card className="w-100 mb-3">
                         <Card.Img variant="top" className="dashImage" src={`${formEdit.imgIcare}?${formEdit.hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="uploads/imgNotFound.jpg"}} />
@@ -247,7 +247,7 @@ function DashHomePage() {
 
                     {/* Ifgf Youth */}
                     <hr></hr>
-                    <Col xs={12} md={8} lg={5} className="mb-5">
+                    <Col xs={12} md={8} lg={7} xl={5} className="mb-5">
                         <DashText word={"IFGF Youth Details"} />
                         <Card className="w-100 mb-3">
                         <Card.Img variant="top" className="dashImage" src={`${formEdit.imgIfgfyouth}?${formEdit.hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="uploads/imgNotFound.jpg"}} />
@@ -299,7 +299,7 @@ function DashHomePage() {
 
                     {/* Ifgf Kids */}
                     <hr></hr>
-                    <Col xs={12} md={8} lg={5} className="mb-5">
+                    <Col xs={12} md={8} lg={7} xl={5} className="mb-5">
                         <DashText word={"IFGF Kids Details"} />
                         <Card className="w-100 mb-3">
                         <Card.Img variant="top" className="dashImage" src={`${formEdit.imgIfgfkids}?${formEdit.hash}`} onError={(e)=>{e.target.onerror = null; e.target.src="uploads/imgNotFound.jpg"}} />

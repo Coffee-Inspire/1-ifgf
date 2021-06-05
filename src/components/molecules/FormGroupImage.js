@@ -2,7 +2,7 @@ import React from 'react'
 import { Form } from 'react-bootstrap';
 
 function FormGroupImage(props) {
-    console.log(props)
+    // console.log(props)
     const checkFile = (e) =>{
         if(e.target.files && e.target.files[0]){
             if(e.target.files[0].type === "image/jpeg" || e.target.files[0].type === "image/png"){
