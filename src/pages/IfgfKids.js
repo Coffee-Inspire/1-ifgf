@@ -2,7 +2,7 @@
 import {useState,useEffect} from 'react';
 
 // importing react redux library
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {getEventAction} from '../redux/actions/event.actions';
 import {getCategoryAction} from "../redux/actions/category.actions";
 
@@ -21,6 +21,12 @@ import Event from '../components/templates/Event';
 // importing centered position button component
 import CenterButton from '../components/molecules/CenterButton';
 
+// importing skeleton loading
+import SkeletonEvent from '../components/atoms/SkeletonEvent';
+import SkeletonDesc from '../components/atoms/SkeletonDesc';
+import SkeletonCenterButton from '../components/atoms/SkeletonCenterButton';
+import SkeletonBanner from '../components/atoms/SkeletonBanner';
+
 function IfgfKids() {
 
     const dispatch = useDispatch();
@@ -28,12 +34,11 @@ function IfgfKids() {
     const [FormEdit, setFormEdit] = useState([]);
     // Storing category data from dispatch into state
     const [FormEdit2, setFormEdit2] = useState({});
+    const statusEvent = useSelector(state => state.event)
+    const statusCategory = useSelector(state => state.category)
 
     // Function for filtering IFGF Kids Events
     let FormEditIFGFKids = FormEdit.filter(function(i){return i.category==="ifgfkids"});
-
-    // inputing title for event heading
-    let eventHeadingTitle = `kids event's`;
 
     // declaring state for hovering event
     const [eventText, setEventText] = useState(null);
@@ -51,12 +56,17 @@ function IfgfKids() {
 
     return (
         <Container fluid>
-
-            <Banner bannerImage={FormEdit2.imgIfgfkids} title={"ifgf kids"} text={FormEdit2.textIfgfkids} style2={true}/>
-            <CenterText word={FormEdit2.descIfgfkids}/>
-            <Event title={eventHeadingTitle} data={FormEditIFGFKids} setEventText={setEventText}/>
-            {FormEditIFGFKids.length>0 && <CenterText word={eventText} />}
-            {FormEditIFGFKids.length>0 ? <CenterButton word={"join with us !"}/> :  <CenterButton word={"contact us"} buttonLink={"/contactus"}/> }
+            
+            {statusCategory.isInit &&  <SkeletonBanner/>}
+            {!statusCategory.isInit && <Banner bannerImage={FormEdit2.imgIfgfkids} title={"ifgf kids"} text={FormEdit2.textIfgfkids} style2={true}/>}
+            {statusCategory.isInit && <SkeletonDesc/>}
+            {!statusCategory.isInit &&  <CenterText word={FormEdit2.descIfgfkids}/>}
+            {statusEvent.isInit && <SkeletonEvent/>}
+            {!statusEvent.isInit &&  <Event title={"kids event's"} data={FormEditIFGFKids} setEventText={setEventText}/>  }
+            {!statusEvent.isInit && <CenterText word={eventText} />}
+            {statusEvent.isInit && <SkeletonCenterButton/>}
+            {!statusEvent.isInit && FormEditIFGFKids.length>0 && <CenterButton word={"join with us !"}/> }
+            {!statusEvent.isInit && !FormEditIFGFKids.length>0 && <CenterButton word={"contact us"} buttonLink={"/contactus"}/> }
            
         </Container>
     )

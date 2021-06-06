@@ -17,6 +17,10 @@ import emblem from '../assets/images/ifgfLogoPlain.png'
 // importing home text and title component
 import HomeText from '../components/organisms/HomeText';
 
+// importing skeleton loading
+import SkeletonBanner from '../components/atoms/SkeletonBanner';
+import SkeletonHomeText from '../components/organisms/SkeletonHomeText';
+
 function Home() {
 
     const dispatch = useDispatch();
@@ -35,8 +39,8 @@ function Home() {
     return (
         <Container fluid>
             {/* Main Banner */}
-            { !status.isInit && 
-            <>
+            {status.isInit && <SkeletonBanner/> } 
+            {!status.isInit && 
                 <Banner 
                     bannerImage={FormEdit.imgHome} 
                     style4={true} 
@@ -46,11 +50,18 @@ function Home() {
                     button2={"watch sermon"} 
                     headEmblem={emblem} 
                 /> 
+            }
+            {/* Home Text */}
+            {status.isInit && <SkeletonHomeText/> } 
+            {!status.isInit && 
                 <HomeText 
                     title={FormEdit.textHome} 
                     word={FormEdit.descHome} 
                 />
-                {/* Location Banner */}
+            } 
+            {/* Location Banner */}
+            {status.isInit && <SkeletonBanner/> } 
+            {!status.isInit && 
                 <Banner 
                     bannerImage={FormEdit.imgLocation} 
                     style4={true} 
@@ -64,7 +75,10 @@ function Home() {
                     text3={FormEdit.descLocation} 
                     tail={"a church for your family"}
                 />
-                {/* Icare Banner */}
+            } 
+            {/* Icare Banner */}
+            {status.isInit && <SkeletonBanner/> } 
+            {!status.isInit && 
                 <Banner
                     bannerImage={FormEdit.imgIcare}
                     style3={true}
@@ -73,7 +87,10 @@ function Home() {
                     buttonPortal={"search icare"}
                     buttonLink={"/icare"}                
                 />
-                {/* IFGF Youth Banner */}
+            } 
+            {/* IFGF Youth Banner */}
+            {status.isInit && <SkeletonBanner/> } 
+            {!status.isInit &&  
                 <Banner
                     bannerImage={FormEdit.imgIfgfyouth}
                     style2={true}
@@ -83,18 +100,20 @@ function Home() {
                     buttonLink={"/ifgfyouth"}
                     
                 />
-                {/* IFGF Kids Banner */}
+            } 
+            {/* IFGF Kids Banner */}
+            {status.isInit && <SkeletonBanner/> } 
+            {!status.isInit &&  
                 <Banner
                     bannerImage={FormEdit.imgIfgfkids}
                     style2={true}
                     title={"ifgf kids"}
                     text={FormEdit.textIfgfkids}
                     buttonPortal={"get connected"}
-                    buttonLink={"/ifgfkids"}
-                    
+                    buttonLink={"/ifgfkids"}  
                 />
-            </>
             } 
+            
         </Container>
     )
 }

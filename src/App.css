@@ -269,3 +269,13 @@ body {
 	height: 100%;
 	object-fit: cover;
 }
+
+.mySkeletonBannerRow{
+	margin-bottom: 95px;
+}
+
+.mySkeletonBanner {
+	position: relative;
+	top: -4px ;
+	border-radius:0 !important;
+}
