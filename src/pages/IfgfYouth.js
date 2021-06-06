@@ -2,7 +2,7 @@
 import {useState,useEffect} from 'react';
 
 // importing react redux library
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {getEventAction} from '../redux/actions/event.actions';
 import {getCategoryAction} from "../redux/actions/category.actions";
 
@@ -21,6 +21,12 @@ import Event from '../components/templates/Event';
 // importing centered position button component
 import CenterButton from '../components/molecules/CenterButton';
 
+// importing skeleton loading
+import SkeletonEvent from '../components/atoms/SkeletonEvent';
+import SkeletonDesc from '../components/atoms/SkeletonDesc';
+import SkeletonCenterButton from '../components/atoms/SkeletonCenterButton';
+import SkeletonBanner from '../components/atoms/SkeletonBanner';
+
 function IfgfYouth() {
 
     const dispatch = useDispatch();
@@ -28,6 +34,9 @@ function IfgfYouth() {
     const [FormEdit, setFormEdit] = useState([]);
     // Storing category data from dispatch into state
     const [FormEdit2, setFormEdit2] = useState({});
+    const statusEvent = useSelector(state => state.event);
+    const statusCategory = useSelector(state => state.category);
+
 
     // Function for filtering IFGF Youth Events
     let FormEditIFGFYouth = FormEdit.filter(function(i){return i.category==="ifgfyouth"});
@@ -52,11 +61,16 @@ function IfgfYouth() {
     return (
         <Container fluid>
 
-            <Banner bannerImage={FormEdit2.imgIfgfyouth} title={"ifgf youth"} text={FormEdit2.textIfgfyouth} style2={true}/>
-            <CenterText word={FormEdit2.descIfgfyouth}/>
-            <Event title={eventHeadingTitle} data={FormEditIFGFYouth} setEventText={setEventText}/>
-            {FormEditIFGFYouth.length>0 && <CenterText word={eventText} />}
-            {FormEditIFGFYouth.length>0 ? <CenterButton word={"join with us !"}/> : <CenterButton word={"contact us"}  buttonLink={"/contactus"}/> }
+            {statusCategory.isInit &&  <SkeletonBanner/>}
+            {!statusCategory.isInit &&  <Banner bannerImage={FormEdit2.imgIfgfyouth} title={"ifgf youth"} text={FormEdit2.textIfgfyouth} style2={true}/>}
+            {statusCategory.isInit && <SkeletonDesc/>}
+            {!statusCategory.isInit && <CenterText word={FormEdit2.descIfgfyouth}/>}
+            {statusEvent.isInit && <SkeletonEvent/>}     
+            {!statusEvent.isInit && <Event title={eventHeadingTitle} data={FormEditIFGFYouth} setEventText={setEventText}/>}                   
+            {!statusEvent.isInit && <CenterText word={eventText} />}  
+            {statusEvent.isInit && <SkeletonCenterButton/>}                        
+            {!statusEvent.isInit && FormEditIFGFYouth.length>0 && <CenterButton word={"join with us !"}/> }
+            {!statusEvent.isInit && !FormEditIFGFYouth.length>0 && <CenterButton word={"contact us"} buttonLink={"/contactus"}/> }
             
             
         </Container>
