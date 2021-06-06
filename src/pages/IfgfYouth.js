@@ -72,7 +72,6 @@ function IfgfYouth() {
             {!statusEvent.isInit && FormEditIFGFYouth.length>0 && <CenterButton word={"join with us !"}/> }
             {!statusEvent.isInit && !FormEditIFGFYouth.length>0 && <CenterButton word={"contact us"} buttonLink={"/contactus"}/> }
             
-            
         </Container>
     )
 }
