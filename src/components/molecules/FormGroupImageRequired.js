@@ -35,7 +35,7 @@ function FormGroupImage(props) {
         <Form.Group controlId="formBasicUpload" className="mb-3">
             <Form.Label className="fw-bold capitalize">{props.label}</Form.Label>
             <Form.File id="formcheck-api-custom" custom>
-            <Form.File.Input name="image" className={props.image.status + " form-control"} accept="image/png,image/jpeg" onChange={checkFile}/>
+            <Form.File.Input disabled={props.disabled} required name="image" className={props.image.status + " form-control"} accept="image/png,image/jpeg" onChange={checkFile}/>
             {/* <Form.File.Label data-browse="Browse">
                 Choose File
             </Form.File.Label> */}

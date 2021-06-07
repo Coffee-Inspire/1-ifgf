@@ -80,7 +80,7 @@ export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
         })
 };
 
-export const editDataAction = (setShowProgressBar, dataSend, img, formEdit, setFormEdit, setHash) => (dispatch) => {
+export const editDataAction = (e, setShowProgressBar, dataSend, img, formEdit, setFormEdit, setHash) => (dispatch) => {
 
     let data = {
         ...dataSend,
@@ -117,6 +117,9 @@ export const editDataAction = (setShowProgressBar, dataSend, img, formEdit, setF
                     ifgfmen: false,
                     ifgfwoman: false,
                 });
+
+                e.target.image.value = null;
+
                 dispatch(editSuccess());
             })
             .catch(err => 
@@ -133,11 +136,11 @@ export const editIcareAction = (e, image, setProgressBar, setShowProgressBar, da
     if(image.file !== null){
         let uploadImg = dispatch(uploadImageAction(image, setProgressBar));
         uploadImg.then(result => {
-            dispatch(editDataAction(setShowProgressBar, data, result, formEdit, setFormEdit, setHash));
+            dispatch(editDataAction(e, setShowProgressBar, data, result, formEdit, setFormEdit, setHash));
         })
         .catch(err => dispatch(failed()));
     }
     else {
-        dispatch(editDataAction(setShowProgressBar, data, "", formEdit, setFormEdit, setHash));
+        dispatch(editDataAction(e, setShowProgressBar, data, "", formEdit, setFormEdit, setHash));
     }
 };
