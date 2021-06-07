@@ -163,13 +163,23 @@ export const editAboutDataAction = (e, setShowProgressBar, formEdit,
 
         let newArray = formAboutList.map((item) => {
             if(item.id === result.data.id){
-                return data;
+                return result.data;
             }else{
                 return item;
             }
         });
 
-        setFormAboutList(newArray);
+        let sortData = newArray;
+            sortData.sort(function(a, b){
+                if(a.updated_at < b.updated_at){
+                    return 1
+                }
+                else{
+                    return -1
+                }}
+            );
+
+        setFormAboutList(sortData);
 
         dispatch(editSuccess());
     })
@@ -283,9 +293,8 @@ export const uploadImageAction = (image, setProgressBar, nextId) => (dispatch) =
     fd.append('image', image.file, image.name + nextId + "." + image.file.name.split('.').pop());
 
     return axios
-        // .post('http://yoshi.erwinata.com/php/ImageUpload.php', fd, {
-        // .post('php/ImageUpload.php', fd, {
-        .post('http://localhost:3333', fd, {
+        .post('/php/ImageUpload.php', fd, {
+        // .post('http://localhost:3333', fd, {
             headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*"
