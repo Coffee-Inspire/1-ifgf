@@ -80,6 +80,9 @@ body {
 	.myButtonNavWord {
 		font-size: 20px !important;
 	}
+	.mySkeletonLeaderImage {
+		height: 450px !important;
+	}
 }
 
 @media (max-width: 991px) {
@@ -270,12 +273,17 @@ body {
 	object-fit: cover;
 }
 
-.mySkeletonBannerRow{
+.mySkeletonBannerRow {
 	margin-bottom: 95px;
 }
 
 .mySkeletonBanner {
 	position: relative;
-	top: -4px ;
-	border-radius:0 !important;
+	top: -4px;
+	border-radius: 0 !important;
+}
+
+.mySkeletonLeaderImage {
+	height: 400px;
+	width: 300px;
 }
