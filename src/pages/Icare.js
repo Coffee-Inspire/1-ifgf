@@ -24,7 +24,6 @@ import IcareLeaderProfile from '../components/templates/IcareLeaderProfile';
 // importing skeleton loading
 import SkeletonEvent from '../components/atoms/SkeletonEvent';
 import SkeletonDesc from '../components/atoms/SkeletonDesc';
-import SkeletonCenterButton from '../components/atoms/SkeletonCenterButton';
 import SkeletonBanner from '../components/atoms/SkeletonBanner';
 import SkeletonLeaderProfile from '../components/organisms/SkeletonLeaderProfile';
 
