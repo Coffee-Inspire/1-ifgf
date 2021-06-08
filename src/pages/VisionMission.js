@@ -5,7 +5,7 @@ import {useState,useEffect} from 'react';
 import {Container} from 'react-bootstrap';
 
 // importing react redux library
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {getProfileWebAction} from "../redux/actions/profileWeb.actions";
 
 
@@ -19,11 +19,15 @@ import MissionContent from '../components/templates/MissionContent';
 // importing Vision and Mission content
 import VisionContent from '../components/templates/VisionContent';
 
+// importing skeleton loading
+import SkeletonVisionMission from '../components/organisms/SkeletonVisionMission';
+
 function VisionMission() {
 
     const dispatch = useDispatch();
     // Storing content data from dispatch into state
     const [FormEdit, setFormEdit] = useState({});
+    const status = useSelector(state => state.profileWeb)
 
     // Dispatch to redux for data request
      useEffect(() => {
@@ -35,8 +39,11 @@ function VisionMission() {
         <Container fluid>
                 
             <Banner bannerImage={aboutImage} style1={true} title={"vision & mission"} active={"visionMission"}/>
-            <VisionContent title={FormEdit.visionTitle} word={FormEdit.visionText}/>
-            <MissionContent title={FormEdit.missionTitle} word={FormEdit.missionText}/>
+            
+            {status.isInit &&  <SkeletonVisionMission title={"vision"}/>}
+            {!status.isInit &&  <VisionContent title={FormEdit.visionTitle} word={FormEdit.visionText}/>}
+            {status.isInit &&  <SkeletonVisionMission title={"mission"}/>}
+            {!status.isInit &&  <MissionContent title={FormEdit.missionTitle} word={FormEdit.missionText}/>}
 
         </Container>
     )

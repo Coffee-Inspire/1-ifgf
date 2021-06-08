@@ -45,9 +45,6 @@ export const getAboutAction = (setFormEdit, sorting=false) => (dispatch) => {
     return axios
             .get('http://api.yoshi.erwinata.com/about')
             .then(result => {
-<<<<<<< HEAD
-                setFormEdit(result.data);
-=======
 
                 if(sorting === false){
                     setFormEdit(result.data);
@@ -64,7 +61,6 @@ export const getAboutAction = (setFormEdit, sorting=false) => (dispatch) => {
                     setFormEdit(sortData);
                 }
 
->>>>>>> fa981d2312c39be2a9b83803ac97ade26872a9ec
                 dispatch(success(result.data));
             })
             .catch(err => dispatch(failed(err)))
