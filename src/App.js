@@ -1,10 +1,12 @@
+// Importing Library
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './css/my.css'
-import { useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 
+// Importing Pages
 import Navigation from './components/templates/Navigation'
 import About from './pages/About'
 import VisionMission from './pages/VisionMission';
@@ -39,7 +41,7 @@ function App() {
       </Switch>
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home/>
           </Route>
           <Route path="/admin">
             <AdminPage />

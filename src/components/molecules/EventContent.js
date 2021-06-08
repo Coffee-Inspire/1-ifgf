@@ -7,6 +7,9 @@ import Slider from 'react-slick';
 // importing image for event content
 import eventImage from  '../../assets/images/event.jpg';
 
+// importing image not found picture for handling event
+import imgNotFound from '../../assets/images/imgNotFound.jpg';
+
 function EventContent(props) {
     // slider display configuration
     const settings = {
@@ -67,9 +70,9 @@ function EventContent(props) {
                 {props.data.map((items,index)=>(
                     <div key={index} className="d-flex flex-column align-items-center">
                         <div className="eventContentImageFrame" onMouseOver={()=>props.icare ? props.setLeader(items) : props.setEventText(items.text)} >
-                            <Image
+                           <Image
                                 alt=""
-                                src={eventImage}
+                                src={eventImage ? eventImage : imgNotFound}
                                 className="eventContentImage"
                             />
                         </div>
@@ -80,7 +83,7 @@ function EventContent(props) {
                           {!props.icare && items.title}
                         </h4>
                    </div>
-                ))}
+                )) }
             </Slider>
         </Col>
     )

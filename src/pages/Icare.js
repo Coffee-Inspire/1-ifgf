@@ -2,13 +2,12 @@
 import {useState,useEffect} from 'react';
 
 // importing react redux library
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
+import {getIcareAction} from "../redux/actions/icare.actions";
+import {getCategoryAction} from "../redux/actions/category.actions";
 
 // importing react-bootstrap tags
 import {Container} from 'react-bootstrap';
-
-// importing images for banner
-import icareImage from '../assets/images/icare.jpg';
 
 // importing banner component
 import Banner from '../components/molecules/Banner';
@@ -22,31 +21,21 @@ import Event from '../components/templates/Event';
 // importing icare leader profile component
 import IcareLeaderProfile from '../components/templates/IcareLeaderProfile';
 
-// importing leader image
-import youthLeader from '../assets/images/youthLeader.jpg';
-import manLeader from '../assets/images/manLeader.jpg';
-import womanLeader from '../assets/images/womanLeader.jpg';
+// importing skeleton loading
+import SkeletonEvent from '../components/atoms/SkeletonEvent';
+import SkeletonDesc from '../components/atoms/SkeletonDesc';
+import SkeletonBanner from '../components/atoms/SkeletonBanner';
+import SkeletonLeaderProfile from '../components/organisms/SkeletonLeaderProfile';
 
-import {getIcareAction} from "../redux/actions/icare.actions";
-
-
-function Icare() {
+function Icare(props) {
 
     const dispatch = useDispatch();
-    // Store data from dispatch into state
+    // Storing leader data from dispatch into state
     const [FormEdit, setFormEdit] = useState([]);
-
-    // inputing text
-    let wordCenter = ` God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
-    to show love and Compassion because he is a GOD of Covenant,
-    who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
-    made into champions by the promises of His Word.`;
-
-    // inputing title for banner caption
-    let bannerTitle = 'Icare';
-
-    // inputing text for banner caption
-    let bannerText = 'ICare helps you to grow spiritually, and that requires more than meeting at Sunday services.';
+    // Storing category data from dispatch into state
+    const [FormEdit2, setFormEdit2] = useState({});
+    const statusLeader = useSelector(state => state.icare)
+    const statusCategory = useSelector(state => state.category)
 
     // declaring state for hovering event
     const [leader, setLeader] = useState(null);
@@ -59,15 +48,20 @@ function Icare() {
     // Dispatch to redux for data request
     useEffect(() => {
         dispatch(getIcareAction(setFormEdit))
+        dispatch(getCategoryAction(setFormEdit2))
     }, [dispatch])
 
     return (
         <Container fluid>
 
-            <Banner bannerImage={icareImage} title={bannerTitle} text={bannerText} style3={true}/>
-            <CenterText word={wordCenter}/>
-            <Event data={FormEdit} icare={true} setLeader={setLeader}/>
-            {leader && <IcareLeaderProfile data={leader}/>}
+            {statusCategory.isInit &&  <SkeletonBanner/>}
+            {!statusCategory.isInit &&  <Banner bannerImage={FormEdit2.imgIcare} title={"icare"} text={FormEdit2.textIcare} style3={true}/>}
+            {statusCategory.isInit && <SkeletonDesc/>}
+            {!statusCategory.isInit && <CenterText word={FormEdit2.descIcare}/>}
+            {statusLeader.isInit && <SkeletonEvent/>}  
+            {!statusLeader.isInit && <Event data={FormEdit} icare={true} setLeader={setLeader}/>}
+            {statusLeader.isInit && <SkeletonLeaderProfile/>}  
+            {!statusLeader.isInit && leader && <IcareLeaderProfile data={leader}/>}  
             
         </Container>
     )

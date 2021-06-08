@@ -13,6 +13,9 @@ import EmblemCustom from '../atoms/EmblemCustom';
 // importing centered text component
 import CenterText from '../molecules/CenterText';
 
+// importing image not found picture for handling event
+import imgNotFound from '../../assets/images/imgNotFound.jpg'
+
 function Banner(props) {
     return (
         <>
@@ -25,7 +28,7 @@ function Banner(props) {
                 >       
                     <Image
                         alt=""
-                        src={props.bannerImage}
+                        src={props.bannerImage ? props.bannerImage : imgNotFound}
                         className={props.style3 ? "myBannerStyle3 myImageBanner" : props.style1 ? "myBannerStyle1Image" : "myImageBanner" }
                     />
                     {props.style2 || props.style3 || props.style4 || props.style5 ? 
@@ -98,7 +101,7 @@ function Banner(props) {
                                         }
                                         <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
                                             <div className="m-3">
-                                                <ButtonCustom outlineWhite={true} word={props.button1} buttonLink={props.buttonLink1}/>
+                                                <ButtonCustom outlineWhite={true} word={props.button1}  buttonLink={props.buttonLink1} button1WidthExtend={props.button1WidthExtend && props.button1WidthExtend}/>
                                             </div>
                                             <div className="m-3">
                                                 <ButtonCustom outlineWhite={true} word={props.button2} buttonLink={props.buttonLink2} newPage={true}/>

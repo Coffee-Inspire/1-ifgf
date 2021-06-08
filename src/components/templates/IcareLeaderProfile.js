@@ -7,6 +7,9 @@ import ButtonCustom from '../atoms/ButtonCustom';
 // importing centered text component
 import CenterText from '../molecules/CenterText';
 
+// importing image not found picture for handling event
+import imgNotFoundPotrait from '../../assets/images/imgNotFoundPotrait.jpg'
+
 function IcareLeaderProfile(props) {
     // API link for whatsapp site
    let whatsappAPI = `https://api.whatsapp.com/send?phone=${props.data.number}`;
@@ -18,7 +21,7 @@ function IcareLeaderProfile(props) {
                         <div className="myIcareLeaderImageFrame" >
                             <Image
                                 alt=""
-                                src={props.data.leaderImage}
+                                src={props.data.leaderImage ? props.data.leaderImage : imgNotFoundPotrait}
                                 className="myIcareLeaderImage" 
                             />
                         </div>
@@ -30,7 +33,7 @@ function IcareLeaderProfile(props) {
                         </Col>
                         <Col className="border-bottom border-dark mb-5 align-self-center" xs={11} lg={12}>
                             <h2 className="">Mobile Phone</h2>
-                            <h2 className="fw-light">{props.data.number}</h2>
+                            <h2 className="fw-light">+{props.data.number}</h2>
                         </Col>
                         <Col className="align-self-center align-self-lg-start" xs={11} lg={6}>
                             <ButtonCustom word={"join with us !"} buttonLink={whatsappAPI} newPage={true}/>

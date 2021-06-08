@@ -1,5 +1,12 @@
+// importing use state
+import {useState,useEffect} from 'react';
+
 // importing react-bootstrap tag
 import {Container} from 'react-bootstrap';
+
+// importing react redux library
+import {useDispatch} from 'react-redux';
+import {getProfileWebAction} from "../redux/actions/profileWeb.actions";
 
 // importing images for banner
 import aboutImage from '../assets/images/about.jpg';
@@ -7,33 +14,25 @@ import aboutImage from '../assets/images/about.jpg';
 // importing banner component
 import Banner from '../components/molecules/Banner';
 
-// importing images for pastor content
-import pastorImage from '../assets/images/pastor.jpg'
-
 // importing pastor content
 import PastorContent from '../components/templates/PastorContent';
 
 function Pastor() {
 
-    // inputing text for about us content(s)
-    let word =  `God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
-                 to show love and Compassion because he is a GOD of Covenant,
-                 who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
-                 made into champions by the promises of His Word.
-                `;
-    // mock data
-    let DUMMY = {
-        pastorImage:pastorImage,
-        title:"our pastor",
-        word:word,
+    const dispatch = useDispatch();
+    // Storing content data from dispatch into state
+    const [FormEdit, setFormEdit] = useState({});
 
-    };
+    // Dispatch to redux for data request
+    useEffect(() => {
+        dispatch(getProfileWebAction(setFormEdit))
+    }, [dispatch])
 
     return (
         <Container fluid>
                 
             <Banner bannerImage={aboutImage} style1={true} title={"our pastor"} active={"pastor"} />
-            <PastorContent image={DUMMY.pastorImage} title={DUMMY.title} word={DUMMY.word} />
+            <PastorContent image={FormEdit.pastorImage} title={FormEdit.pastorName} word={FormEdit.pastorText} />
 
         </Container>
     )

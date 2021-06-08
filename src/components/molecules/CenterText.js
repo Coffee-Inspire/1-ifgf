@@ -9,7 +9,7 @@ function CenterText(props) {
                 } 
             >
                 <Col lg={8}>
-                    <h4 className={props.colorWhite ? "text-white" : "" }>
+                    <h4 className={props.colorWhite && "text-white"}>
                         {props.word}
                     </h4>
                 </Col>
