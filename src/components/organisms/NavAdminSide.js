@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 
 import { logoutAction } from '../../redux/actions/auth.actions';
 
+// import { sendEmailAction } from '../../redux/actions/email.actions';
+
 function NavAdminSide() {
     const dispatch = useDispatch();
 
@@ -28,6 +30,7 @@ function NavAdminSide() {
             <Nav.Link href="/dashboard/DashProfile">Profile Web</Nav.Link>
             <Nav.Link href="/dashboard/DashAdmin">Change Password Admin</Nav.Link>
             <Nav.Link onClick={() => logoutHandle()}>Logout</Nav.Link>
+            {/* <Nav.Link onClick={() => dispatch(sendEmailAction())}>Send Email</Nav.Link> */}
             </Nav>
         </Navbar.Collapse>
         </Navbar>

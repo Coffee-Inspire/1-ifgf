@@ -10,9 +10,10 @@ export const request = () => {
     };
 };
 
-export const success = () => {
+export const success = (msg) => {
     return {
         type: SUCCESS,
+        msg
     };
 };
 
@@ -23,24 +24,37 @@ export const failed = (err) => {
     };
 };
 
-export const sendEmailAction = (e, name, email, no, subject, msg) => (dispatch) => {
+export const sendEmailAction = (e, formEmail, setFormEmail) => (dispatch) => {
+    e.preventDefault();
     dispatch(request());
 
     let fd = new FormData();
 
-    fd.append("name", "Namaku");
-    fd.append("email", "yoshi.dharman@ti.ukdw.ac.id");
-    fd.append("no", "087839927684");
-    fd.append("subject", "Testing");
-    fd.append("msg", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaabbbbbbbbbb");
+    fd.append("name", formEmail.name);
+    fd.append("email", formEmail.email);
+    fd.append("no", formEmail.no);
+    fd.append("subject", formEmail.subject);
+    fd.append("msg", formEmail.msg);
 
     return axios.post('https://yoshi.erwinata.com/php/SendEmail.php', fd)
                 .then(result => {
-                    console.log(result);
-                    dispatch(success());
+                    // console.log(result);
+                    // console.log(result.data);
+                    if(result.data.error){
+                        dispatch(failed(result.data.error));
+                    }else{
+                        setFormEmail({
+                            name : "",
+                            email : "",
+                            no : "",
+                            subject : "",
+                            msg : "",
+                        });
+                        dispatch(success(result.data.msg));
+                    }
                 })
                 .catch(e => {
-                    dispatch(failed());
                     console.log(e);
+                    dispatch(failed("Server Error Cant Send Email !"));
                 })
 }

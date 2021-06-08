@@ -4,6 +4,8 @@ const initialState = {
     isLoading : false,
     success : false,
     error: false,
+    successText : "",
+    errorText : "",
 };
 
 const email = (state = initialState, action) => {
@@ -13,6 +15,9 @@ const email = (state = initialState, action) => {
                 ...state,
                 isLoading: true,
                 success : false,
+                error : false,
+                successText : "",
+                errorText : "",
             };
 
         case FAILED:
@@ -21,14 +26,16 @@ const email = (state = initialState, action) => {
                 error: true,
                 isLoading: false,
                 success : false,
+                errorText : action.err,
             };
 
         case SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                sucess: true,
+                success: true,
                 error: false,
+                successText : action.msg,
             }
 
         default:
