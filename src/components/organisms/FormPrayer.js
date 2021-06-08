@@ -19,7 +19,7 @@ function FormPrayer() {
 
         let msg = "Halo nama saya " + formPrayer.name + "%0a" + "Kebutuhan Doa : "+ encodeURIComponent(formPrayer.msg.trim())
 
-        window.open('https://api.whatsapp.com/send?phone=6282283569169&text=' + msg, '_blank');
+        window.open('https://api.whatsapp.com/send?phone=6282341798911&text=' + msg, '_blank');
         // window.open('http://www.google.com', '_blank');
     }
 

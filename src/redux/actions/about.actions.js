@@ -43,7 +43,7 @@ export const getAboutAction = (setFormEdit, sorting=false) => (dispatch) => {
     dispatch(init());
 
     return axios
-            .get('http://api.yoshi.erwinata.com/about')
+            .get('https://api.yoshi.erwinata.com/about')
             .then(result => {
 
                 if(sorting === false){
@@ -71,7 +71,7 @@ export const deleteAboutAction = (id, index, formAboutList, setFormAboutList, se
     dispatch(request());
 
     return axios
-            .delete('http://api.yoshi.erwinata.com/about/'+ id,{
+            .delete('https://api.yoshi.erwinata.com/about/'+ id,{
                 headers: {
                     Authorization: localStorage.ifgfToken
                 }
@@ -126,7 +126,7 @@ export const editAboutDataAction = (e, setShowProgressBar, formEdit,
     }
 
     return axios
-    .put('http://api.yoshi.erwinata.com/about/'+formEdit.id, data ,{
+    .put('https://api.yoshi.erwinata.com/about/'+formEdit.id, data ,{
         headers: {
             Authorization: localStorage.ifgfToken
         }
@@ -197,7 +197,7 @@ export const postAboutAction = (e, image, setProgressBar, setShowProgressBar,
 
     if(image.file !== null){
 
-        axios.get('http://api.yoshi.erwinata.com/about/nextid',{
+        axios.get('httpss://api.yoshi.erwinata.com/about/nextid',{
             headers: {
                 Authorization: localStorage.ifgfToken
             }
@@ -230,7 +230,7 @@ export const postAboutDataAction = (e, setShowProgressBar, formCurrent, setFormC
     }
 
     return axios
-        .post('http://api.yoshi.erwinata.com/about', data,{
+        .post('httpsss://api.yoshi.erwinata.com/about', data,{
             headers: {
                 Authorization: localStorage.ifgfToken
             }
@@ -294,7 +294,7 @@ export const uploadImageAction = (image, setProgressBar, nextId) => (dispatch) =
 
     return axios
         .post('/php/ImageUpload.php', fd, {
-        // .post('http://localhost:3333', fd, {
+        // .post('https://localhost:3333', fd, {
             headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*"
