@@ -43,7 +43,7 @@ export const getEventAction = (setFormEdit) => (dispatch) => {
     dispatch(init());
 
     return axios
-            .get('https://api.yoshi.erwinata.com/event')
+            .get(process.env.REACT_APP_URL_EVENT)
             .then(result => {
                 setFormEdit(result.data);
                 dispatch(success(result.data));
@@ -58,7 +58,7 @@ export const editEventAction = (e, id, data) => (dispatch) => {
     console.log(data);
 
     return axios
-            .put('https://api.yoshi.erwinata.com/event/'+id, data ,{
+            .put(process.env.REACT_APP_URL_EVENT+'/'+id, data ,{
                 headers: {
                     Authorization: localStorage.ifgfToken
                 }

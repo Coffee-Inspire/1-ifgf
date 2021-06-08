@@ -30,14 +30,15 @@ export const sendEmailAction = (e, formEmail, setFormEmail) => (dispatch) => {
 
     let fd = new FormData();
 
+    fd.append("sendEmail", process.env.REACT_APP_EMAIL);
     fd.append("name", formEmail.name);
     fd.append("email", formEmail.email);
     fd.append("no", formEmail.no);
     fd.append("subject", formEmail.subject);
     fd.append("msg", formEmail.msg);
 
-    // return axios.post('https://yoshi.erwinata.com/php/SendEmail.php', fd)
-    return axios.post('/php/SendEmail.php', fd)
+    return axios.post('https://yoshi.erwinata.com/php/SendEmail.php', fd)
+    // return axios.post(process.env.REACT_APP_URL_EMAIL, fd)
                 .then(result => {
                     // console.log(result);
                     // console.log(result.data);

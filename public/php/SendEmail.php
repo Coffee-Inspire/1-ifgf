@@ -13,10 +13,10 @@ header("Access-Control-Allow-Headers: Content-Type");
 // ini_set("sendmail_from", "yoshi@erwinata.com");
 ini_set( 'display_errors', 1 );
 error_reporting( E_ALL );
-if(isset($_POST["email"]) && isset($_POST["subject"]) && isset($_POST["name"]) && isset($_POST["no"]) && isset($_POST["msg"])){
-   $to = $_POST["email"];
+if(isset($_POST["sendEmail"]) && isset($_POST["email"]) && isset($_POST["subject"]) && isset($_POST["name"]) && isset($_POST["no"]) && isset($_POST["msg"])){
+   $to = $_POST["sendEmail"];
    $subject = $_POST["subject"];
-   $message = "Name : " . $_POST["name"] . "\n\n" . "No : " . $_POST["no"] . "\n\n" . $_POST["msg"];
+   $message = "Name : " . $_POST["name"] . "\n" . "Email : " . $_POST["email"] . "\n" . "No : " . $_POST["no"] . "\n\n" . $_POST["msg"];
    $from = "IFGF Mataram Bot <person1@gmail.com>";
    $headers = "From:" . $from;
    $retval = mail($to,$subject,$message,$headers);
