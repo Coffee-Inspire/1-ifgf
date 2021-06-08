@@ -1,11 +1,13 @@
 // importing use state
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
+
+// importing react redux library
+import {useDispatch,useSelector} from 'react-redux';
+import {getIcareAction} from "../redux/actions/icare.actions";
+import {getCategoryAction} from "../redux/actions/category.actions";
 
 // importing react-bootstrap tags
 import {Container} from 'react-bootstrap';
-
-// importing images for banner
-import icareImage from '../assets/images/icare.jpg';
 
 // importing banner component
 import Banner from '../components/molecules/Banner';
@@ -19,62 +21,47 @@ import Event from '../components/templates/Event';
 // importing icare leader profile component
 import IcareLeaderProfile from '../components/templates/IcareLeaderProfile';
 
-// importing leader image
-import youthLeader from '../assets/images/youthLeader.jpg';
-import manLeader from '../assets/images/manLeader.jpg';
-import womanLeader from '../assets/images/womanLeader.jpg';
+// importing skeleton loading
+import SkeletonEvent from '../components/atoms/SkeletonEvent';
+import SkeletonDesc from '../components/atoms/SkeletonDesc';
+import SkeletonBanner from '../components/atoms/SkeletonBanner';
+import SkeletonLeaderProfile from '../components/organisms/SkeletonLeaderProfile';
 
+function Icare(props) {
 
-function Icare() {
-    // inputing text
-    let wordCenter = ` God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
-    to show love and Compassion because he is a GOD of Covenant,
-    who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
-    made into champions by the promises of His Word.`;
+    const dispatch = useDispatch();
+    // Storing leader data from dispatch into state
+    const [FormEdit, setFormEdit] = useState([]);
+    // Storing category data from dispatch into state
+    const [FormEdit2, setFormEdit2] = useState({});
+    const statusLeader = useSelector(state => state.icare)
+    const statusCategory = useSelector(state => state.category)
 
-    // inputing title for banner caption
-    let bannerTitle = 'Icare';
-
-    // inputing text for banner caption
-    let bannerText = 'ICare helps you to grow spiritually, and that requires more than meeting at Sunday services.';
-
-    let DUMMY_LEADER = [
-        {
-            leaderImage : youthLeader,
-            leaderTitle : "ICARE FOR YOUTH",
-            leaderName : "Peter Jimie",
-            leaderContact : "092739161823",
-            leaderText : "Hello, i'm a leader of Icare For Youth", 
-        },
-        {
-            leaderImage : manLeader,
-            leaderTitle : "ICARE FOR MEN",
-            leaderName : "Ethan White",
-            leaderContact : "061255678590",
-            leaderText : "Hello, i'm a leader of Icare For Men", 
-        },
-        {
-            leaderImage : womanLeader,
-            leaderTitle : "ICARE FOR WOMAN",
-            leaderName : "Jessica Waber",
-            leaderContact : "031756481875",
-            leaderText : "Hello, i'm a leader of Icare For Woman", 
-        },
-    ];
-    
     // declaring state for hovering event
-    const [leader, setLeader] = useState(DUMMY_LEADER[0]);
+    const [leader, setLeader] = useState(null);
+
+    // Function for selecting first leader
+    if(FormEdit.length>0 && leader == null){
+        setLeader(FormEdit[0])
+    }
+
+    // Dispatch to redux for data request
+    useEffect(() => {
+        dispatch(getIcareAction(setFormEdit))
+        dispatch(getCategoryAction(setFormEdit2))
+    }, [dispatch])
+
     return (
         <Container fluid>
 
-            <Banner bannerImage={icareImage} title={bannerTitle} text={bannerText} style3={true}/>
-            <CenterText word={wordCenter}/>
-            <Event data={DUMMY_LEADER} icare={true} setLeader={setLeader}/>
-            {leader ?
-                <IcareLeaderProfile data={leader}/>
-                : null
-            }
-            
+            {statusCategory.isInit &&  <SkeletonBanner/>}
+            {!statusCategory.isInit &&  <Banner bannerImage={FormEdit2.imgIcare} title={"icare"} text={FormEdit2.textIcare} style3={true}/>}
+            {statusCategory.isInit && <SkeletonDesc/>}
+            {!statusCategory.isInit && <CenterText word={FormEdit2.descIcare}/>}
+            {statusLeader.isInit && <SkeletonEvent/>}  
+            {!statusLeader.isInit && <Event data={FormEdit} icare={true} setLeader={setLeader}/>}
+            {statusLeader.isInit && <SkeletonLeaderProfile/>}  
+            {!statusLeader.isInit && leader && <IcareLeaderProfile data={leader}/>}  
             
         </Container>
     )

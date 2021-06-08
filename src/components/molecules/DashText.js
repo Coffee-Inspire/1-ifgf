@@ -4,7 +4,7 @@ function DashText(props) {
     return (
         <div className="pt-3">
             <h4 className={props.colorWhite ? "text-white" : "" }>
-                {props.word}
+                <b>{props.word}</b>
             </h4>
         </div>
     )

@@ -1,10 +1,40 @@
 // Me
 
-@media (min-width: 992px){
+//Extra Large
+@media (min-width: 1280px){	
+	.dashImage {
+		zoom: 57% !important;
+	}
+}
+
+//Large
+@media (min-width: 992px){	
     .navbar-animation{
         margin-left: 0px !important;
         opacity: 1 !important;
     }
+
+	.dashImage {
+		zoom: 40% !important;
+	}
+}
+
+//Medium
+@media (min-width: 768px){
+	.dashImage {
+		zoom: 40% !important;
+	}
+}
+
+// Unique below 400px
+@media (max-width: 400px){
+	.dashImage {
+		zoom: 20% !important;
+	}
+}
+
+.capitalize {
+	text-transform: capitalize;
 }
 
 .cursorDefault {
@@ -23,6 +53,23 @@
 	margin-left: 0px;
 }
 
-.test {
-	// height: 3000px;
+.dashImage {
+	zoom: 30%;
+	height: 100vh;
+	width: 100%;
+	object-fit: cover;
 }
+
+.dashImagePotraitFrame {
+	width: fit-content;
+}
+
+.dashImagePotrait {
+	height: 350px;
+	width: auto;
+	object-fit: cover;
+}
+
+// .test {
+	// height: 3000px;
+// }

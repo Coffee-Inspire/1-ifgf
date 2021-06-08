@@ -1,11 +1,13 @@
 // importing use state
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
+
+// importing react redux library
+import {useDispatch,useSelector} from 'react-redux';
+import {getEventAction} from '../redux/actions/event.actions';
+import {getCategoryAction} from "../redux/actions/category.actions";
 
 // importing react-bootstrap tags
 import {Container} from 'react-bootstrap';
-
-// importing images for banner
-import ifgfKidsImage from '../assets/images/ifgf-kids.jpg';
 
 // importing banner component
 import Banner from '../components/molecules/Banner';
@@ -16,74 +18,56 @@ import CenterText from '../components/molecules/CenterText';
 // importing event component
 import Event from '../components/templates/Event';
 
-// importing image for event content
-import eventImage from  '../assets/images/event.jpg';
-
 // importing centered position button component
 import CenterButton from '../components/molecules/CenterButton';
 
+// importing skeleton loading
+import SkeletonEvent from '../components/atoms/SkeletonEvent';
+import SkeletonDesc from '../components/atoms/SkeletonDesc';
+import SkeletonCenterButton from '../components/atoms/SkeletonCenterButton';
+import SkeletonBanner from '../components/atoms/SkeletonBanner';
+
 function IfgfKids() {
-    // inputing text
-    let wordCenter = ` God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
-    to show love and Compassion because he is a GOD of Covenant,
-    who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
-    made into champions by the promises of His Word.`;
 
-    // inputing title for banner caption
-    let bannerTitle = 'ifgf kids';
+    const dispatch = useDispatch();
+    // Storing event data from dispatch into state
+    const [FormEdit, setFormEdit] = useState([]);
+    // Storing category data from dispatch into state
+    const [FormEdit2, setFormEdit2] = useState({});
+    const statusEvent = useSelector(state => state.event)
+    const statusCategory = useSelector(state => state.category)
 
-    // inputing text for banner caption
-    let bannerText = 'ICare helps you to grow spiritually, and that requires more than meeting at Sunday services.';
+    // Function for filtering IFGF Kids Events
+    let FormEditIFGFKids = FormEdit.filter(function(i){return i.category==="ifgfkids"});
 
-    // inputing title for event heading
-    let eventHeadingTitle = `kids event's`;
-
-    // mock data for event
-    let DUMMY = [
-        {
-            eventName : "EVENT A",
-            eventImage : eventImage,
-            eventText : "You are hovering on Event A"
-        },
-        {
-            eventName : "EVENT B",
-            eventImage : eventImage,
-            eventText : "You are hovering on Event B"
-        },
-        {
-            eventName : "EVENT C",
-            eventImage : eventImage,
-            eventText : "You are hovering on Event C"
-        }
-    ];
-
-    // dummy function for selecting first event text
-    let DUMMY_FIRST_EVENT_TEXT = null;
-    function dummyAssign (){
-        if(DUMMY.length>0){
-            DUMMY_FIRST_EVENT_TEXT=DUMMY[0].eventText
-        }
-    };
-    dummyAssign();
-    
     // declaring state for hovering event
-    const [eventText, setEventText] = useState(DUMMY_FIRST_EVENT_TEXT);
+    const [eventText, setEventText] = useState(null);
+
+    //  Function for selecting first event text
+    if(FormEditIFGFKids.length>0 && eventText == null){
+        setEventText(FormEditIFGFKids[0].text)
+    }
+
+    // Dispatch to redux for data request
+    useEffect(() => {
+        dispatch(getEventAction(setFormEdit))
+        dispatch(getCategoryAction(setFormEdit2))
+    }, [dispatch])
+
     return (
         <Container fluid>
-
-            <Banner bannerImage={ifgfKidsImage} title={bannerTitle} text={bannerText} style2={true}/>
-            <CenterText word={wordCenter}/>
-            <Event title={eventHeadingTitle} data={DUMMY} setEventText={setEventText}/>
-            {DUMMY.length>0 ? 
-                <CenterText word={eventText} />
-                : null
-            }
-            {DUMMY.length>0 ?
-                <CenterButton word={"join with us !"}/>
-                : null
-            }
-            <CenterButton word={"contact us"}/>
             
+            {statusCategory.isInit &&  <SkeletonBanner/>}
+            {!statusCategory.isInit && <Banner bannerImage={FormEdit2.imgIfgfkids} title={"ifgf kids"} text={FormEdit2.textIfgfkids} style2={true}/>}
+            {statusCategory.isInit && <SkeletonDesc/>}
+            {!statusCategory.isInit &&  <CenterText word={FormEdit2.descIfgfkids}/>}
+            {statusEvent.isInit && <SkeletonEvent/>}
+            {!statusEvent.isInit &&  <Event title={"kids event's"} data={FormEditIFGFKids} setEventText={setEventText}/>  }
+            {!statusEvent.isInit && <CenterText word={eventText} />}
+            {statusEvent.isInit && <SkeletonCenterButton/>}
+            {!statusEvent.isInit && FormEditIFGFKids.length>0 && <CenterButton word={"join with us !"}/> }
+            {!statusEvent.isInit && !FormEditIFGFKids.length>0 && <CenterButton word={"contact us"} buttonLink={"/contactus"}/> }
+           
         </Container>
     )
 }

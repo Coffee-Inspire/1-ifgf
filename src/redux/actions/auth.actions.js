@@ -3,6 +3,7 @@ import axios from 'axios';
 export const AUTH_REQUEST = "AUTH_REQUEST";
 export const AUTH_FAILED = "AUTH_FAILED";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const EDIT_SUCCESS = "EDIT_SUCCESS";
 export const LOGOUT = "LOGOUT";
 
 export const authRequest = () => {
@@ -18,6 +19,13 @@ export const loginSuccess = (data) => {
     };
 };
 
+export const editSuccess = (data) => {
+    return {
+        type: EDIT_SUCCESS,
+        payload: data
+    };
+};
+
 export const authFailed = (err) => {
     return {
         type: AUTH_FAILED,
@@ -25,7 +33,7 @@ export const authFailed = (err) => {
     };
 };
 
-export const logoutAction = () => {
+export const logout = () => {
     return {
         type: LOGOUT,
     };
@@ -34,11 +42,11 @@ export const logoutAction = () => {
 export const loginAction = (data, history, setStatus) => (dispatch) => {
     dispatch(authRequest());
     return axios
-        .post("http://localhost:8000/admin/login", data)
+        .post("http://api.yoshi.erwinata.com/admin/login", data)
         .then(result => {
             if(result.data.token !== undefined) {
-                localStorage.token = result.data.token
-                localStorage.payload = JSON.stringify(result.data.user);
+                localStorage.ifgfToken = result.data.token
+                localStorage.ifgfPayload = JSON.stringify(result.data.user);
                 dispatch(loginSuccess(result.data.token))
                 
                 history.push('/dashboard');
@@ -58,3 +66,72 @@ export const loginAction = (data, history, setStatus) => (dispatch) => {
             dispatch(authFailed(err))
         })
 };
+
+export const logoutAction = () => (dispatch) => {
+    dispatch(authRequest());
+
+    return axios.get("http://api.yoshi.erwinata.com/admin/logout",{
+                headers: {
+                    Authorization: localStorage.ifgfToken
+                }
+            })
+            .then(result => {
+                localStorage.clear();
+                // console.log(result);
+                // window.location = ('/admin');
+                dispatch(logout());
+            })
+            .catch(e => {
+                dispatch(authFailed(e))
+            })
+}
+
+export const editAdminAction = (e, currentEmail, formEdit, setFormEdit) => (dispatch) => {
+    e.preventDefault();
+    dispatch(authRequest());
+
+    let data = {};
+
+    if(formEdit.password === ""){
+        data = {
+            email : formEdit.email,
+            email_old : currentEmail,
+            password_old : formEdit.password_old
+        }
+    } else{
+        data = {
+            ...formEdit,
+            email_old : currentEmail
+        }
+    }
+
+    if(data.email === currentEmail){
+        delete data.email;
+    }
+
+    return axios
+            .put("http://api.yoshi.erwinata.com/admin", data,{
+                headers: {
+                    Authorization: localStorage.ifgfToken
+                }
+            })
+            .then(result => {
+                // console.log(result);
+                if(result.data.error){
+                    dispatch(authFailed());
+                } else{
+                    localStorage.ifgfPayload = JSON.stringify(result.data);
+                    setFormEdit({
+                        ...formEdit,
+                        password : "",
+                        password_confirmation : "",
+                        password_old : "",
+                    })
+                    dispatch(editSuccess());
+                }
+            })
+            .catch(e => {
+                dispatch(authFailed(e))
+            })
+
+}

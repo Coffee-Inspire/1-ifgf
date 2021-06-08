@@ -1,5 +1,13 @@
+// importing use state
+import {useState,useEffect} from 'react';
+
 // importing react-bootstrap tag
 import {Container} from 'react-bootstrap';
+
+// importing react redux library
+import {useDispatch,useSelector} from 'react-redux';
+import {getProfileWebAction} from "../redux/actions/profileWeb.actions";
+
 
 // importing images for banner
 import aboutImage from '../assets/images/about.jpg';
@@ -11,29 +19,31 @@ import MissionContent from '../components/templates/MissionContent';
 // importing Vision and Mission content
 import VisionContent from '../components/templates/VisionContent';
 
+// importing skeleton loading
+import SkeletonVisionMission from '../components/organisms/SkeletonVisionMission';
+
 function VisionMission() {
 
-    // inputing text for about us content(s)
-    let word =  `God shaped us as an apostolic denomination with specific DNA to fulfill the Great Commission,
-                 to show love and Compassion because he is a GOD of Covenant,
-                 who declare our purpose in creation. We are called to be a cutting edge church that follows God’s progressive vision, 
-                 made into champions by the promises of His Word.
-                `;
-    // mock data
-    let DUMMY = {
-        visionTitle : "vision title here",
-        visionText : word,
-        missionTitle : "mission title here",
-        missionText : word
-    };
+    const dispatch = useDispatch();
+    // Storing content data from dispatch into state
+    const [FormEdit, setFormEdit] = useState({});
+    const status = useSelector(state => state.profileWeb)
+
+    // Dispatch to redux for data request
+     useEffect(() => {
+        dispatch(getProfileWebAction(setFormEdit))
+    }, [dispatch])
 
 
     return (
         <Container fluid>
                 
             <Banner bannerImage={aboutImage} style1={true} title={"vision & mission"} active={"visionMission"}/>
-            <VisionContent title={DUMMY.visionTitle} word={DUMMY.visionText}/>
-            <MissionContent title={DUMMY.missionTitle} word={DUMMY.missionText}/>
+            
+            {status.isInit &&  <SkeletonVisionMission title={"vision"}/>}
+            {!status.isInit &&  <VisionContent title={FormEdit.visionTitle} word={FormEdit.visionText}/>}
+            {status.isInit &&  <SkeletonVisionMission title={"mission"}/>}
+            {!status.isInit &&  <MissionContent title={FormEdit.missionTitle} word={FormEdit.missionText}/>}
 
         </Container>
     )

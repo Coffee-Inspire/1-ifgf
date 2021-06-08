@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 function FormGroup(props) {
     return (
         <Form.Group controlId={props.id} className="mb-3">
-            <Form.Label>{props.label}</Form.Label>
+            <Form.Label className="fw-bold capitalize">{props.label}</Form.Label>
             <Form.Control 
               required
               type={props.type} 
@@ -13,6 +13,7 @@ function FormGroup(props) {
               autoComplete={props.autocomplete && props.autocomplete}
               value={props.value && props.value}
               onChange={props.onChange && props.onChange}
+              disabled={props.disabled}
             />
             {props.validator && 
                 props.validator.error &&

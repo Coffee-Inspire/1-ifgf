@@ -1,6 +1,10 @@
 // importing react-bootstrap tag(s)
 import {Row,Col} from 'react-bootstrap';
 
+// importing image not found picture for handling event
+import imgNotFound from '../../assets/images/imgNotFound.jpg'
+
+
 function AboutContent2(props) {
     return (
                 <Row className="aboutContentRow m-lg-5 pb-5 pb-lg-0 mb-5"> 
@@ -11,8 +15,9 @@ function AboutContent2(props) {
                         <div>
                             <img
                                 alt=""
-                                src={props.image}
+                                src={props.image ? props.image : imgNotFound }
                                 id="aboutContentImage"
+                                onError={(e)=>{ e.target.src=imgNotFound}}
                             />
                         </div>
                     </Col>
