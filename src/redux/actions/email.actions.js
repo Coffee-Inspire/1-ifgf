@@ -36,7 +36,8 @@ export const sendEmailAction = (e, formEmail, setFormEmail) => (dispatch) => {
     fd.append("subject", formEmail.subject);
     fd.append("msg", formEmail.msg);
 
-    return axios.post('https://yoshi.erwinata.com/php/SendEmail.php', fd)
+    // return axios.post('https://yoshi.erwinata.com/php/SendEmail.php', fd)
+    return axios.post('/php/SendEmail.php', fd)
                 .then(result => {
                     // console.log(result);
                     // console.log(result.data);
@@ -54,7 +55,7 @@ export const sendEmailAction = (e, formEmail, setFormEmail) => (dispatch) => {
                     }
                 })
                 .catch(e => {
-                    console.log(e);
+                    // console.log(e);
                     dispatch(failed("Server Error Cant Send Email !"));
                 })
 }

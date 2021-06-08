@@ -43,7 +43,7 @@ export const getProfileWebAction = (setFormEdit) => (dispatch) => {
     dispatch(init());
 
     return axios
-            .get('http://api.yoshi.erwinata.com/profileweb')
+            .get('https://api.yoshi.erwinata.com/profileweb')
             .then(result => {
                 setFormEdit(...result.data);
                 dispatch(success(result.data));
@@ -57,9 +57,9 @@ export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
     fd.append('image', image.file, image.name + "." + image.file.name.split('.').pop());
 
     return axios
-        // .post('http://yoshi.erwinata.com/php/ImageUpload.php', fd, {
+        // .post('https://yoshi.erwinata.com/php/ImageUpload.php', fd, {
         .post('/php/ImageUpload.php', fd, {
-        // .post('http://localhost:3333', fd, {
+        // .post('https://localhost:3333', fd, {
             headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*"
@@ -86,7 +86,7 @@ export const editDataAction = (setShowProgressBar, img, formEdit, setFormEdit, s
     }
 
     return axios
-            .put('http://api.yoshi.erwinata.com/profileweb/'+data.id, data ,{
+            .put('https://api.yoshi.erwinata.com/profileweb/'+data.id, data ,{
                 headers: {
                     Authorization: localStorage.ifgfToken
                 }
