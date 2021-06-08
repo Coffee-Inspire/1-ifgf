@@ -72,9 +72,8 @@ export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
     fd.append('image', image.file, image.name + "." + image.file.name.split('.').pop());
 
     return axios
-        // .post('http://yoshi.erwinata.com/php/ImageUpload.php', fd, {
-        // .post('php/ImageUpload.php', fd, {
-        .post('http://localhost:3333', fd, {
+        .post('/php/ImageUpload.php', fd, {
+        // .post('http://localhost:3333', fd, {
             headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*"
@@ -93,7 +92,7 @@ export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
         })
 };
 
-export const editDataAction = (setShowProgressBar, id, text, desc, img, formEdit, setFormEdit) => (dispatch) => {
+export const editDataAction = (e, setShowProgressBar, id, text, desc, img, formEdit, setFormEdit) => (dispatch) => {
 
     let data = {
         text : text,
@@ -127,6 +126,7 @@ export const editDataAction = (setShowProgressBar, id, text, desc, img, formEdit
                     showIfgfyouth: false,
                     showIfgfkids: false,
                 });
+                e.target.image.value = null;
                 // console.log("result ", result.data);
                 dispatch(editSuccess());
             })
@@ -144,12 +144,12 @@ export const editAction = (e, image, setProgressBar, setShowProgressBar, id, tex
     if(image.file !== null){
         let uploadImg = dispatch(uploadImageAction(image, setProgressBar));
         uploadImg.then(result => {
-            dispatch(editDataAction(setShowProgressBar, id, text, desc, result, formEdit, setFormEdit));
+            dispatch(editDataAction(e, setShowProgressBar, id, text, desc, result, formEdit, setFormEdit));
         })
         .catch(err => dispatch(failed()));
     }
     else {
-        dispatch(editDataAction(setShowProgressBar, id, text, desc, "", formEdit, setFormEdit));
+        dispatch(editDataAction(e, setShowProgressBar, id, text, desc, "", formEdit, setFormEdit));
     }
 };
 

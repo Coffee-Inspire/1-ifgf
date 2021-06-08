@@ -13,6 +13,7 @@ function FormGroup(props) {
               autoComplete={props.autocomplete && props.autocomplete}
               value={props.value && props.value}
               onChange={props.onChange && props.onChange}
+              disabled={props.disabled}
             />
             {props.validator && 
                 props.validator.error &&

@@ -58,8 +58,8 @@ export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
 
     return axios
         // .post('http://yoshi.erwinata.com/php/ImageUpload.php', fd, {
-        // .post('php/ImageUpload.php', fd, {
-        .post('http://localhost:3333', fd, {
+        .post('/php/ImageUpload.php', fd, {
+        // .post('http://localhost:3333', fd, {
             headers: {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Origin": "*"

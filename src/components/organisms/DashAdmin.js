@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Row, Col, Button, Form, ProgressBar, Card } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Row, Col, Button, Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 
 import DashTitle from '../molecules/DashTitle';
@@ -40,12 +40,12 @@ function DashAdmin() {
         window.location = '/admin';
     }
 
-    useEffect(() => {
+    if(formEdit.email === ""){
         setFormEdit({
             ...formEdit,
             email : JSON.parse(localStorage.ifgfPayload).email
         });
-    }, [])
+    }
 
     return (
         <>
