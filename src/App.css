@@ -287,3 +287,7 @@ body {
 	height: 400px;
 	width: 300px;
 }
+
+.mySkeletonAboutContentRow {
+	height: 700px;
+}
