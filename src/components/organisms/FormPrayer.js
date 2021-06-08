@@ -17,9 +17,9 @@ function FormPrayer() {
 
     const sendWa = () => {
 
-        let msg = "Halo nama saya " + formPrayer.name + "%0a" + "Kebutuhan Doa : "+ encodeURIComponent(formPrayer.msg.trim())
-
-        window.open('https://api.whatsapp.com/send?phone=6282341798911&text=' + msg, '_blank');
+        let msg = "Halo nama saya " + formPrayer.name + "%0aKebutuhan Doa : "+ encodeURIComponent(formPrayer.msg.trim())
+        // console.log(process.env.REACT_APP_NO_WA);
+        window.open('https://api.whatsapp.com/send?phone='+process.env.REACT_APP_NO_WA+'&text=' + msg, '_blank');
         // window.open('http://www.google.com', '_blank');
     }
 

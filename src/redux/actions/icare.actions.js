@@ -43,7 +43,7 @@ export const getIcareAction = (setFormEdit) => (dispatch) => {
     dispatch(init());
 
     return axios
-            .get('https://api.yoshi.erwinata.com/icare')
+            .get(process.env.REACT_APP_URL_ICARE)
             .then(result => {
                 setFormEdit(result.data);
                 dispatch(success(result.data));
@@ -59,7 +59,7 @@ export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
     fd.append('image', image.file, image.name + "." + image.file.name.split('.').pop());
 
     return axios
-        .post('/php/ImageUpload.php', fd, {
+        .post(process.env.REACT_APP_URL_IMAGE, fd, {
         // .post('https://localhost:3333', fd, {
             headers: {
             'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export const editDataAction = (e, setShowProgressBar, dataSend, img, formEdit, s
     }
 
     return axios
-            .put('https://api.yoshi.erwinata.com/icare/'+data.id, data ,{
+            .put(process.env.REACT_APP_URL_ICARE+'/'+data.id, data ,{
                 headers: {
                     Authorization: localStorage.ifgfToken
                 }

@@ -21,7 +21,7 @@ function IcareLeaderProfile(props) {
                         <div className="myIcareLeaderImageFrame" >
                             <Image
                                 alt=""
-                                src={props.data.leaderImage ? props.data.leaderImage : imgNotFoundPotrait}
+                                src={props.data.image ? props.data.image : imgNotFoundPotrait}
                                 className="myIcareLeaderImage" 
                             />
                         </div>

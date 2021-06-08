@@ -42,7 +42,7 @@ export const logout = () => {
 export const loginAction = (data, history, setStatus) => (dispatch) => {
     dispatch(authRequest());
     return axios
-        .post("https://api.yoshi.erwinata.com/admin/login", data)
+        .post(process.env.REACT_APP_URL_AUTH+"/login", data)
         .then(result => {
             if(result.data.token !== undefined) {
                 localStorage.ifgfToken = result.data.token
@@ -70,7 +70,7 @@ export const loginAction = (data, history, setStatus) => (dispatch) => {
 export const logoutAction = () => (dispatch) => {
     dispatch(authRequest());
 
-    return axios.get("https://api.yoshi.erwinata.com/admin/logout",{
+    return axios.get(process.env.REACT_APP_URL_AUTH+"/logout",{
                 headers: {
                     Authorization: localStorage.ifgfToken
                 }
@@ -110,7 +110,7 @@ export const editAdminAction = (e, currentEmail, formEdit, setFormEdit) => (disp
     }
 
     return axios
-            .put("https://api.yoshi.erwinata.com/admin", data,{
+            .put(process.env.REACT_APP_URL_AUTH, data,{
                 headers: {
                     Authorization: localStorage.ifgfToken
                 }

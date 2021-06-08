@@ -43,7 +43,7 @@ export const getCategoryAction = (setFormEdit) => (dispatch) => {
     dispatch(init());
 
     return axios
-            .get('https://api.yoshi.erwinata.com/category')
+            .get(process.env.REACT_APP_URL_CATEGORY)
             .then(result => {
                 let newData = {};
                 result.data.forEach((item) => {
@@ -72,7 +72,7 @@ export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
     fd.append('image', image.file, image.name + "." + image.file.name.split('.').pop());
 
     return axios
-        .post('/php/ImageUpload.php', fd, {
+        .post(process.env.REACT_APP_URL_IMAGE, fd, {
         // .post('https://localhost:3333', fd, {
             headers: {
             'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ export const editDataAction = (e, setShowProgressBar, id, text, desc, img, formE
     }
 
     return axios
-            .put('https://api.yoshi.erwinata.com/category/'+id, data ,{
+            .put(process.env.REACT_APP_URL_CATEGORY+"/"+id, data ,{
                 headers: {
                     Authorization: localStorage.ifgfToken
                 }

@@ -43,7 +43,7 @@ export const getAboutAction = (setFormEdit, sorting=false) => (dispatch) => {
     dispatch(init());
 
     return axios
-            .get('https://api.yoshi.erwinata.com/about')
+            .get(process.env.REACT_APP_URL_ABOUT)
             .then(result => {
 
                 if(sorting === false){
@@ -71,7 +71,7 @@ export const deleteAboutAction = (id, index, formAboutList, setFormAboutList, se
     dispatch(request());
 
     return axios
-            .delete('https://api.yoshi.erwinata.com/about/'+ id,{
+            .delete(process.env.REACT_APP_URL_ABOUT +'/'+ id,{
                 headers: {
                     Authorization: localStorage.ifgfToken
                 }
@@ -126,7 +126,7 @@ export const editAboutDataAction = (e, setShowProgressBar, formEdit,
     }
 
     return axios
-    .put('https://api.yoshi.erwinata.com/about/'+formEdit.id, data ,{
+    .put(process.env.REACT_APP_URL_ABOUT +'/'+ formEdit.id, data ,{
         headers: {
             Authorization: localStorage.ifgfToken
         }
@@ -197,7 +197,7 @@ export const postAboutAction = (e, image, setProgressBar, setShowProgressBar,
 
     if(image.file !== null){
 
-        axios.get('httpss://api.yoshi.erwinata.com/about/nextid',{
+        axios.get(process.env.REACT_APP_URL_ABOUT +'/nextid',{
             headers: {
                 Authorization: localStorage.ifgfToken
             }
@@ -230,7 +230,7 @@ export const postAboutDataAction = (e, setShowProgressBar, formCurrent, setFormC
     }
 
     return axios
-        .post('httpsss://api.yoshi.erwinata.com/about', data,{
+        .post(process.env.REACT_APP_URL_ABOUT, data,{
             headers: {
                 Authorization: localStorage.ifgfToken
             }
@@ -293,7 +293,7 @@ export const uploadImageAction = (image, setProgressBar, nextId) => (dispatch) =
     fd.append('image', image.file, image.name + nextId + "." + image.file.name.split('.').pop());
 
     return axios
-        .post('/php/ImageUpload.php', fd, {
+        .post(process.env.REACT_APP_URL_IMAGE, fd, {
         // .post('https://localhost:3333', fd, {
             headers: {
             'Content-Type': 'application/json',
