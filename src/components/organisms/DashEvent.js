@@ -126,14 +126,14 @@ function DashEvent() {
                                         onChange={(e) => valueChange(e, index)}
                                     />
                                     <Button onClick={() => setEditStatus({...editStatus, [index] : true})} type="submit" variant="primary" disabled={(eventData.isLoading)}>
-                                        {(eventData.isLoading) ? "Saving..." : "Save"}
+                                        {(eventData.isLoading) && editStatus[index] ? "Saving..." : "Save"}
                                     </Button>
                                     {eventData.editSuccess && editStatus[index] &&
                                         <div className="mt-3 text-success">
                                             Edit Success !
                                         </div>
                                     }
-                                    {eventData.error && 
+                                    {eventData.error && editStatus[index] && 
                                         <div className="mt-3 text-danger">
                                             Error Edit Failed !
                                         </div>

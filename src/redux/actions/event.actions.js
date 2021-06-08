@@ -39,13 +39,21 @@ export const failed = (err) => {
     };
 };
 
-export const getEventAction = (setFormEdit) => (dispatch) => {
+export const getEventAction = (setFormEdit, findActive=false) => (dispatch) => {
     dispatch(init());
 
     return axios
             .get(process.env.REACT_APP_URL_EVENT)
             .then(result => {
-                setFormEdit(result.data);
+                if(findActive===true){
+                    let newArray = result.data.filter(item => {
+                        return item.status === 1;
+                    })
+                    setFormEdit(newArray);
+
+                }else{
+                    setFormEdit(result.data);
+                }
                 dispatch(success(result.data));
             })
             .catch(err => dispatch(failed(err)))

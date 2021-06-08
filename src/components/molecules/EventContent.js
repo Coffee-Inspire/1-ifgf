@@ -12,20 +12,21 @@ import imgNotFound from '../../assets/images/imgNotFound.jpg';
 
 function EventContent(props) {
     // slider display configuration
+
     const settings = {
         arrows : false,
         dots : true,
         infinite : false,
         speed : 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: props.data.length,
+        slidesToScroll: props.data.length,
         initialSlide: 0,    
         responsive: [
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: props.data.length,
+            slidesToScroll: props.data.length,
             dots : true,
             infinite : true,
           }

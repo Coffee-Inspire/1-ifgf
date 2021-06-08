@@ -8,6 +8,7 @@ import EventHeadingTitle from '../molecules/EventHeadingTitle';
 import EventContent from '../molecules/EventContent';
 
 function Event(props) {
+    
     return (
         <>
             {props.data.length ?

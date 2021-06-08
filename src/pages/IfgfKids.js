@@ -50,7 +50,7 @@ function IfgfKids() {
 
     // Dispatch to redux for data request
     useEffect(() => {
-        dispatch(getEventAction(setFormEdit))
+        dispatch(getEventAction(setFormEdit, true))
         dispatch(getCategoryAction(setFormEdit2))
     }, [dispatch])
 
