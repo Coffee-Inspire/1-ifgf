@@ -5,6 +5,7 @@ import about from './about.reducers';
 import event from './event.reducers';
 import icare from './icare.reducers';
 import profileWeb from './profileWeb.reducers';
+import email from './email.reducers';
 
 const rootReducer = combineReducers({
   auth, 
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   about,
   event,
   icare,
-  profileWeb
+  profileWeb,
+  email
 })
 
 export default rootReducer;
