@@ -20,15 +20,6 @@ function Footer() {
 
     // inputing footer title
     let footerTitle = `IFGF Mataram`;
-
-    // inputing footer caption
-    // let footerCaption = 'GREATER DESTINY';
-
-    // inputing footer hotline
-    // let footerHotline = 'Sekretariat IFGF Mataram :  +62 817 578 1441 (M)  | Email : ifgfgisi_mataram@yahoo.co.id';
-
-    // inputing footer text 
-    // let footerText = 'IFGF MATARAM, Komp. Central Plaza, Jl. A. A Gede Ngurah, Abian Tubuh Baru, Kec. Cakranegara, Kota Mataram, Nusa Tenggara Barat. 83232, Indonesia';
     
     // inputing footer copyright
     let footerCopyright = '@2021 by IFGF Mataram';

@@ -28,8 +28,9 @@ function Banner(props) {
                 >       
                     <Image
                         alt=""
-                        src={props.bannerImage ? props.bannerImage : imgNotFound}
+                        src={props.bannerImage}
                         className={props.style3 ? "myBannerStyle3 myImageBanner" : props.style1 ? "myBannerStyle1Image" : "myImageBanner" }
+                        onError={(e)=>{ e.target.src=imgNotFound}}
                     />
                     {props.style2 || props.style3 || props.style4 || props.style5 ? 
                         null

@@ -58,6 +58,21 @@ function IfgfYouth() {
         dispatch(getCategoryAction(setFormEdit2))
     }, [dispatch])
 
+    let dummy=[
+        {   
+            title : "satu",
+            text : "satu"
+        },
+        {   
+            title : "satu",
+            text : "dua"
+        },
+        {   
+            title : "satu",
+            text : "tiga"
+        }
+    ]
+
     return (
         <Container fluid>
 
@@ -66,7 +81,7 @@ function IfgfYouth() {
             {statusCategory.isInit && <SkeletonDesc/>}
             {!statusCategory.isInit && <CenterText word={FormEdit2.descIfgfyouth}/>}
             {statusEvent.isInit && <SkeletonEvent/>}     
-            {!statusEvent.isInit && <Event title={eventHeadingTitle} data={FormEditIFGFYouth} setEventText={setEventText}/>}                   
+            {!statusEvent.isInit && <Event title={eventHeadingTitle} data={dummy} setEventText={setEventText}/>}                   
             {!statusEvent.isInit && <CenterText word={eventText} />}  
             {statusEvent.isInit && <SkeletonCenterButton/>}                        
             {!statusEvent.isInit && FormEditIFGFYouth.length>0 && <CenterButton word={"join with us !"}/> }
