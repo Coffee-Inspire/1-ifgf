@@ -39,7 +39,7 @@ function DashFooter() {
         <Row className="w-100">
             <Col className="">
                 <div className="m-3">
-                    <DashTitle word={"Profile Web Details"} />
+                    <DashTitle word={"Footer Details"} />
                     <hr></hr>
 
                     <Col xs={12} md={8} lg={7} xl={5} className="mb-5">
