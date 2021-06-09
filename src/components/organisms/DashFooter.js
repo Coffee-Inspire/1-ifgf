@@ -13,7 +13,7 @@ function DashFooter() {
     const dispatch = useDispatch();
     const footerData = useSelector(state => state.footer);
 
-    const [formEdit, setFormEdit] = useState([]);
+    const [formEdit, setFormEdit] = useState({});
 
     const valueChange = (e) => {
         setFormEdit({
