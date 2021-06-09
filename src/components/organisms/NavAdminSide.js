@@ -28,6 +28,7 @@ function NavAdminSide() {
             <Nav.Link href="/dashboard/DashEvent">Event</Nav.Link>
             <Nav.Link href="/dashboard/DashAbout">About Us Post</Nav.Link>
             <Nav.Link href="/dashboard/DashProfile">Profile Web</Nav.Link>
+            <Nav.Link href="/dashboard/DashFooter">Footer Details</Nav.Link>
             <Nav.Link href="/dashboard/DashAdmin">Change Password Admin</Nav.Link>
             <Nav.Link onClick={() => logoutHandle()}>Logout</Nav.Link>
             {/* <Nav.Link onClick={() => dispatch(sendEmailAction())}>Send Email</Nav.Link> */}
