@@ -39,32 +39,24 @@ export const failed = (err) => {
     };
 };
 
-export const getEventAction = (setFormEdit, findActive=false) => (dispatch) => {
+export const getFooterAction = (setFormEdit) => (dispatch) => {
     dispatch(init());
 
     return axios
-            .get(process.env.REACT_APP_URL_EVENT)
+            .get(process.env.REACT_APP_URL_FOOTER)
             .then(result => {
-                if(findActive===true){
-                    let newArray = result.data.filter(item => {
-                        return item.status === 1;
-                    })
-                    setFormEdit(newArray);
-
-                }else{
-                    setFormEdit(result.data);
-                }
+                setFormEdit(...result.data);
                 dispatch(success(result.data));
             })
             .catch(err => dispatch(failed(err)))
 };
 
-export const editEventAction = (e, id, data) => (dispatch) => {
+export const editFooterAction = (e, formEdit) => (dispatch) => {
     e.preventDefault();
     dispatch(request());
 
     return axios
-            .put(process.env.REACT_APP_URL_EVENT+'/'+id, data ,{
+            .put(process.env.REACT_APP_URL_FOOTER+'/'+formEdit.id, formEdit ,{
                 headers: {
                     Authorization: localStorage.ifgfToken
                 }
@@ -73,7 +65,6 @@ export const editEventAction = (e, id, data) => (dispatch) => {
                 if(result.data.status === "Token is Invalid"){
                     window.location = "/admin";
                 }
-
                 dispatch(editSuccess());
             })
             .catch(err => 

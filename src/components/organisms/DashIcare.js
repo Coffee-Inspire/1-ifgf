@@ -137,6 +137,15 @@ function DashIcare() {
                                         value={item.name}
                                         onChange={(e) => valueChange(e, index)}
                                     />
+                                    <FormGroup 
+                                        id={"formBasicicare"}
+                                        label={ title + " Leader phone Number (start with 62)"}
+                                        type={"text"}
+                                        placeholder={"Enter Text"}
+                                        name={"number"}
+                                        value={item.number}
+                                        onChange={(e) => valueChange(e, index)}
+                                    />
                                     <FormGroupArea 
                                         id={"formBasicicare2"}
                                         label={ title + " Text"}

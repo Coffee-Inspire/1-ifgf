@@ -41,7 +41,6 @@ export const failed = (err) => {
 
 export const getCategoryAction = (setFormEdit) => (dispatch) => {
     dispatch(init());
-
     return axios
             .get(process.env.REACT_APP_URL_CATEGORY)
             .then(result => {

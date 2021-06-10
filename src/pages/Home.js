@@ -26,10 +26,10 @@ function Home() {
     const dispatch = useDispatch();
     // Storing category data from dispatch into state
     const [FormEdit, setFormEdit] = useState([]);
-    const status = useSelector(state => state.category)
+    const status = useSelector(state => state.category)  
 
     // IFGF Mataram Google Map URL
-    let googleMap = `https://www.google.com/maps/place/IFGF+MATARAM/@-8.6013855,116.1439476,17z/data=!3m1!4b1!4m5!3m4!1s0x2dcdb8b7a3d866d7:0xa6585d8d50d86791!8m2!3d-8.6013908!4d116.1461363`;
+    let googleMap = `https://www.google.com/maps/place/IFGF+Mataram/@-8.6005785,116.1328989,16z/data=!4m5!3m4!1s0x2dcdbf8809bf3047:0xf158a9c3175a59f8!8m2!3d-8.5997874!4d116.1284162`;
     
     // Dispatch to redux for data request
     useEffect(() => {
@@ -47,7 +47,6 @@ function Home() {
                     button1={"about us"} 
                     buttonLink1={"/about"}
                     button1WidthExtend={true}
-                    button2={"watch sermon"} 
                     headEmblem={emblem} 
                 /> 
             }
