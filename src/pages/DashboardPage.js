@@ -10,6 +10,7 @@ import DashAdmin from '../components/organisms/DashAdmin';
 import DashEvent from '../components/organisms/DashEvent';
 import DashAbout from '../components/organisms/DashAbout';
 import DashFooter from '../components/organisms/DashFooter';
+import PageNotFound from './PageNotFound'
 
 function DashboardPage() {
     return (
@@ -41,6 +42,9 @@ function DashboardPage() {
                 </Route>
                 <Route path="/dashboard/DashFooter/">
                     <DashFooter />
+                </Route>
+                <Route>
+                    <PageNotFound />
                 </Route>
             </Switch>
                 {/* <Col xs={12} className="w-100 ">
