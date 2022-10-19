@@ -16,12 +16,10 @@ function DashIcare() {
 	const icareData = useSelector((state) => state.icare);
 
 	const [formEdit, setFormEdit] = useState([]);
-	console.log(formEdit);
 
 	const [editStatus, setEditStatus] = useState({});
 
 	const [createModalState, setCreateModalState] = useState(false);
-	console.log(createModalState);
 	const openCreateModal = () => {
 		setCreateModalState(true);
 	};
