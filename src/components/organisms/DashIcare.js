@@ -242,6 +242,7 @@ function DashIcare() {
       <IcareCreateModal
         modalState={createModalState}
         closeModal={closeCreateModal}
+        setFormEdit={setFormEdit}
       />
     </>
   );

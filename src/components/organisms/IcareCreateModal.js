@@ -6,14 +6,20 @@ import DashText from "../molecules/DashText";
 import FormGroupImageRequired from "../molecules/FormGroupImageRequired";
 import FormGroupArea from "../molecules/FormGroupArea";
 import FormGroup from "../molecules/FormGroup";
+import {
+  postIcareAction,
+  getIcareAction,
+} from "../../redux/actions/icare.actions";
 
 // import {
 //   editIcareAction,
 //   getIcareAction,
 // } from "../../redux/actions/icare.actions";
 
-function IcareCreateModal({ modalState, closeModal }) {
+function IcareCreateModal({ modalState, closeModal, setFormEdit }) {
   const dispatch = useDispatch();
+  const [progressBar, setProgressBar] = useState(0);
+  const [showProgressBar, setShowProgressBar] = useState(false);
 
   const [imageCurrent, setImageCurrent] = useState({
     file: null,
@@ -33,9 +39,21 @@ function IcareCreateModal({ modalState, closeModal }) {
     setParamData({ ...paramData, [e.target.name]: e.target.value });
   };
 
-  const postIcare = (bodyParam, imageParam) => {
+  const postIcare = (e, bodyParam, imageParam) => {
     console.log("bodyParam", bodyParam);
     console.log("imageParam", imageParam);
+    dispatch(
+      postIcareAction(
+        e,
+        bodyParam,
+        imageParam,
+        progressBar,
+        setProgressBar,
+        setShowProgressBar
+      )
+    );
+    dispatch(getIcareAction(setFormEdit));
+    closeModal();
     // e,bodyParam,imageParam
     // dispatch to action...
   };
@@ -49,7 +67,7 @@ function IcareCreateModal({ modalState, closeModal }) {
             <Form
               onSubmit={(e) => {
                 e.preventDefault();
-                postIcare(paramData, imageCurrent);
+                postIcare(e, paramData, imageCurrent);
               }}
             >
               <FormGroup
