@@ -80,6 +80,8 @@ function DashIcare() {
     dispatch(getIcareAction(setFormEdit));
   }, [dispatch]);
 
+  useEffect(() => {}, [formEdit]);
+
   // console.log(formEdit);
   // console.log(editStatus);
 
