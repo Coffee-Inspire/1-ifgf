@@ -10,6 +10,7 @@ import FormGroupImage from "../molecules/FormGroupImage";
 
 import {
   editIcareAction,
+  postIcareAction,
   getIcareAction,
 } from "../../redux/actions/icare.actions";
 import IcareCreateModal from "./IcareCreateModal";
@@ -76,11 +77,26 @@ function DashIcare() {
     name: "leadericarewoman",
   });
 
+  const postIcare = (e, bodyParam, imageParam) => {
+    dispatch(
+      postIcareAction(
+        e,
+        bodyParam,
+        imageParam,
+        progressBar,
+        setProgressBar,
+        setShowProgressBar
+      )
+    );
+    closeCreateModal();
+    dispatch(getIcareAction(setFormEdit));
+  };
+
   useEffect(() => {
     dispatch(getIcareAction(setFormEdit));
   }, [dispatch]);
 
-  useEffect(() => {}, [formEdit]);
+  // useEffect(() => {}, [formEdit]);
 
   // console.log(formEdit);
   // console.log(editStatus);
@@ -244,7 +260,8 @@ function DashIcare() {
       <IcareCreateModal
         modalState={createModalState}
         closeModal={closeCreateModal}
-        setFormEdit={setFormEdit}
+        // setFormEdit={setFormEdit}
+        postIcare={postIcare}
       />
     </>
   );
