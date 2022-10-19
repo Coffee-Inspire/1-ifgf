@@ -12,6 +12,7 @@ import {
   editIcareAction,
   postIcareAction,
   getIcareAction,
+  deleteIcareAction,
 } from "../../redux/actions/icare.actions";
 import IcareCreateModal from "./IcareCreateModal";
 
@@ -227,8 +228,25 @@ function DashIcare() {
                         type="submit"
                         variant="primary"
                         disabled={icareData.isLoading || image.disable}
+                        className="me-2"
                       >
                         {icareData.isLoading ? "Saving..." : "Save"}
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          setShowProgressBar({
+                            ...showProgressBar,
+                            [item.category]: true,
+                          });
+                          dispatch(deleteIcareAction(item.id));
+                          dispatch(getIcareAction(setFormEdit));
+                        }}
+                        type="submit"
+                        variant="danger"
+                        disabled={icareData.isLoading || image.disable}
+                        className="ms-2"
+                      >
+                        {icareData.isLoading ? "Deleting..." : "Delete"}
                       </Button>
                       {icareData.isLoading && showProgressBar[item.category] && (
                         <div className="mt-3">

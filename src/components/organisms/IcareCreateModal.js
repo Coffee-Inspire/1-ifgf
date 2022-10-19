@@ -16,10 +16,10 @@ import {
 //   getIcareAction,
 // } from "../../redux/actions/icare.actions";
 
-function IcareCreateModal({ modalState, closeModal, setFormEdit }) {
+function IcareCreateModal({ modalState, closeModal, setFormEdit, postIcare }) {
   const dispatch = useDispatch();
-  const [progressBar, setProgressBar] = useState(0);
-  const [showProgressBar, setShowProgressBar] = useState(false);
+  //   const [progressBar, setProgressBar] = useState(0);
+  //   const [showProgressBar, setShowProgressBar] = useState(false);
 
   const [imageCurrent, setImageCurrent] = useState({
     file: null,
@@ -39,24 +39,24 @@ function IcareCreateModal({ modalState, closeModal, setFormEdit }) {
     setParamData({ ...paramData, [e.target.name]: e.target.value });
   };
 
-  const postIcare = (e, bodyParam, imageParam) => {
-    console.log("bodyParam", bodyParam);
-    console.log("imageParam", imageParam);
-    dispatch(
-      postIcareAction(
-        e,
-        bodyParam,
-        imageParam,
-        progressBar,
-        setProgressBar,
-        setShowProgressBar
-      )
-    );
-    dispatch(getIcareAction(setFormEdit));
-    closeModal();
-    // e,bodyParam,imageParam
-    // dispatch to action...
-  };
+  //   const postIcare = (e, bodyParam, imageParam) => {
+  //     console.log("bodyParam", bodyParam);
+  //     console.log("imageParam", imageParam);
+  //     dispatch(
+  //       postIcareAction(
+  //         e,
+  //         bodyParam,
+  //         imageParam,
+  //         progressBar,
+  //         setProgressBar,
+  //         setShowProgressBar
+  //       )
+  //     );
+  //     dispatch(getIcareAction(setFormEdit));
+  //     closeModal();
+  //     // e,bodyParam,imageParam
+  //     // dispatch to action...
+  //   };
 
   return (
     <Modal show={modalState} onHide={closeModal}>
