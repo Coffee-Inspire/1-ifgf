@@ -143,7 +143,7 @@ export const editIcareAction =
 		}
 	};
 
-export const postIcareAction = (e, bodyParam, image, setProgressBar, setShowProgressBar) => (dispatch) => {
+export const postIcareAction = (e, bodyParam, image, setProgressBar, setShowProgressBar, setFormEdit) => (dispatch) => {
 	e.preventDefault();
 	dispatch(request());
 
@@ -151,7 +151,7 @@ export const postIcareAction = (e, bodyParam, image, setProgressBar, setShowProg
 		let uploadImg = dispatch(uploadImageAction(image, setProgressBar));
 		uploadImg
 			.then((result) => {
-				dispatch(postIcareDataAction(e, setShowProgressBar, bodyParam, result));
+				dispatch(postIcareDataAction(e, setShowProgressBar, bodyParam, result, setFormEdit));
 			})
 			.catch((err) => dispatch(failed()));
 	} else {
@@ -159,7 +159,7 @@ export const postIcareAction = (e, bodyParam, image, setProgressBar, setShowProg
 	}
 };
 
-export const postIcareDataAction = (e, setShowProgressBar, bodyParam, result) => (dispatch) => {
+export const postIcareDataAction = (e, setShowProgressBar, bodyParam, result, setFormEdit) => (dispatch) => {
 	let data = {
 		...bodyParam,
 		image: result,
@@ -176,11 +176,12 @@ export const postIcareDataAction = (e, setShowProgressBar, bodyParam, result) =>
 				window.location = "/admin";
 			}
 			setShowProgressBar(false);
+			dispatch(getIcareAction(setFormEdit));
 			dispatch(success());
 		});
 };
 
-export const deleteIcareAction = (id) => (dispatch) => {
+export const deleteIcareAction = (id, setFormEdit) => (dispatch) => {
 	dispatch(request());
 
 	return axios
@@ -193,7 +194,7 @@ export const deleteIcareAction = (id) => (dispatch) => {
 			if (result.data.status === "Token is Invalid") {
 				window.location = "/admin";
 			}
-
+			dispatch(getIcareAction(setFormEdit));
 			dispatch(success());
 		})
 		.catch((err) => dispatch(failed(err)));
