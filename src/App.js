@@ -18,6 +18,7 @@ import IfgfKids from './pages/IfgfKids';
 import IfgfYouth from './pages/IfgfYouth';
 import PrayerMeetings from './pages/PrayerMeetings';
 import ContactUs from './pages/ContactUs';
+import PageNotFound from './pages/PageNotFound'
 
 //Admin
 import AdminPage from './pages/AdminPage';
@@ -75,7 +76,7 @@ function App() {
             <ContactUs/>
           </Route>
           <Route>
-            {/* <PageNotFound /> */}
+            <PageNotFound />
           </Route>
         </Switch>
         <Switch>
