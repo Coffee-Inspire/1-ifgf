@@ -58,27 +58,25 @@ export const uploadImageAction = (image, setProgressBar) => (dispatch) => {
 	let fd = new FormData();
 	fd.append("image", image.file, image.name + "." + image.file.name.split(".").pop());
 
-	return (
-		axios
-			// .post(process.env.REACT_APP_URL_IMAGE, fd, {
-			.post("http://localhost:3333", fd, {
-				headers: {
-					"Content-Type": "application/json",
-					"Access-Control-Allow-Origin": "*",
-				},
-				onUploadProgress: (ProgressEvent) => {
-					setProgressBar(Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100));
-				},
-			})
-			.then((result) => {
-				// dispatch(success());
-				return result.data.url;
-			})
-			.catch((err) => {
-				dispatch(failed());
-				return err;
-			})
-	);
+	return axios
+		.post(process.env.REACT_APP_URL_IMAGE, fd, {
+			// .post("http://localhost:3333", fd, {
+			headers: {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*",
+			},
+			onUploadProgress: (ProgressEvent) => {
+				setProgressBar(Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100));
+			},
+		})
+		.then((result) => {
+			// dispatch(success());
+			return result.data.url;
+		})
+		.catch((err) => {
+			dispatch(failed());
+			return err;
+		});
 };
 
 export const editDataAction = (e, setShowProgressBar, dataSend, img, formEdit, setFormEdit, setHash) => (dispatch) => {
