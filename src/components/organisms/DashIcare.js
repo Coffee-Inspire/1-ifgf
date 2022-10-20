@@ -80,9 +80,6 @@ function DashIcare() {
 
 	useEffect(() => {
 		dispatch(getIcareAction(setFormEdit));
-		if (formEdit.length > 0) {
-			//setFormEdit()
-		}
 	}, [dispatch]);
 
 	// useEffect(() => {}, [formEdit]);
